@@ -4,7 +4,7 @@ import tweepy
 import requests
 import aiohttp
 import logging
-from typing import Dict, Optional
+from typing import Dict, Optional, Union
 from datetime import datetime
 import json
 import re
@@ -407,7 +407,7 @@ class SocialMediaService:
             return text[:Config.PLATFORM_CONFIGS['instagram']['max_length']]
         return text
 
-    def _format_for_twitter(self, text: str, is_thread: bool = False, index: int | None = None, total: int | None = None) -> str:
+    def _format_for_twitter(self, text: str, is_thread: bool = False, index: Optional[int] = None, total: Optional[int] = None) -> str:
         """Apply X/Twitter-specific formatting: trim, limit hashtags, enforce length."""
         max_len = Config.PLATFORM_CONFIGS['twitter']['max_length']
         text = self._strip_markdown(text)
