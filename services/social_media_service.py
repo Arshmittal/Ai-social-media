@@ -149,7 +149,12 @@ class SocialMediaService:
         current_chunk = ""
 
         for word in words:
-            candidate = (current_chunk + " " + word).strip()
+            if current_chunk:
+                candidate = current_chunk + " " + word
+            else:
+                candidate = word
+            candidate = candidate.strip()
+            
             if len(candidate) <= max_length:
                 current_chunk = candidate
             else:
@@ -422,7 +427,10 @@ class SocialMediaService:
             text = " ".join(words)
         if is_thread and index and total:
             suffix = f" ({index}/{total})"
-            text = text[: max_len - len(suffix)] + suffix if len(text) > max_len - len(suffix) else text + suffix
+            if len(text) > max_len - len(suffix):
+                text = text[:max_len - len(suffix)] + suffix
+            else:
+                text = text + suffix
         else:
             text = text[:max_len]
         return text
