@@ -225,6 +225,58 @@ class SocialMediaService:
             logger.error(f"Facebook connection test failed: {e}")
             return {'success': False, 'error': str(e)}
 
+    async def test_linkedin_connection(self) -> Dict:
+        """Test LinkedIn API connection and permissions"""
+        try:
+            if not self.linkedin_token:
+                return {'success': False, 'error': 'LinkedIn token not configured'}
+            if not self.linkedin_person_urn:
+                return {'success': False, 'error': 'LinkedIn person URN not configured'}
+
+            # Validate URN format
+            try:
+                formatted_urn = self._format_linkedin_urn(self.linkedin_person_urn)
+                logger.info(f"Using formatted LinkedIn URN: {formatted_urn}")
+            except ValueError as e:
+                return {'success': False, 'error': f'Invalid LinkedIn URN: {e}'}
+
+            import aiohttp
+            async with aiohttp.ClientSession() as session:
+                # Test 1: Validate token by getting user profile
+                headers = {
+                    'Authorization': f'Bearer {self.linkedin_token}',
+                    'Content-Type': 'application/json',
+                    'X-Restli-Protocol-Version': '2.0.0'
+                }
+                
+                # Check URN type and set appropriate endpoint
+                if 'urn:li:member:' in formatted_urn or 'urn:li:person:' in formatted_urn:
+                    profile_url = "https://api.linkedin.com/v2/me"
+                elif 'urn:li:company:' in formatted_urn or 'urn:li:organization:' in formatted_urn:
+                    company_id = formatted_urn.split(':')[-1]
+                    profile_url = f"https://api.linkedin.com/v2/organizations/{company_id}"
+                else:
+                    return {'success': False, 'error': f'Invalid URN format: {formatted_urn}'}
+                
+                async with session.get(profile_url, headers=headers) as response:
+                    if response.status == 401:
+                        return {'success': False, 'error': 'LinkedIn token is invalid or expired'}
+                    elif response.status == 403:
+                        response_text = await response.text()
+                        return {'success': False, 'error': f'LinkedIn access denied (403): {response_text}'}
+                    elif response.status != 200:
+                        response_text = await response.text()
+                        return {'success': False, 'error': f'LinkedIn API error {response.status}: {response_text}'}
+                    
+                    profile_data = await response.json()
+                    logger.info(f"LinkedIn profile validated for: {profile_data.get('firstName', {}).get('localized', {}).get('en_US', 'Unknown')}")
+
+            return {'success': True, 'message': 'LinkedIn connection validated', 'urn': formatted_urn}
+            
+        except Exception as e:
+            logger.error(f"LinkedIn connection test failed: {e}")
+            return {'success': False, 'error': str(e)}
+
     async def _post_to_facebook(self, content: str, content_data: Dict) -> Dict:
         """Post to Facebook Page feed (Graph API)."""
         try:
@@ -317,15 +369,21 @@ class SocialMediaService:
             if not self.linkedin_person_urn:
                 raise Exception("LinkedIn person URN not configured (LINKEDIN_PERSON_URN)")
             
+            # Validate and format the URN properly
+            author_urn = self._format_linkedin_urn(self.linkedin_person_urn)
+            logger.info(f"Using LinkedIn author URN: {author_urn}")
+            logger.info(f"Content length: {len(content)} characters")
+            
             url = "https://api.linkedin.com/v2/ugcPosts"
             
             headers = {
                 'Authorization': f'Bearer {self.linkedin_token}',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-Restli-Protocol-Version': '2.0.0'
             }
             
             payload = {
-                "author": self.linkedin_person_urn,
+                "author": author_urn,
                 "lifecycleState": "PUBLISHED",
                 "specificContent": {
                     "com.linkedin.ugc.ShareContent": {
@@ -338,14 +396,40 @@ class SocialMediaService:
                 }
             }
             
+            logger.info(f"LinkedIn payload: {json.dumps(payload, indent=2)}")
+            
             # Use async HTTP request
             import aiohttp
             async with aiohttp.ClientSession() as session:
                 async with session.post(url, headers=headers, json=payload) as response:
-                    if response.status == 403:
-                        response_text = await response.text()
-                        logger.error(f"LinkedIn 403: {response_text}")
-                    response.raise_for_status()
+                    response_text = await response.text()
+                    
+                    if response.status in [403, 422]:  # Handle both 403 and 422 errors
+                        logger.error(f"LinkedIn {response.status}: {response_text}")
+                        # Try to parse and provide more specific error information
+                        try:
+                            error_data = json.loads(response_text)
+                            error_msg = error_data.get('message', 'Unknown error')
+                            service_error_code = error_data.get('serviceErrorCode', 'Unknown')
+                            logger.error(f"LinkedIn Service Error {service_error_code}: {error_msg}")
+                            
+                            # Provide helpful suggestions based on the error
+                            if 'author' in error_msg.lower() or 'urn:li:person' in error_msg or 'urn:li:member' in error_msg:
+                                logger.error("Suggestion: Check that LINKEDIN_PERSON_URN is in a valid format:")
+                                logger.error("  - urn:li:person:XXXXXXXXX (legacy, works for some accounts)")
+                                logger.error("  - urn:li:member:XXXXXXXXX (current standard)")
+                                logger.error("  - urn:li:company:XXXXXXX (for company posts)")
+                            elif 'access_denied' in error_msg.lower():
+                                logger.error("Suggestion: Verify that your LinkedIn app has 'w_member_social' or 'w_organization_social' permissions")
+                            elif len(content) > 1300:  # LinkedIn's practical character limit
+                                logger.error(f"Suggestion: Content is {len(content)} characters. Consider shortening to under 1300 characters for better LinkedIn compatibility")
+                                
+                        except json.JSONDecodeError:
+                            logger.error(f"Could not parse LinkedIn error response: {response_text}")
+                    
+                    if response.status != 201:  # LinkedIn UGC Posts API returns 201 on success
+                        logger.error(f"LinkedIn API Error {response.status}: {response_text}")
+                        response.raise_for_status()
                     
                     result = await response.json()
                     
@@ -476,9 +560,15 @@ class SocialMediaService:
         if platform == 'twitter':
             return self._format_for_twitter(text, is_thread=content.get('content_type') == 'thread')
         if platform == 'linkedin':
-            # LinkedIn: remove markdown, cap length
+            # LinkedIn: remove markdown, cap length to practical limit
             text = self._strip_markdown(text)
-            return text[:Config.PLATFORM_CONFIGS['linkedin']['max_length']]
+            # LinkedIn's practical limit is around 1300 characters for good engagement
+            # The config says 3000 but that's too long for optimal posting
+            max_length = min(Config.PLATFORM_CONFIGS['linkedin']['max_length'], 1300)
+            if len(text) > max_length:
+                logger.warning(f"LinkedIn content truncated from {len(text)} to {max_length} characters for better engagement")
+                text = text[:max_length-3] + "..."
+            return text
         if platform == 'facebook':
             return text[:Config.PLATFORM_CONFIGS['facebook']['max_length']]
         if platform == 'instagram':
@@ -529,5 +619,48 @@ class SocialMediaService:
 
     def _extract_error(self, e: Exception) -> str:
         return str(e)
+
+    def _format_linkedin_urn(self, urn: str) -> str:
+        """
+        Format and validate LinkedIn URN to ensure it follows the correct format.
+        Supports both legacy and current formats.
+        
+        Supported formats (LinkedIn v2 API):
+        - urn:li:person:XXXXXXXXX (legacy but still working for some accounts)
+        - urn:li:member:XXXXXXXXX (current standard for personal posts)
+        - urn:li:organization:XXXXXXX (legacy company format)
+        - urn:li:company:XXXXXXX (current standard for company posts)
+        """
+        if not urn:
+            raise ValueError("LinkedIn URN cannot be empty")
+        
+        # Remove any whitespace
+        urn = urn.strip()
+        
+        # Handle all valid LinkedIn URN formats (both legacy and current)
+        valid_prefixes = [
+            'urn:li:person:',      # Legacy personal (still works for some accounts)
+            'urn:li:member:',      # Current personal standard
+            'urn:li:organization:', # Legacy company
+            'urn:li:company:'      # Current company standard
+        ]
+        
+        # If it's already in a valid format, return as-is
+        for prefix in valid_prefixes:
+            if urn.startswith(prefix):
+                logger.info(f"Using LinkedIn URN as provided: {urn}")
+                return urn
+        
+        # Handle common typos
+        if 'urn:li:organisation:' in urn:
+            logger.warning("Found 'urn:li:organisation:' - correcting to 'urn:li:company:'")
+            return urn.replace('urn:li:organisation:', 'urn:li:company:')
+        
+        # If it's just the ID, default to person format (since that's what's working for you)
+        if not urn.startswith('urn:li:'):
+            logger.warning(f"LinkedIn URN '{urn}' doesn't start with 'urn:li:', assuming it's a person ID")
+            return f"urn:li:person:{urn}"
+        
+        return urn
 
 
