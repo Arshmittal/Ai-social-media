@@ -39,19 +39,18 @@ class LinkedInDebugger:
         
         urn = urn.strip()
         
-        # Handle current v2 API formats
-        if urn.startswith('urn:li:member:') or urn.startswith('urn:li:company:'):
-            return urn
+        # Handle all valid LinkedIn URN formats
+        valid_prefixes = [
+            'urn:li:person:',      # Legacy personal (still works!)
+            'urn:li:member:',      # Current personal standard
+            'urn:li:organization:', # Legacy company
+            'urn:li:company:'      # Current company standard
+        ]
         
-        # Convert legacy person format to member format
-        if urn.startswith('urn:li:person:'):
-            print("💡 Converting legacy 'urn:li:person:' to 'urn:li:member:' format")
-            return urn.replace('urn:li:person:', 'urn:li:member:')
-        
-        # Convert legacy organization format to company format  
-        if urn.startswith('urn:li:organization:'):
-            print("💡 Converting legacy 'urn:li:organization:' to 'urn:li:company:' format")
-            return urn.replace('urn:li:organization:', 'urn:li:company:')
+        for prefix in valid_prefixes:
+            if urn.startswith(prefix):
+                print(f"✅ Valid LinkedIn URN format: {urn}")
+                return urn
         
         # Handle common typos
         if 'urn:li:organisation:' in urn:
@@ -107,9 +106,10 @@ class LinkedInDebugger:
         
         if not self.urn:
             print("❌ LINKEDIN_PERSON_URN not found in environment variables")
-            print("💡 Set LINKEDIN_PERSON_URN to your member URN (e.g., 'urn:li:member:XXXXXXXXX')")
-            print("💡 Or company URN (e.g., 'urn:li:company:XXXXXXX')")
-            print("💡 Legacy formats (urn:li:person:, urn:li:organization:) are automatically converted")
+            print("💡 Set LINKEDIN_PERSON_URN to one of these formats:")
+            print("  - urn:li:person:XXXXXXXXX (legacy, still works for some accounts)")
+            print("  - urn:li:member:XXXXXXXXX (current standard)")
+            print("  - urn:li:company:XXXXXXX (for company posts)")
             return None
             
         try:

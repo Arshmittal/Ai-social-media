@@ -249,10 +249,10 @@ class SocialMediaService:
                     'X-Restli-Protocol-Version': '2.0.0'
                 }
                 
-                # Check if it's a member or company URN
-                if 'urn:li:member:' in formatted_urn:
-                    profile_url = "https://api.linkedin.com/v2/people/(id~)"
-                elif 'urn:li:company:' in formatted_urn:
+                # Check URN type and set appropriate endpoint
+                if 'urn:li:member:' in formatted_urn or 'urn:li:person:' in formatted_urn:
+                    profile_url = "https://api.linkedin.com/v2/me"
+                elif 'urn:li:company:' in formatted_urn or 'urn:li:organization:' in formatted_urn:
                     company_id = formatted_urn.split(':')[-1]
                     profile_url = f"https://api.linkedin.com/v2/organizations/{company_id}"
                 else:
@@ -415,8 +415,10 @@ class SocialMediaService:
                             
                             # Provide helpful suggestions based on the error
                             if 'author' in error_msg.lower() or 'urn:li:person' in error_msg or 'urn:li:member' in error_msg:
-                                logger.error("Suggestion: Check that LINKEDIN_PERSON_URN is in format 'urn:li:member:XXXXXXXXX' or 'urn:li:company:XXXXXXX'")
-                                logger.error("Note: Legacy formats (urn:li:person:, urn:li:organization:) are automatically converted")
+                                logger.error("Suggestion: Check that LINKEDIN_PERSON_URN is in a valid format:")
+                                logger.error("  - urn:li:person:XXXXXXXXX (legacy, works for some accounts)")
+                                logger.error("  - urn:li:member:XXXXXXXXX (current standard)")
+                                logger.error("  - urn:li:company:XXXXXXX (for company posts)")
                             elif 'access_denied' in error_msg.lower():
                                 logger.error("Suggestion: Verify that your LinkedIn app has 'w_member_social' or 'w_organization_social' permissions")
                             elif len(content) > 1300:  # LinkedIn's practical character limit
@@ -621,15 +623,13 @@ class SocialMediaService:
     def _format_linkedin_urn(self, urn: str) -> str:
         """
         Format and validate LinkedIn URN to ensure it follows the correct format.
-        Supports both member and company URNs.
+        Supports both legacy and current formats.
         
-        Expected formats (LinkedIn v2 API):
-        - urn:li:member:XXXXXXXXX (for personal posts)
-        - urn:li:company:XXXXXXX (for company posts)
-        
-        Legacy formats automatically converted:
-        - urn:li:person:XXXXXXXXX -> urn:li:member:XXXXXXXXX
-        - urn:li:organization:XXXXXXX -> urn:li:company:XXXXXXX
+        Supported formats (LinkedIn v2 API):
+        - urn:li:person:XXXXXXXXX (legacy but still working for some accounts)
+        - urn:li:member:XXXXXXXXX (current standard for personal posts)
+        - urn:li:organization:XXXXXXX (legacy company format)
+        - urn:li:company:XXXXXXX (current standard for company posts)
         """
         if not urn:
             raise ValueError("LinkedIn URN cannot be empty")
@@ -637,29 +637,29 @@ class SocialMediaService:
         # Remove any whitespace
         urn = urn.strip()
         
-        # Handle current v2 API formats
-        if urn.startswith('urn:li:member:') or urn.startswith('urn:li:company:'):
-            return urn
+        # Handle all valid LinkedIn URN formats (both legacy and current)
+        valid_prefixes = [
+            'urn:li:person:',      # Legacy personal (still works for some accounts)
+            'urn:li:member:',      # Current personal standard
+            'urn:li:organization:', # Legacy company
+            'urn:li:company:'      # Current company standard
+        ]
         
-        # Convert legacy person format to member format
-        if urn.startswith('urn:li:person:'):
-            logger.info("Converting legacy 'urn:li:person:' to 'urn:li:member:' format")
-            return urn.replace('urn:li:person:', 'urn:li:member:')
-        
-        # Convert legacy organization format to company format  
-        if urn.startswith('urn:li:organization:'):
-            logger.info("Converting legacy 'urn:li:organization:' to 'urn:li:company:' format")
-            return urn.replace('urn:li:organization:', 'urn:li:company:')
+        # If it's already in a valid format, return as-is
+        for prefix in valid_prefixes:
+            if urn.startswith(prefix):
+                logger.info(f"Using LinkedIn URN as provided: {urn}")
+                return urn
         
         # Handle common typos
         if 'urn:li:organisation:' in urn:
             logger.warning("Found 'urn:li:organisation:' - correcting to 'urn:li:company:'")
             return urn.replace('urn:li:organisation:', 'urn:li:company:')
         
-        # If it's just the ID, default to member for backward compatibility
+        # If it's just the ID, default to person format (since that's what's working for you)
         if not urn.startswith('urn:li:'):
-            logger.warning(f"LinkedIn URN '{urn}' doesn't start with 'urn:li:', assuming it's a member ID")
-            return f"urn:li:member:{urn}"
+            logger.warning(f"LinkedIn URN '{urn}' doesn't start with 'urn:li:', assuming it's a person ID")
+            return f"urn:li:person:{urn}"
         
         return urn
 
