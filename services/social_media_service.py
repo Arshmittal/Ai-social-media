@@ -249,12 +249,12 @@ class SocialMediaService:
                     'X-Restli-Protocol-Version': '2.0.0'
                 }
                 
-                # Check if it's a person or organization URN
-                if 'urn:li:person:' in formatted_urn:
+                # Check if it's a member or company URN
+                if 'urn:li:member:' in formatted_urn:
                     profile_url = "https://api.linkedin.com/v2/people/(id~)"
-                elif 'urn:li:organization:' in formatted_urn:
-                    org_id = formatted_urn.split(':')[-1]
-                    profile_url = f"https://api.linkedin.com/v2/organizations/{org_id}"
+                elif 'urn:li:company:' in formatted_urn:
+                    company_id = formatted_urn.split(':')[-1]
+                    profile_url = f"https://api.linkedin.com/v2/organizations/{company_id}"
                 else:
                     return {'success': False, 'error': f'Invalid URN format: {formatted_urn}'}
                 
@@ -404,8 +404,8 @@ class SocialMediaService:
                 async with session.post(url, headers=headers, json=payload) as response:
                     response_text = await response.text()
                     
-                    if response.status == 403:
-                        logger.error(f"LinkedIn 403: {response_text}")
+                    if response.status in [403, 422]:  # Handle both 403 and 422 errors
+                        logger.error(f"LinkedIn {response.status}: {response_text}")
                         # Try to parse and provide more specific error information
                         try:
                             error_data = json.loads(response_text)
@@ -414,10 +414,13 @@ class SocialMediaService:
                             logger.error(f"LinkedIn Service Error {service_error_code}: {error_msg}")
                             
                             # Provide helpful suggestions based on the error
-                            if 'author' in error_msg.lower():
-                                logger.error("Suggestion: Check that LINKEDIN_PERSON_URN is in format 'urn:li:person:XXXXXXXXX' or 'urn:li:organization:XXXXXXX'")
+                            if 'author' in error_msg.lower() or 'urn:li:person' in error_msg or 'urn:li:member' in error_msg:
+                                logger.error("Suggestion: Check that LINKEDIN_PERSON_URN is in format 'urn:li:member:XXXXXXXXX' or 'urn:li:company:XXXXXXX'")
+                                logger.error("Note: Legacy formats (urn:li:person:, urn:li:organization:) are automatically converted")
                             elif 'access_denied' in error_msg.lower():
                                 logger.error("Suggestion: Verify that your LinkedIn app has 'w_member_social' or 'w_organization_social' permissions")
+                            elif len(content) > 1300:  # LinkedIn's practical character limit
+                                logger.error(f"Suggestion: Content is {len(content)} characters. Consider shortening to under 1300 characters for better LinkedIn compatibility")
                                 
                         except json.JSONDecodeError:
                             logger.error(f"Could not parse LinkedIn error response: {response_text}")
@@ -555,9 +558,15 @@ class SocialMediaService:
         if platform == 'twitter':
             return self._format_for_twitter(text, is_thread=content.get('content_type') == 'thread')
         if platform == 'linkedin':
-            # LinkedIn: remove markdown, cap length
+            # LinkedIn: remove markdown, cap length to practical limit
             text = self._strip_markdown(text)
-            return text[:Config.PLATFORM_CONFIGS['linkedin']['max_length']]
+            # LinkedIn's practical limit is around 1300 characters for good engagement
+            # The config says 3000 but that's too long for optimal posting
+            max_length = min(Config.PLATFORM_CONFIGS['linkedin']['max_length'], 1300)
+            if len(text) > max_length:
+                logger.warning(f"LinkedIn content truncated from {len(text)} to {max_length} characters for better engagement")
+                text = text[:max_length-3] + "..."
+            return text
         if platform == 'facebook':
             return text[:Config.PLATFORM_CONFIGS['facebook']['max_length']]
         if platform == 'instagram':
@@ -612,11 +621,15 @@ class SocialMediaService:
     def _format_linkedin_urn(self, urn: str) -> str:
         """
         Format and validate LinkedIn URN to ensure it follows the correct format.
-        Supports both person and organization URNs.
+        Supports both member and company URNs.
         
-        Expected formats:
-        - urn:li:person:XXXXXXXXX
-        - urn:li:organization:XXXXXXX
+        Expected formats (LinkedIn v2 API):
+        - urn:li:member:XXXXXXXXX (for personal posts)
+        - urn:li:company:XXXXXXX (for company posts)
+        
+        Legacy formats automatically converted:
+        - urn:li:person:XXXXXXXXX -> urn:li:member:XXXXXXXXX
+        - urn:li:organization:XXXXXXX -> urn:li:company:XXXXXXX
         """
         if not urn:
             raise ValueError("LinkedIn URN cannot be empty")
@@ -624,20 +637,29 @@ class SocialMediaService:
         # Remove any whitespace
         urn = urn.strip()
         
-        # If it's already in the correct format, return it
-        if urn.startswith('urn:li:person:') or urn.startswith('urn:li:organization:'):
+        # Handle current v2 API formats
+        if urn.startswith('urn:li:member:') or urn.startswith('urn:li:company:'):
             return urn
         
-        # If it's just the ID, try to determine if it should be person or organization
-        # Default to person for backward compatibility
-        if not urn.startswith('urn:li:'):
-            logger.warning(f"LinkedIn URN '{urn}' doesn't start with 'urn:li:', assuming it's a person ID")
-            return f"urn:li:person:{urn}"
+        # Convert legacy person format to member format
+        if urn.startswith('urn:li:person:'):
+            logger.info("Converting legacy 'urn:li:person:' to 'urn:li:member:' format")
+            return urn.replace('urn:li:person:', 'urn:li:member:')
         
-        # Handle common typos like 'organisation' instead of 'organization'
+        # Convert legacy organization format to company format  
+        if urn.startswith('urn:li:organization:'):
+            logger.info("Converting legacy 'urn:li:organization:' to 'urn:li:company:' format")
+            return urn.replace('urn:li:organization:', 'urn:li:company:')
+        
+        # Handle common typos
         if 'urn:li:organisation:' in urn:
-            logger.warning("Found 'urn:li:organisation:' - correcting to 'urn:li:organization:'")
-            return urn.replace('urn:li:organisation:', 'urn:li:organization:')
+            logger.warning("Found 'urn:li:organisation:' - correcting to 'urn:li:company:'")
+            return urn.replace('urn:li:organisation:', 'urn:li:company:')
+        
+        # If it's just the ID, default to member for backward compatibility
+        if not urn.startswith('urn:li:'):
+            logger.warning(f"LinkedIn URN '{urn}' doesn't start with 'urn:li:', assuming it's a member ID")
+            return f"urn:li:member:{urn}"
         
         return urn
 

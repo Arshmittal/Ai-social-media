@@ -39,16 +39,28 @@ class LinkedInDebugger:
         
         urn = urn.strip()
         
-        if urn.startswith('urn:li:person:') or urn.startswith('urn:li:organization:'):
+        # Handle current v2 API formats
+        if urn.startswith('urn:li:member:') or urn.startswith('urn:li:company:'):
             return urn
         
-        if not urn.startswith('urn:li:'):
-            logger.warning(f"URN '{urn}' doesn't start with 'urn:li:', assuming it's a person ID")
-            return f"urn:li:person:{urn}"
+        # Convert legacy person format to member format
+        if urn.startswith('urn:li:person:'):
+            print("💡 Converting legacy 'urn:li:person:' to 'urn:li:member:' format")
+            return urn.replace('urn:li:person:', 'urn:li:member:')
         
+        # Convert legacy organization format to company format  
+        if urn.startswith('urn:li:organization:'):
+            print("💡 Converting legacy 'urn:li:organization:' to 'urn:li:company:' format")
+            return urn.replace('urn:li:organization:', 'urn:li:company:')
+        
+        # Handle common typos
         if 'urn:li:organisation:' in urn:
-            logger.warning("Found 'urn:li:organisation:' - correcting to 'urn:li:organization:'")
-            return urn.replace('urn:li:organisation:', 'urn:li:organization:')
+            print("💡 Found 'urn:li:organisation:' - correcting to 'urn:li:company:'")
+            return urn.replace('urn:li:organisation:', 'urn:li:company:')
+        
+        if not urn.startswith('urn:li:'):
+            logger.warning(f"URN '{urn}' doesn't start with 'urn:li:', assuming it's a member ID")
+            return f"urn:li:member:{urn}"
         
         return urn
 
@@ -95,8 +107,9 @@ class LinkedInDebugger:
         
         if not self.urn:
             print("❌ LINKEDIN_PERSON_URN not found in environment variables")
-            print("💡 Set LINKEDIN_PERSON_URN to your person URN (e.g., 'urn:li:person:XXXXXXXXX')")
-            print("💡 Or organization URN (e.g., 'urn:li:organization:XXXXXXX')")
+            print("💡 Set LINKEDIN_PERSON_URN to your member URN (e.g., 'urn:li:member:XXXXXXXXX')")
+            print("💡 Or company URN (e.g., 'urn:li:company:XXXXXXX')")
+            print("💡 Legacy formats (urn:li:person:, urn:li:organization:) are automatically converted")
             return None
             
         try:
@@ -130,19 +143,22 @@ class LinkedInDebugger:
             print("❌ Cannot test posting without valid URN")
             return False
             
-        payload = {
-            "author": formatted_urn,
-            "lifecycleState": "PUBLISHED",
-            "specificContent": {
-                "com.linkedin.ugc.ShareContent": {
-                    "shareCommentary": {"text": "🤖 LinkedIn API connection test - this post can be deleted"},
-                    "shareMediaCategory": "NONE"
-                }
-            },
-            "visibility": {
-                "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
-            }
-        }
+                 test_content = "🤖 LinkedIn API connection test - this post can be deleted"
+         payload = {
+             "author": formatted_urn,
+             "lifecycleState": "PUBLISHED",
+             "specificContent": {
+                 "com.linkedin.ugc.ShareContent": {
+                     "shareCommentary": {"text": test_content},
+                     "shareMediaCategory": "NONE"
+                 }
+             },
+             "visibility": {
+                 "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
+             }
+         }
+         
+         print(f"Test content length: {len(test_content)} characters")
         
         async with aiohttp.ClientSession() as session:
             try:
@@ -198,7 +214,8 @@ class LinkedInDebugger:
         print("   - The 'id' field will contain your person URN")
         print("7. Set environment variables:")
         print("   - LINKEDIN_ACCESS_TOKEN=your_access_token")
-        print("   - LINKEDIN_PERSON_URN=urn:li:person:XXXXXXXXX")
+        print("   - LINKEDIN_PERSON_URN=urn:li:member:XXXXXXXXX")
+        print("   - (Legacy urn:li:person: format is automatically converted)")
         
     async def run_all_tests(self):
         """Run all diagnostic tests"""
