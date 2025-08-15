@@ -41,9 +41,9 @@ async def get_personal_urn():
     
     async with aiohttp.ClientSession() as session:
         try:
-            # Method 1: Get profile info using /v2/people/(id~)
-            print("\n📋 Method 1: Using /v2/people/(id~) endpoint...")
-            async with session.get('https://api.linkedin.com/v2/people/(id~)', headers=headers) as response:
+            # Method 1: Get profile info using /v2/me endpoint
+            print("\n📋 Method 1: Using /v2/me endpoint...")
+            async with session.get('https://api.linkedin.com/v2/me', headers=headers) as response:
                 if response.status == 200:
                     data = await response.json()
                     personal_urn = data.get('id')
@@ -87,22 +87,81 @@ async def get_personal_urn():
                     
         except Exception as e:
             print(f"❌ Connection error: {e}")
-            return None
     
-    # Method 2: Alternative using userinfo endpoint (if available with openid scope)
-    print("\n📋 Method 2: Using /v2/userinfo endpoint (alternative)...")
+    # Method 2: Try alternative endpoint format
+    print("\n📋 Method 2: Using /v2/people/~/ endpoint (alternative)...")
+    async with aiohttp.ClientSession() as session:
+        try:
+            async with session.get('https://api.linkedin.com/v2/people/~/', headers=headers) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    personal_urn = data.get('id')
+                    
+                    # Extract name info
+                    first_name = data.get('firstName', {}).get('localized', {}).get('en_US', 'Unknown')
+                    last_name = data.get('lastName', {}).get('localized', {}).get('en_US', 'Unknown')
+                    
+                    print(f"✅ Success! Found your profile:")
+                    print(f"   Name: {first_name} {last_name}")
+                    print(f"   Personal URN: {personal_urn}")
+                    
+                    # Convert to new format if needed
+                    if personal_urn and personal_urn.startswith('urn:li:person:'):
+                        new_urn = personal_urn.replace('urn:li:person:', 'urn:li:member:')
+                        print(f"   Updated URN format: {new_urn}")
+                        print(f"\n🎯 Set this in your environment:")
+                        print(f"   LINKEDIN_PERSON_URN={new_urn}")
+                        return new_urn
+                    elif personal_urn and personal_urn.startswith('urn:li:member:'):
+                        print(f"\n🎯 Set this in your environment:")
+                        print(f"   LINKEDIN_PERSON_URN={personal_urn}")
+                        return personal_urn
+                    else:
+                        print(f"⚠️  Unexpected URN format: {personal_urn}")
+                        return personal_urn
+                else:
+                    text = await response.text()
+                    print(f"ℹ️  Alternative endpoint returned {response.status}: {text}")
+        except Exception as e:
+            print(f"ℹ️  Alternative endpoint error: {e}")
+    
+    # Method 3: Try userinfo endpoint (if available with openid scope)
+    print("\n📋 Method 3: Using /v2/userinfo endpoint...")
     async with aiohttp.ClientSession() as session:
         try:
             async with session.get('https://api.linkedin.com/v2/userinfo', headers=headers) as response:
                 if response.status == 200:
                     data = await response.json()
                     print(f"✅ UserInfo data: {json.dumps(data, indent=2)}")
-                    # This endpoint might not have the URN, but provides additional info
+                    # This endpoint provides sub field which might contain the URN
+                    user_id = data.get('sub')
+                    if user_id:
+                        # Sometimes the sub field contains the member ID
+                        if user_id.startswith('urn:li:'):
+                            urn = user_id
+                        else:
+                            urn = f"urn:li:member:{user_id}"
+                        print(f"\n🎯 Found URN from userinfo: {urn}")
+                        print(f"   LINKEDIN_PERSON_URN={urn}")
+                        return urn
                 else:
                     text = await response.text()
                     print(f"ℹ️  UserInfo endpoint returned {response.status}: {text}")
         except Exception as e:
-            print(f"ℹ️  UserInfo endpoint error (this is optional): {e}")
+            print(f"ℹ️  UserInfo endpoint error: {e}")
+    
+    # Method 4: Manual extraction guide
+    print("\n📋 Method 4: Manual URN extraction guide...")
+    print("🔧 If automated methods fail, you can get your URN manually:")
+    print("1. Go to your LinkedIn profile page")
+    print("2. Look at the URL: https://www.linkedin.com/in/your-profile-name/")
+    print("3. Your member ID might be visible in various LinkedIn URLs")
+    print("4. Or try this curl command manually:")
+    print(f"   curl -H 'Authorization: Bearer {access_token[:10]}...' \\")
+    print("        -H 'X-Restli-Protocol-Version: 2.0.0' \\")
+    print("        'https://api.linkedin.com/v2/me'")
+    
+    return None
 
 def print_setup_guide():
     """Print a guide for setting up the URN"""
