@@ -406,6 +406,24 @@ async def post_now():
             'error': f'Posting failed: {str(e)}'
         }), 500
 
+@app.route('/test_linkedin_connection', methods=['GET'])
+async def test_linkedin_connection():
+    """Test LinkedIn API connection and configuration"""
+    try:
+        result = await social_media_service.test_linkedin_connection()
+        
+        if result.get('success'):
+            return jsonify(result)
+        else:
+            return jsonify(result), 400
+            
+    except Exception as e:
+        logger.error(f"Error testing LinkedIn connection: {e}")
+        return jsonify({
+            'success': False,
+            'error': f'LinkedIn connection test failed: {str(e)}'
+        }), 500
+
 @app.route('/api/projects', methods=['GET'])
 def api_get_projects():
     """API endpoint to get all projects"""
