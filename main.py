@@ -1,3 +1,4 @@
+
 import os
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify, render_template_string
@@ -25,6 +26,9 @@ logger = logging.getLogger(__name__)
 # Initialize Flask app
 app = Flask(__name__)
 app.secret_key = os.getenv('FLASK_SECRET_KEY')
+
+# Enable async support
+app.config['ASYNC_MODE'] = True
 
 # Initialize services
 mongodb_manager = MongoDBManager()
@@ -148,21 +152,18 @@ CONTENT_GENERATION_HTML = """
         </div>
         
         <div class="form-group">
-            <label>Content Type:</label>
-            <select name="content_type">
-                <option value="post">Social Media Post</option>
-                <option value="thread">Twitter Thread</option>
-                <option value="article">Article</option>
-                <option value="story">Story Content</option>
+            <label>Target Platform:</label>
+            <select name="target_platform" id="target_platform" onchange="updateContentTypes()">
+                {% for platform in project.platforms %}
+                <option value="{{ platform }}">{{ platform.title() }}</option>
+                {% endfor %}
             </select>
         </div>
         
         <div class="form-group">
-            <label>Target Platform:</label>
-            <select name="target_platform">
-                {% for platform in project.platforms %}
-                <option value="{{ platform }}">{{ platform.title() }}</option>
-                {% endfor %}
+            <label>Content Type:</label>
+            <select name="content_type" id="content_type">
+                <!-- Options will be populated by JavaScript -->
             </select>
         </div>
         
@@ -202,6 +203,60 @@ CONTENT_GENERATION_HTML = """
         </form>
     </div>
     {% endif %}
+
+    <script>
+        // Platform-specific content types mapping
+        const platformContentTypes = {
+            'twitter': [
+                { value: 'post', text: 'Tweet' },
+                { value: 'thread', text: 'Twitter Thread' },
+                { value: 'poll', text: 'Twitter Poll' }
+            ],
+            'linkedin': [
+                { value: 'post', text: 'Professional Post' },
+                { value: 'article', text: 'LinkedIn Article' },
+                { value: 'carousel', text: 'Carousel Post' },
+                { value: 'poll', text: 'LinkedIn Poll' }
+            ],
+            'facebook': [
+                { value: 'post', text: 'Facebook Post' },
+                { value: 'story', text: 'Facebook Story' },
+                { value: 'poll', text: 'Facebook Poll' },
+                { value: 'event', text: 'Event Post' }
+            ],
+            'instagram': [
+                { value: 'post', text: 'Instagram Post' },
+                { value: 'story', text: 'Instagram Story' },
+                { value: 'reel', text: 'Instagram Reel' },
+                { value: 'carousel', text: 'Carousel Post' }
+            ]
+        };
+
+        function updateContentTypes() {
+            const platformSelect = document.getElementById('target_platform');
+            const contentTypeSelect = document.getElementById('content_type');
+            const selectedPlatform = platformSelect.value;
+            
+            // Clear existing options
+            contentTypeSelect.innerHTML = '';
+            
+            // Get content types for selected platform
+            const contentTypes = platformContentTypes[selectedPlatform] || platformContentTypes['twitter'];
+            
+            // Add new options
+            contentTypes.forEach(type => {
+                const option = document.createElement('option');
+                option.value = type.value;
+                option.textContent = type.text;
+                contentTypeSelect.appendChild(option);
+            });
+        }
+
+        // Initialize content types on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateContentTypes();
+        });
+    </script>
 </body>
 </html>
 """
@@ -294,25 +349,62 @@ async def post_now():
     """Post content immediately"""
     try:
         content_id = request.form['content_id']
+        logger.info(f"Attempting to post content: {content_id}")
+        
+        # Get content from database
         content = mongodb_manager.get_content(content_id)
+        if not content:
+            logger.error(f"Content not found: {content_id}")
+            return jsonify({'error': 'Content not found'}), 404
+        
+        logger.info(f"Found content for platform: {content.get('platform')}")
+        
+        # Validate content has required fields
+        if not content.get('platform'):
+            logger.error("Content missing platform information")
+            return jsonify({'error': 'Content missing platform information'}), 400
+            
+        if not content.get('content'):
+            logger.error("Content missing text content")
+            return jsonify({'error': 'Content missing text content'}), 400
         
         # Post to social media
+        logger.info(f"Posting to {content['platform']}")
         result = await social_media_service.post_content(content)
         
-        # Test the posted content
-        test_result = await crew_manager.test_content(content_id, result)
+        if not result.get('success'):
+            logger.error(f"Posting failed: {result}")
+            return jsonify({
+                'success': False,
+                'error': result.get('error', 'Unknown posting error'),
+                'post_result': result
+            }), 400
+        
+        # Test the posted content (if test function exists)
+        test_result = None
+        try:
+            test_result = await crew_manager.test_content(content_id, result)
+        except Exception as test_error:
+            logger.warning(f"Content testing failed but posting succeeded: {test_error}")
+            test_result = {'error': str(test_error)}
         
         # Update content status
         mongodb_manager.update_content_status(content_id, 'posted', result)
+        logger.info(f"Content posted successfully: {content_id}")
         
         return jsonify({
             'success': True, 
+            'message': 'Content posted successfully',
             'post_result': result,
             'test_result': test_result
         })
+        
     except Exception as e:
         logger.error(f"Error posting content: {e}")
-        return jsonify({'error': str(e)}), 500
+        return jsonify({
+            'success': False,
+            'error': f'Posting failed: {str(e)}'
+        }), 500
 
 @app.route('/api/projects', methods=['GET'])
 def api_get_projects():
