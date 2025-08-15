@@ -2,6 +2,7 @@
 import os
 import tweepy
 import requests
+import aiohttp
 import logging
 from typing import Dict, Optional
 from datetime import datetime
@@ -45,6 +46,9 @@ class SocialMediaService:
             platform = 'twitter' if platform_raw in ('x', 'twitter') else platform_raw
             content_text = self._format_for_platform(platform, content.get('content', ''), content)
             
+            logger.info(f"Posting to platform: {platform}")
+            logger.info(f"Content text length: {len(content_text)} characters")
+            
             if platform == 'twitter':
                 return await self._post_to_twitter(content_text, content)
             elif platform == 'facebook':
@@ -54,6 +58,7 @@ class SocialMediaService:
             elif platform == 'linkedin':
                 return await self._post_to_linkedin(content_text, content)
             else:
+                logger.error(f"Unsupported platform: {platform}")
                 raise ValueError(f"Unsupported platform: {platform}")
                 
         except Exception as e:
@@ -178,22 +183,26 @@ class SocialMediaService:
                 'access_token': self.facebook_token
             }
 
-            response = requests.post(url, data=payload)
-            if response.status_code == 403:
-                logger.error(f"Facebook 403: {response.text}")
-            response.raise_for_status()
+            # Use async HTTP request
+            import aiohttp
+            async with aiohttp.ClientSession() as session:
+                async with session.post(url, data=payload) as response:
+                    if response.status == 403:
+                        response_text = await response.text()
+                        logger.error(f"Facebook 403: {response_text}")
+                    response.raise_for_status()
 
-            result = response.json()
+                    result = await response.json()
 
-            return {
-                'success': True,
-                'platform': 'facebook',
-                'post_id': result.get('id'),
-                'posted_at': datetime.utcnow().isoformat()
-            }
+                    return {
+                        'success': True,
+                        'platform': 'facebook',
+                        'post_id': result.get('id'),
+                        'posted_at': datetime.utcnow().isoformat()
+                    }
 
-        except requests.HTTPError as e:
-            logger.error(f"Facebook HTTP error: {self._extract_http_error(e)}")
+        except aiohttp.ClientResponseError as e:
+            logger.error(f"Facebook HTTP error: {e.status} {e.message}")
             raise
         except Exception as e:
             logger.error(f"Facebook posting error: {e}")
@@ -251,22 +260,26 @@ class SocialMediaService:
                 }
             }
             
-            response = requests.post(url, headers=headers, json=payload)
-            if response.status_code == 403:
-                logger.error(f"LinkedIn 403: {response.text}")
-            response.raise_for_status()
+            # Use async HTTP request
+            import aiohttp
+            async with aiohttp.ClientSession() as session:
+                async with session.post(url, headers=headers, json=payload) as response:
+                    if response.status == 403:
+                        response_text = await response.text()
+                        logger.error(f"LinkedIn 403: {response_text}")
+                    response.raise_for_status()
+                    
+                    result = await response.json()
+                    
+                    return {
+                        'success': True,
+                        'platform': 'linkedin',
+                        'post_id': result.get('id'),
+                        'posted_at': datetime.utcnow().isoformat()
+                    }
             
-            result = response.json()
-            
-            return {
-                'success': True,
-                'platform': 'linkedin',
-                'post_id': result.get('id'),
-                'posted_at': datetime.utcnow().isoformat()
-            }
-            
-        except requests.HTTPError as e:
-            logger.error(f"LinkedIn HTTP error: {self._extract_http_error(e)}")
+        except aiohttp.ClientResponseError as e:
+            logger.error(f"LinkedIn HTTP error: {e.status} {e.message}")
             raise
         except Exception as e:
             logger.error(f"LinkedIn posting error: {e}")
