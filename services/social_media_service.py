@@ -35,6 +35,7 @@ class SocialMediaService:
         # Facebook/Instagram/LinkedIn tokens and IDs
         self.facebook_token = os.getenv('FACEBOOK_ACCESS_TOKEN')
         self.facebook_page_id = os.getenv('FACEBOOK_PAGE_ID')
+        self.facebook_page_token = os.getenv('FACEBOOK_PAGE_ACCESS_TOKEN')  # Optional: specific page token
         self.instagram_token = os.getenv('INSTAGRAM_ACCESS_TOKEN')
         self.linkedin_token = os.getenv('LINKEDIN_ACCESS_TOKEN')
         self.linkedin_person_urn = os.getenv('LINKEDIN_PERSON_URN')
@@ -173,29 +174,98 @@ class SocialMediaService:
 
         return chunks
     
+    async def test_facebook_connection(self) -> Dict:
+        """Test Facebook API connection and permissions"""
+        try:
+            token_to_use = self.facebook_page_token if self.facebook_page_token else self.facebook_token
+            if not token_to_use:
+                return {'success': False, 'error': 'Facebook token not configured'}
+            if not self.facebook_page_id:
+                return {'success': False, 'error': 'Facebook page ID not configured'}
+
+            # Test 1: Validate token
+            import aiohttp
+            async with aiohttp.ClientSession() as session:
+                # Check token validity
+                token_url = "https://graph.facebook.com/me"
+                params = {'access_token': token_to_use}
+                
+                async with session.get(token_url, params=params) as response:
+                    if response.status != 200:
+                        text = await response.text()
+                        return {'success': False, 'error': f'Invalid token: {text}'}
+                    
+                    user_data = await response.json()
+                    logger.info(f"Token valid for user: {user_data.get('name', 'Unknown')}")
+
+                # Test 2: Check page access
+                page_url = f"https://graph.facebook.com/{self.facebook_page_id}"
+                async with session.get(page_url, params=params) as response:
+                    if response.status != 200:
+                        text = await response.text()
+                        return {'success': False, 'error': f'Cannot access page: {text}'}
+                    
+                    page_data = await response.json()
+                    logger.info(f"Page access OK: {page_data.get('name', 'Unknown page')}")
+
+                # Test 3: Check permissions
+                perms_url = f"https://graph.facebook.com/{self.facebook_page_id}/permissions"
+                async with session.get(perms_url, params=params) as response:
+                    if response.status == 200:
+                        perms_data = await response.json()
+                        permissions = [p['permission'] for p in perms_data.get('data', [])]
+                        logger.info(f"Page permissions: {permissions}")
+
+            return {'success': True, 'message': 'Facebook connection validated'}
+            
+        except Exception as e:
+            logger.error(f"Facebook connection test failed: {e}")
+            return {'success': False, 'error': str(e)}
+
     async def _post_to_facebook(self, content: str, content_data: Dict) -> Dict:
         """Post to Facebook Page feed (Graph API)."""
         try:
-            if not self.facebook_token:
-                raise Exception("Facebook token not configured")
+            # Check for any valid token
+            token_to_use = self.facebook_page_token if self.facebook_page_token else self.facebook_token
+            if not token_to_use:
+                raise Exception("Facebook token not configured (set FACEBOOK_ACCESS_TOKEN or FACEBOOK_PAGE_ACCESS_TOKEN)")
             if not self.facebook_page_id:
                 raise Exception("Facebook page ID not configured (FACEBOOK_PAGE_ID)")
 
+            logger.info(f"Facebook Page ID: {self.facebook_page_id}")
+            logger.info(f"Facebook Token exists: {bool(self.facebook_token)}")
+            logger.info(f"Content length: {len(content)} characters")
+
             url = f"https://graph.facebook.com/v18.0/{self.facebook_page_id}/feed"
+
+            # Use page-specific token if available, otherwise use general token
+            token_to_use = self.facebook_page_token if self.facebook_page_token else self.facebook_token
 
             payload = {
                 'message': content,
-                'access_token': self.facebook_token
+                'access_token': token_to_use
             }
+            
+            logger.info(f"Posting to URL: {url}")
+            logger.info(f"Payload keys: {list(payload.keys())}")
 
             # Use async HTTP request
             import aiohttp
             async with aiohttp.ClientSession() as session:
                 async with session.post(url, data=payload) as response:
-                    if response.status == 403:
+                    if response.status != 200:
                         response_text = await response.text()
-                        logger.error(f"Facebook 403: {response_text}")
-                    response.raise_for_status()
+                        logger.error(f"Facebook API Error {response.status}: {response_text}")
+                        # Try to parse error details from the text
+                        try:
+                            import json
+                            error_data = json.loads(response_text)
+                            error_msg = error_data.get('error', {}).get('message', response_text)
+                            error_code = error_data.get('error', {}).get('code', response.status)
+                            logger.error(f"Facebook Error Code {error_code}: {error_msg}")
+                        except:
+                            logger.error(f"Could not parse Facebook error response: {response_text}")
+                        response.raise_for_status()
 
                     result = await response.json()
 

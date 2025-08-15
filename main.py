@@ -429,6 +429,16 @@ def api_get_content(project_id):
         'created_at': c['created_at'].isoformat()
     } for c in content])
 
+@app.route('/test_facebook', methods=['GET'])
+async def test_facebook():
+    """Test Facebook API connection"""
+    try:
+        result = await social_media_service.test_facebook_connection()
+        return jsonify(result)
+    except Exception as e:
+        logger.error(f"Error testing Facebook connection: {e}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
 if __name__ == '__main__':
     # Start the scheduler in a separate thread
     scheduler_service.start()
