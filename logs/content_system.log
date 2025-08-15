@@ -1699,3 +1699,433 @@ LiteLLM completion() model= gpt-4o-mini; provider = openai
 2025-08-15 23:33:23 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2025 23:33:23] "[31m[1mPOST /post_now HTTP/1.1[0m" 400 -
 2025-08-15 23:35:06 - __main__ - INFO - Received signal 2, shutting down gracefully...
 2025-08-15 23:35:06 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-15 23:44:25 - __main__ - INFO - Starting Content Generation System...
+2025-08-15 23:44:25 - __main__ - INFO - Configuration validated successfully
+2025-08-15 23:44:25 - __main__ - INFO - Initializing database connections...
+2025-08-15 23:44:25 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-15 23:44:25 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-15 23:44:25 - __main__ - INFO - Initializing AI services...
+2025-08-15 23:44:25 - __main__ - INFO - Initializing social media services...
+2025-08-15 23:44:25 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-15 23:44:25 - __main__ - INFO - Initializing scheduler...
+2025-08-15 23:44:25 - __main__ - INFO - Initializing MCP server...
+2025-08-15 23:44:25 - __main__ - INFO - All services initialized successfully
+2025-08-15 23:44:25 - services.scheduler_service - INFO - Scheduler service started
+2025-08-15 23:44:25 - __main__ - INFO - Scheduler service started
+2025-08-15 23:44:25 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-15 23:44:25 - __main__ - INFO - MCP server started
+2025-08-15 23:44:25 - __main__ - INFO - Content Generation System started successfully
+2025-08-15 23:44:25 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-15 23:44:25 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-15 23:44:26 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.158:5000
+2025-08-15 23:44:26 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-15 23:44:26 - werkzeug - INFO -  * Restarting with stat
+2025-08-15 23:44:35 - __main__ - INFO - Starting Content Generation System...
+2025-08-15 23:44:35 - __main__ - INFO - Configuration validated successfully
+2025-08-15 23:44:35 - __main__ - INFO - Initializing database connections...
+2025-08-15 23:44:35 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-15 23:44:35 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-15 23:44:35 - __main__ - INFO - Initializing AI services...
+2025-08-15 23:44:36 - __main__ - INFO - Initializing social media services...
+2025-08-15 23:44:36 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-15 23:44:36 - __main__ - INFO - Initializing scheduler...
+2025-08-15 23:44:36 - __main__ - INFO - Initializing MCP server...
+2025-08-15 23:44:36 - __main__ - INFO - All services initialized successfully
+2025-08-15 23:44:36 - services.scheduler_service - INFO - Scheduler service started
+2025-08-15 23:44:36 - __main__ - INFO - Scheduler service started
+2025-08-15 23:44:36 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-15 23:44:36 - __main__ - INFO - MCP server started
+2025-08-15 23:44:36 - __main__ - INFO - Content Generation System started successfully
+2025-08-15 23:44:36 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-15 23:44:36 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-15 23:44:36 - werkzeug - WARNING -  * Debugger is active!
+2025-08-15 23:44:36 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-15 23:44:38 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-15 23:44:38 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-15 23:44:52 - __main__ - INFO - Starting Content Generation System...
+2025-08-15 23:44:52 - __main__ - INFO - Configuration validated successfully
+2025-08-15 23:44:52 - __main__ - INFO - Initializing database connections...
+2025-08-15 23:44:52 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-15 23:44:53 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-15 23:44:53 - __main__ - INFO - Initializing AI services...
+2025-08-15 23:44:53 - __main__ - INFO - Initializing social media services...
+2025-08-15 23:44:53 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-15 23:44:53 - __main__ - INFO - Initializing scheduler...
+2025-08-15 23:44:53 - __main__ - INFO - Initializing MCP server...
+2025-08-15 23:44:53 - __main__ - INFO - All services initialized successfully
+2025-08-15 23:44:53 - services.scheduler_service - INFO - Scheduler service started
+2025-08-15 23:44:53 - __main__ - INFO - Scheduler service started
+2025-08-15 23:44:53 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-15 23:44:53 - __main__ - INFO - MCP server started
+2025-08-15 23:44:53 - __main__ - INFO - Content Generation System started successfully
+2025-08-15 23:44:53 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-15 23:44:53 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-15 23:44:54 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.158:5000
+2025-08-15 23:44:54 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-15 23:44:54 - werkzeug - INFO -  * Restarting with stat
+2025-08-15 23:45:02 - __main__ - INFO - Starting Content Generation System...
+2025-08-15 23:45:02 - __main__ - INFO - Configuration validated successfully
+2025-08-15 23:45:02 - __main__ - INFO - Initializing database connections...
+2025-08-15 23:45:02 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-15 23:45:03 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-15 23:45:03 - __main__ - INFO - Initializing AI services...
+2025-08-15 23:45:03 - __main__ - INFO - Initializing social media services...
+2025-08-15 23:45:03 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-15 23:45:03 - __main__ - INFO - Initializing scheduler...
+2025-08-15 23:45:03 - __main__ - INFO - Initializing MCP server...
+2025-08-15 23:45:03 - __main__ - INFO - All services initialized successfully
+2025-08-15 23:45:03 - services.scheduler_service - INFO - Scheduler service started
+2025-08-15 23:45:03 - __main__ - INFO - Scheduler service started
+2025-08-15 23:45:03 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-15 23:45:03 - __main__ - INFO - MCP server started
+2025-08-15 23:45:03 - __main__ - INFO - Content Generation System started successfully
+2025-08-15 23:45:03 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-15 23:45:03 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-15 23:45:03 - werkzeug - WARNING -  * Debugger is active!
+2025-08-15 23:45:03 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-15 23:45:04 - main - INFO - Attempting to post content: 689f764f7f0a19bc49c5b973
+2025-08-15 23:45:04 - main - INFO - Found content for platform: linkedin
+2025-08-15 23:45:04 - main - INFO - Posting to linkedin
+2025-08-15 23:45:04 - services.social_media_service - INFO - Posting to platform: linkedin
+2025-08-15 23:45:04 - services.social_media_service - INFO - Content text length: 3000 characters
+2025-08-15 23:45:04 - services.social_media_service - WARNING - LinkedIn URN '107559108' doesn't start with 'urn:li:', assuming it's a person ID
+2025-08-15 23:45:04 - services.social_media_service - INFO - Using LinkedIn author URN: urn:li:person:107559108
+2025-08-15 23:45:04 - services.social_media_service - INFO - Content length: 3000 characters
+2025-08-15 23:45:04 - services.social_media_service - INFO - LinkedIn payload: {
+  "author": "urn:li:person:107559108",
+  "lifecycleState": "PUBLISHED",
+  "specificContent": {
+    "com.linkedin.ugc.ShareContent": {
+      "shareCommentary": {
+        "text": "**Quality Assessment Report for \"Unlock Your Potential Through Mentorship in GRC!\"\nOverall Score:** 50.0/100\n**Summary of Results:**\n- **Tests Passed:** 2 out of 4\n- **Recommendations:**\n1. **Character Limit:** The content exceeds the typical character limit for social media posts (usually around 280 characters for platforms like Twitter). Consider creating a more concise version to ensure it fits within social media constraints. Aim for a brief introduction, followed by a call to action.\n2. **Brand Voice Alignment:** The content does not fully match the intended brand voice of GRC Mentor. Make sure to adjust the tone to reflect the professional and supportive spirit that GRC Mentor embodies. This may involve using more formal language while still being engaging.\n**Suggested Revisions:**\n1. **Concise Version Example:**\n- \"\ud83c\udf1f Unlock Your Potential Through Mentorship in GRC! \ud83c\udf0d Mentorship is key in Governance, Risk Management, and Compliance. Have you had a mentor? Share your story below! Looking for tips on finding a GRC mentor? Network, join online groups, and volunteer! Let's build a supportive community! #GRCMentor #Governance\"\n2. **Reinforce Brand Voice:** Incorporate language that reflects professionalism and expertise. For instance, instead of casual phrases like \"let\u2019s build a strong community,\" you can say \"we are committed to fostering a robust network of GRC professionals.\"\nBy making these adjustments, the content can better resonate with the audience while adhering to quality and compliance standards crucial for effective engagement in the GRC field.\n**Content Strategy for \"GRC Mentor\"\n1. Trending Topics:**\n- The importance of mentorship in Governance, Risk Management, and Compliance (GRC).\n- Case studies highlighting successful GRC mentorship relationships.\n- Best practices for becoming an effective GRC mentor.\n- How to leverage mentorship for career advancement in GRC.\n- The role of digital tools in mentoring for GRC professionals.\n- Emerging trends in GRC education and mentorship.\n**2. Recommended Hashtags:**\n- #GRCMentor\n- #Governance\n- #RiskManagement\n- #Compliance\n- #Mentorship\n- #CareerDevelopment\n- #Leadership\n**3. Content Recommendations:**\n- **Articles and Blog Posts:**\n- \"The Role of a GRC Mentor: Bridging the Gap Between Theory and Practice\"\n- \"Five Key Skills Every GRC Mentor Should Have\"\n- **Social Media Posts:**\n- Share success stories or testimonials from mentees.\n- Create polls about the challenges faced in GRC and how mentorship can help.\n- **Webinars and Live Sessions:**\n- Host monthly discussions featuring experienced GRC professionals sharing mentorship experiences.\n- **Visual Content:**\n- Infographics outlining the GRC mentoring relationship lifecycle.\n- Short videos featuring tips on finding a GRC mentor or becoming one.\n**4. Engagement Strategies:**\n- Encourage followers to share their own experiences with GRC mentorship.\n- Create a GRC mentorship program or forum to connect mentors and mentees.\n- Regularly post Q&"
+      },
+      "shareMediaCategory": "NONE"
+    }
+  },
+  "visibility": {
+    "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
+  }
+}
+2025-08-15 23:45:05 - services.social_media_service - ERROR - LinkedIn API Error 422: {"message":"ERROR :: /author :: \"urn:li:person:107559108\" does not match urn:li:company:\\d+|urn:li:member:\\d+\n","status":422}
+2025-08-15 23:45:05 - services.social_media_service - ERROR - LinkedIn HTTP error: 422 Unprocessable Entity
+2025-08-15 23:45:05 - services.social_media_service - ERROR - Error posting to linkedin: 422, message='Unprocessable Entity', url='https://api.linkedin.com/v2/ugcPosts'
+2025-08-15 23:45:05 - main - ERROR - Posting failed: {'success': False, 'error': "422, message='Unprocessable Entity', url='https://api.linkedin.com/v2/ugcPosts'", 'platform': 'linkedin'}
+2025-08-15 23:45:05 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2025 23:45:05] "[31m[1mPOST /post_now HTTP/1.1[0m" 400 -
+2025-08-15 23:46:31 - __main__ - INFO - Starting Content Generation System...
+2025-08-15 23:46:31 - __main__ - INFO - Configuration validated successfully
+2025-08-15 23:46:31 - __main__ - INFO - Initializing database connections...
+2025-08-15 23:46:31 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-15 23:46:32 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-15 23:46:32 - __main__ - INFO - Initializing AI services...
+2025-08-15 23:46:32 - __main__ - INFO - Initializing social media services...
+2025-08-15 23:46:32 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-15 23:46:32 - __main__ - INFO - Initializing scheduler...
+2025-08-15 23:46:32 - __main__ - INFO - Initializing MCP server...
+2025-08-15 23:46:32 - __main__ - INFO - All services initialized successfully
+2025-08-15 23:46:32 - services.scheduler_service - INFO - Scheduler service started
+2025-08-15 23:46:32 - __main__ - INFO - Scheduler service started
+2025-08-15 23:46:32 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-15 23:46:32 - __main__ - INFO - MCP server started
+2025-08-15 23:46:32 - __main__ - INFO - Content Generation System started successfully
+2025-08-15 23:46:32 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-15 23:46:32 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-15 23:46:33 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.158:5000
+2025-08-15 23:46:33 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-15 23:46:33 - werkzeug - INFO -  * Restarting with stat
+2025-08-15 23:46:41 - __main__ - INFO - Starting Content Generation System...
+2025-08-15 23:46:41 - __main__ - INFO - Configuration validated successfully
+2025-08-15 23:46:41 - __main__ - INFO - Initializing database connections...
+2025-08-15 23:46:41 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-15 23:46:42 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-15 23:46:42 - __main__ - INFO - Initializing AI services...
+2025-08-15 23:46:42 - __main__ - INFO - Initializing social media services...
+2025-08-15 23:46:42 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-15 23:46:42 - __main__ - INFO - Initializing scheduler...
+2025-08-15 23:46:42 - __main__ - INFO - Initializing MCP server...
+2025-08-15 23:46:42 - __main__ - INFO - All services initialized successfully
+2025-08-15 23:46:42 - services.scheduler_service - INFO - Scheduler service started
+2025-08-15 23:46:42 - __main__ - INFO - Scheduler service started
+2025-08-15 23:46:42 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-15 23:46:42 - __main__ - INFO - MCP server started
+2025-08-15 23:46:42 - __main__ - INFO - Content Generation System started successfully
+2025-08-15 23:46:42 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-15 23:46:42 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-15 23:46:42 - werkzeug - WARNING -  * Debugger is active!
+2025-08-15 23:46:42 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-15 23:46:42 - main - INFO - Attempting to post content: 689f764f7f0a19bc49c5b973
+2025-08-15 23:46:42 - main - INFO - Found content for platform: linkedin
+2025-08-15 23:46:42 - main - INFO - Posting to linkedin
+2025-08-15 23:46:42 - services.social_media_service - INFO - Posting to platform: linkedin
+2025-08-15 23:46:42 - services.social_media_service - INFO - Content text length: 3000 characters
+2025-08-15 23:46:42 - services.social_media_service - WARNING - LinkedIn URN '107559108' doesn't start with 'urn:li:', assuming it's a person ID
+2025-08-15 23:46:42 - services.social_media_service - INFO - Using LinkedIn author URN: urn:li:person:107559108
+2025-08-15 23:46:42 - services.social_media_service - INFO - Content length: 3000 characters
+2025-08-15 23:46:42 - services.social_media_service - INFO - LinkedIn payload: {
+  "author": "urn:li:person:107559108",
+  "lifecycleState": "PUBLISHED",
+  "specificContent": {
+    "com.linkedin.ugc.ShareContent": {
+      "shareCommentary": {
+        "text": "**Quality Assessment Report for \"Unlock Your Potential Through Mentorship in GRC!\"\nOverall Score:** 50.0/100\n**Summary of Results:**\n- **Tests Passed:** 2 out of 4\n- **Recommendations:**\n1. **Character Limit:** The content exceeds the typical character limit for social media posts (usually around 280 characters for platforms like Twitter). Consider creating a more concise version to ensure it fits within social media constraints. Aim for a brief introduction, followed by a call to action.\n2. **Brand Voice Alignment:** The content does not fully match the intended brand voice of GRC Mentor. Make sure to adjust the tone to reflect the professional and supportive spirit that GRC Mentor embodies. This may involve using more formal language while still being engaging.\n**Suggested Revisions:**\n1. **Concise Version Example:**\n- \"\ud83c\udf1f Unlock Your Potential Through Mentorship in GRC! \ud83c\udf0d Mentorship is key in Governance, Risk Management, and Compliance. Have you had a mentor? Share your story below! Looking for tips on finding a GRC mentor? Network, join online groups, and volunteer! Let's build a supportive community! #GRCMentor #Governance\"\n2. **Reinforce Brand Voice:** Incorporate language that reflects professionalism and expertise. For instance, instead of casual phrases like \"let\u2019s build a strong community,\" you can say \"we are committed to fostering a robust network of GRC professionals.\"\nBy making these adjustments, the content can better resonate with the audience while adhering to quality and compliance standards crucial for effective engagement in the GRC field.\n**Content Strategy for \"GRC Mentor\"\n1. Trending Topics:**\n- The importance of mentorship in Governance, Risk Management, and Compliance (GRC).\n- Case studies highlighting successful GRC mentorship relationships.\n- Best practices for becoming an effective GRC mentor.\n- How to leverage mentorship for career advancement in GRC.\n- The role of digital tools in mentoring for GRC professionals.\n- Emerging trends in GRC education and mentorship.\n**2. Recommended Hashtags:**\n- #GRCMentor\n- #Governance\n- #RiskManagement\n- #Compliance\n- #Mentorship\n- #CareerDevelopment\n- #Leadership\n**3. Content Recommendations:**\n- **Articles and Blog Posts:**\n- \"The Role of a GRC Mentor: Bridging the Gap Between Theory and Practice\"\n- \"Five Key Skills Every GRC Mentor Should Have\"\n- **Social Media Posts:**\n- Share success stories or testimonials from mentees.\n- Create polls about the challenges faced in GRC and how mentorship can help.\n- **Webinars and Live Sessions:**\n- Host monthly discussions featuring experienced GRC professionals sharing mentorship experiences.\n- **Visual Content:**\n- Infographics outlining the GRC mentoring relationship lifecycle.\n- Short videos featuring tips on finding a GRC mentor or becoming one.\n**4. Engagement Strategies:**\n- Encourage followers to share their own experiences with GRC mentorship.\n- Create a GRC mentorship program or forum to connect mentors and mentees.\n- Regularly post Q&"
+      },
+      "shareMediaCategory": "NONE"
+    }
+  },
+  "visibility": {
+    "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
+  }
+}
+2025-08-15 23:46:43 - services.social_media_service - ERROR - LinkedIn API Error 422: {"message":"ERROR :: /author :: \"urn:li:person:107559108\" does not match urn:li:company:\\d+|urn:li:member:\\d+\n","status":422}
+2025-08-15 23:46:43 - services.social_media_service - ERROR - LinkedIn HTTP error: 422 Unprocessable Entity
+2025-08-15 23:46:43 - services.social_media_service - ERROR - Error posting to linkedin: 422, message='Unprocessable Entity', url='https://api.linkedin.com/v2/ugcPosts'
+2025-08-15 23:46:43 - main - ERROR - Posting failed: {'success': False, 'error': "422, message='Unprocessable Entity', url='https://api.linkedin.com/v2/ugcPosts'", 'platform': 'linkedin'}
+2025-08-15 23:46:43 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2025 23:46:43] "[31m[1mPOST /post_now HTTP/1.1[0m" 400 -
+2025-08-15 23:48:10 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-15 23:48:10 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-15 23:48:12 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-15 23:48:26 - __main__ - INFO - Starting Content Generation System...
+2025-08-15 23:48:26 - __main__ - INFO - Configuration validated successfully
+2025-08-15 23:48:26 - __main__ - INFO - Initializing database connections...
+2025-08-15 23:48:26 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-15 23:48:26 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-15 23:48:26 - __main__ - INFO - Initializing AI services...
+2025-08-15 23:48:26 - __main__ - INFO - Initializing social media services...
+2025-08-15 23:48:26 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-15 23:48:26 - __main__ - INFO - Initializing scheduler...
+2025-08-15 23:48:26 - __main__ - INFO - Initializing MCP server...
+2025-08-15 23:48:26 - __main__ - INFO - All services initialized successfully
+2025-08-15 23:48:26 - services.scheduler_service - INFO - Scheduler service started
+2025-08-15 23:48:26 - __main__ - INFO - Scheduler service started
+2025-08-15 23:48:26 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-15 23:48:26 - __main__ - INFO - MCP server started
+2025-08-15 23:48:26 - __main__ - INFO - Content Generation System started successfully
+2025-08-15 23:48:26 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-15 23:48:26 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-15 23:48:27 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.158:5000
+2025-08-15 23:48:27 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-15 23:48:27 - werkzeug - INFO -  * Restarting with stat
+2025-08-15 23:48:36 - __main__ - INFO - Starting Content Generation System...
+2025-08-15 23:48:36 - __main__ - INFO - Configuration validated successfully
+2025-08-15 23:48:36 - __main__ - INFO - Initializing database connections...
+2025-08-15 23:48:36 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-15 23:48:37 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-15 23:48:37 - __main__ - INFO - Initializing AI services...
+2025-08-15 23:48:37 - __main__ - INFO - Initializing social media services...
+2025-08-15 23:48:37 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-15 23:48:37 - __main__ - INFO - Initializing scheduler...
+2025-08-15 23:48:37 - __main__ - INFO - Initializing MCP server...
+2025-08-15 23:48:37 - __main__ - INFO - All services initialized successfully
+2025-08-15 23:48:37 - services.scheduler_service - INFO - Scheduler service started
+2025-08-15 23:48:37 - __main__ - INFO - Scheduler service started
+2025-08-15 23:48:37 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-15 23:48:37 - __main__ - INFO - MCP server started
+2025-08-15 23:48:37 - __main__ - INFO - Content Generation System started successfully
+2025-08-15 23:48:37 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-15 23:48:37 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-15 23:48:37 - werkzeug - WARNING -  * Debugger is active!
+2025-08-15 23:48:37 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-15 23:48:37 - main - INFO - Attempting to post content: 689f764f7f0a19bc49c5b973
+2025-08-15 23:48:37 - main - INFO - Found content for platform: linkedin
+2025-08-15 23:48:37 - main - INFO - Posting to linkedin
+2025-08-15 23:48:37 - services.social_media_service - INFO - Posting to platform: linkedin
+2025-08-15 23:48:37 - services.social_media_service - INFO - Content text length: 3000 characters
+2025-08-15 23:48:37 - services.social_media_service - WARNING - LinkedIn URN '107559108' doesn't start with 'urn:li:', assuming it's a person ID
+2025-08-15 23:48:37 - services.social_media_service - INFO - Using LinkedIn author URN: urn:li:person:107559108
+2025-08-15 23:48:37 - services.social_media_service - INFO - Content length: 3000 characters
+2025-08-15 23:48:37 - services.social_media_service - INFO - LinkedIn payload: {
+  "author": "urn:li:person:107559108",
+  "lifecycleState": "PUBLISHED",
+  "specificContent": {
+    "com.linkedin.ugc.ShareContent": {
+      "shareCommentary": {
+        "text": "**Quality Assessment Report for \"Unlock Your Potential Through Mentorship in GRC!\"\nOverall Score:** 50.0/100\n**Summary of Results:**\n- **Tests Passed:** 2 out of 4\n- **Recommendations:**\n1. **Character Limit:** The content exceeds the typical character limit for social media posts (usually around 280 characters for platforms like Twitter). Consider creating a more concise version to ensure it fits within social media constraints. Aim for a brief introduction, followed by a call to action.\n2. **Brand Voice Alignment:** The content does not fully match the intended brand voice of GRC Mentor. Make sure to adjust the tone to reflect the professional and supportive spirit that GRC Mentor embodies. This may involve using more formal language while still being engaging.\n**Suggested Revisions:**\n1. **Concise Version Example:**\n- \"\ud83c\udf1f Unlock Your Potential Through Mentorship in GRC! \ud83c\udf0d Mentorship is key in Governance, Risk Management, and Compliance. Have you had a mentor? Share your story below! Looking for tips on finding a GRC mentor? Network, join online groups, and volunteer! Let's build a supportive community! #GRCMentor #Governance\"\n2. **Reinforce Brand Voice:** Incorporate language that reflects professionalism and expertise. For instance, instead of casual phrases like \"let\u2019s build a strong community,\" you can say \"we are committed to fostering a robust network of GRC professionals.\"\nBy making these adjustments, the content can better resonate with the audience while adhering to quality and compliance standards crucial for effective engagement in the GRC field.\n**Content Strategy for \"GRC Mentor\"\n1. Trending Topics:**\n- The importance of mentorship in Governance, Risk Management, and Compliance (GRC).\n- Case studies highlighting successful GRC mentorship relationships.\n- Best practices for becoming an effective GRC mentor.\n- How to leverage mentorship for career advancement in GRC.\n- The role of digital tools in mentoring for GRC professionals.\n- Emerging trends in GRC education and mentorship.\n**2. Recommended Hashtags:**\n- #GRCMentor\n- #Governance\n- #RiskManagement\n- #Compliance\n- #Mentorship\n- #CareerDevelopment\n- #Leadership\n**3. Content Recommendations:**\n- **Articles and Blog Posts:**\n- \"The Role of a GRC Mentor: Bridging the Gap Between Theory and Practice\"\n- \"Five Key Skills Every GRC Mentor Should Have\"\n- **Social Media Posts:**\n- Share success stories or testimonials from mentees.\n- Create polls about the challenges faced in GRC and how mentorship can help.\n- **Webinars and Live Sessions:**\n- Host monthly discussions featuring experienced GRC professionals sharing mentorship experiences.\n- **Visual Content:**\n- Infographics outlining the GRC mentoring relationship lifecycle.\n- Short videos featuring tips on finding a GRC mentor or becoming one.\n**4. Engagement Strategies:**\n- Encourage followers to share their own experiences with GRC mentorship.\n- Create a GRC mentorship program or forum to connect mentors and mentees.\n- Regularly post Q&"
+      },
+      "shareMediaCategory": "NONE"
+    }
+  },
+  "visibility": {
+    "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
+  }
+}
+2025-08-15 23:48:38 - services.social_media_service - ERROR - LinkedIn API Error 422: {"message":"ERROR :: /author :: \"urn:li:person:107559108\" does not match urn:li:company:\\d+|urn:li:member:\\d+\n","status":422}
+2025-08-15 23:48:38 - services.social_media_service - ERROR - LinkedIn HTTP error: 422 Unprocessable Entity
+2025-08-15 23:48:38 - services.social_media_service - ERROR - Error posting to linkedin: 422, message='Unprocessable Entity', url='https://api.linkedin.com/v2/ugcPosts'
+2025-08-15 23:48:38 - main - ERROR - Posting failed: {'success': False, 'error': "422, message='Unprocessable Entity', url='https://api.linkedin.com/v2/ugcPosts'", 'platform': 'linkedin'}
+2025-08-15 23:48:38 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2025 23:48:38] "[31m[1mPOST /post_now HTTP/1.1[0m" 400 -
+2025-08-15 23:50:01 - werkzeug - INFO -  * Detected change in 'C:\\Users\\arshm\\Documents\\Secureitlab\\content-gen\\services\\social_media_service.py', reloading
+2025-08-15 23:50:01 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-15 23:50:07 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-15 23:50:07 - __main__ - INFO - Scheduler stopped
+2025-08-15 23:50:07 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-15 23:50:07 - __main__ - INFO - MCP server stopped
+2025-08-15 23:50:07 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-15 23:50:08 - werkzeug - INFO -  * Restarting with stat
+2025-08-15 23:50:21 - __main__ - INFO - Starting Content Generation System...
+2025-08-15 23:50:21 - __main__ - INFO - Configuration validated successfully
+2025-08-15 23:50:21 - __main__ - INFO - Initializing database connections...
+2025-08-15 23:50:21 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-15 23:50:21 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-15 23:50:21 - __main__ - INFO - Initializing AI services...
+2025-08-15 23:50:22 - __main__ - INFO - Initializing social media services...
+2025-08-15 23:50:22 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-15 23:50:22 - __main__ - INFO - Initializing scheduler...
+2025-08-15 23:50:22 - __main__ - INFO - Initializing MCP server...
+2025-08-15 23:50:22 - __main__ - INFO - All services initialized successfully
+2025-08-15 23:50:22 - services.scheduler_service - INFO - Scheduler service started
+2025-08-15 23:50:22 - __main__ - INFO - Scheduler service started
+2025-08-15 23:50:22 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-15 23:50:22 - __main__ - INFO - MCP server started
+2025-08-15 23:50:22 - __main__ - INFO - Content Generation System started successfully
+2025-08-15 23:50:22 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-15 23:50:22 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-15 23:50:22 - werkzeug - WARNING -  * Debugger is active!
+2025-08-15 23:50:22 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-15 23:50:22 - main - INFO - Attempting to post content: 689f764f7f0a19bc49c5b973
+2025-08-15 23:50:22 - main - INFO - Found content for platform: linkedin
+2025-08-15 23:50:22 - main - INFO - Posting to linkedin
+2025-08-15 23:50:22 - services.social_media_service - INFO - Posting to platform: linkedin
+2025-08-15 23:50:22 - services.social_media_service - INFO - Content text length: 3000 characters
+2025-08-15 23:50:22 - services.social_media_service - INFO - Using LinkedIn author URN: urn:li:member:107559108
+2025-08-15 23:50:22 - services.social_media_service - INFO - Content length: 3000 characters
+2025-08-15 23:50:22 - services.social_media_service - INFO - LinkedIn payload: {
+  "author": "urn:li:member:107559108",
+  "lifecycleState": "PUBLISHED",
+  "specificContent": {
+    "com.linkedin.ugc.ShareContent": {
+      "shareCommentary": {
+        "text": "**Quality Assessment Report for \"Unlock Your Potential Through Mentorship in GRC!\"\nOverall Score:** 50.0/100\n**Summary of Results:**\n- **Tests Passed:** 2 out of 4\n- **Recommendations:**\n1. **Character Limit:** The content exceeds the typical character limit for social media posts (usually around 280 characters for platforms like Twitter). Consider creating a more concise version to ensure it fits within social media constraints. Aim for a brief introduction, followed by a call to action.\n2. **Brand Voice Alignment:** The content does not fully match the intended brand voice of GRC Mentor. Make sure to adjust the tone to reflect the professional and supportive spirit that GRC Mentor embodies. This may involve using more formal language while still being engaging.\n**Suggested Revisions:**\n1. **Concise Version Example:**\n- \"\ud83c\udf1f Unlock Your Potential Through Mentorship in GRC! \ud83c\udf0d Mentorship is key in Governance, Risk Management, and Compliance. Have you had a mentor? Share your story below! Looking for tips on finding a GRC mentor? Network, join online groups, and volunteer! Let's build a supportive community! #GRCMentor #Governance\"\n2. **Reinforce Brand Voice:** Incorporate language that reflects professionalism and expertise. For instance, instead of casual phrases like \"let\u2019s build a strong community,\" you can say \"we are committed to fostering a robust network of GRC professionals.\"\nBy making these adjustments, the content can better resonate with the audience while adhering to quality and compliance standards crucial for effective engagement in the GRC field.\n**Content Strategy for \"GRC Mentor\"\n1. Trending Topics:**\n- The importance of mentorship in Governance, Risk Management, and Compliance (GRC).\n- Case studies highlighting successful GRC mentorship relationships.\n- Best practices for becoming an effective GRC mentor.\n- How to leverage mentorship for career advancement in GRC.\n- The role of digital tools in mentoring for GRC professionals.\n- Emerging trends in GRC education and mentorship.\n**2. Recommended Hashtags:**\n- #GRCMentor\n- #Governance\n- #RiskManagement\n- #Compliance\n- #Mentorship\n- #CareerDevelopment\n- #Leadership\n**3. Content Recommendations:**\n- **Articles and Blog Posts:**\n- \"The Role of a GRC Mentor: Bridging the Gap Between Theory and Practice\"\n- \"Five Key Skills Every GRC Mentor Should Have\"\n- **Social Media Posts:**\n- Share success stories or testimonials from mentees.\n- Create polls about the challenges faced in GRC and how mentorship can help.\n- **Webinars and Live Sessions:**\n- Host monthly discussions featuring experienced GRC professionals sharing mentorship experiences.\n- **Visual Content:**\n- Infographics outlining the GRC mentoring relationship lifecycle.\n- Short videos featuring tips on finding a GRC mentor or becoming one.\n**4. Engagement Strategies:**\n- Encourage followers to share their own experiences with GRC mentorship.\n- Create a GRC mentorship program or forum to connect mentors and mentees.\n- Regularly post Q&"
+      },
+      "shareMediaCategory": "NONE"
+    }
+  },
+  "visibility": {
+    "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
+  }
+}
+2025-08-15 23:50:23 - services.social_media_service - ERROR - LinkedIn 403: {"status":403,"serviceErrorCode":100,"code":"ACCESS_DENIED","message":"Field Value validation failed in REQUEST_BODY: Data Processing Exception while processing fields [/author]"}
+2025-08-15 23:50:23 - services.social_media_service - ERROR - LinkedIn Service Error 100: Field Value validation failed in REQUEST_BODY: Data Processing Exception while processing fields [/author]
+2025-08-15 23:50:23 - services.social_media_service - ERROR - Suggestion: Check that LINKEDIN_PERSON_URN is in format 'urn:li:person:XXXXXXXXX' or 'urn:li:organization:XXXXXXX'
+2025-08-15 23:50:23 - services.social_media_service - ERROR - LinkedIn API Error 403: {"status":403,"serviceErrorCode":100,"code":"ACCESS_DENIED","message":"Field Value validation failed in REQUEST_BODY: Data Processing Exception while processing fields [/author]"}
+2025-08-15 23:50:23 - services.social_media_service - ERROR - LinkedIn HTTP error: 403 Forbidden
+2025-08-15 23:50:23 - services.social_media_service - ERROR - Error posting to linkedin: 403, message='Forbidden', url='https://api.linkedin.com/v2/ugcPosts'
+2025-08-15 23:50:23 - main - ERROR - Posting failed: {'success': False, 'error': "403, message='Forbidden', url='https://api.linkedin.com/v2/ugcPosts'", 'platform': 'linkedin'}
+2025-08-15 23:50:23 - werkzeug - INFO - 127.0.0.1 - - [15/Aug/2025 23:50:23] "[31m[1mPOST /post_now HTTP/1.1[0m" 400 -
+2025-08-16 00:00:20 - werkzeug - INFO -  * Detected change in 'C:\\Users\\arshm\\Documents\\Secureitlab\\content-gen\\get_linkedin_urn.py', reloading
+2025-08-16 00:00:20 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 00:00:22 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 00:00:22 - __main__ - INFO - Scheduler stopped
+2025-08-16 00:00:22 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 00:00:22 - __main__ - INFO - MCP server stopped
+2025-08-16 00:00:22 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-16 00:00:23 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 00:00:36 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 00:00:36 - __main__ - INFO - Configuration validated successfully
+2025-08-16 00:00:36 - __main__ - INFO - Initializing database connections...
+2025-08-16 00:00:36 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 00:00:37 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 00:00:37 - __main__ - INFO - Initializing AI services...
+2025-08-16 00:00:37 - __main__ - INFO - Initializing social media services...
+2025-08-16 00:00:37 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 00:00:37 - __main__ - INFO - Initializing scheduler...
+2025-08-16 00:00:37 - __main__ - INFO - Initializing MCP server...
+2025-08-16 00:00:37 - __main__ - INFO - All services initialized successfully
+2025-08-16 00:00:37 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 00:00:37 - __main__ - INFO - Scheduler service started
+2025-08-16 00:00:37 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 00:00:37 - __main__ - INFO - MCP server started
+2025-08-16 00:00:37 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 00:00:37 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 00:00:37 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 00:00:37 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 00:00:37 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 00:01:02 - werkzeug - INFO -  * Detected change in 'C:\\Users\\arshm\\Documents\\Secureitlab\\content-gen\\get_linkedin_urn.py', reloading
+2025-08-16 00:01:02 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 00:19:07 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 00:19:07 - __main__ - INFO - Configuration validated successfully
+2025-08-16 00:19:07 - __main__ - INFO - Initializing database connections...
+2025-08-16 00:19:07 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 00:19:08 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 00:19:08 - __main__ - INFO - Initializing AI services...
+2025-08-16 00:19:08 - __main__ - INFO - Initializing social media services...
+2025-08-16 00:19:08 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 00:19:08 - __main__ - INFO - Initializing scheduler...
+2025-08-16 00:19:08 - __main__ - INFO - Initializing MCP server...
+2025-08-16 00:19:08 - __main__ - INFO - All services initialized successfully
+2025-08-16 00:19:08 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 00:19:08 - __main__ - INFO - Scheduler service started
+2025-08-16 00:19:08 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 00:19:08 - __main__ - INFO - MCP server started
+2025-08-16 00:19:08 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 00:19:08 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 00:19:08 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 00:19:09 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.158:5000
+2025-08-16 00:19:09 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-16 00:19:09 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 00:19:20 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 00:19:20 - __main__ - INFO - Configuration validated successfully
+2025-08-16 00:19:20 - __main__ - INFO - Initializing database connections...
+2025-08-16 00:19:20 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 00:19:21 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 00:19:21 - __main__ - INFO - Initializing AI services...
+2025-08-16 00:19:21 - __main__ - INFO - Initializing social media services...
+2025-08-16 00:19:21 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 00:19:21 - __main__ - INFO - Initializing scheduler...
+2025-08-16 00:19:21 - __main__ - INFO - Initializing MCP server...
+2025-08-16 00:19:21 - __main__ - INFO - All services initialized successfully
+2025-08-16 00:19:21 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 00:19:21 - __main__ - INFO - Scheduler service started
+2025-08-16 00:19:21 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 00:19:21 - __main__ - INFO - MCP server started
+2025-08-16 00:19:21 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 00:19:21 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 00:19:21 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 00:19:21 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 00:19:21 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 00:19:21 - main - INFO - Attempting to post content: 689f764f7f0a19bc49c5b973
+2025-08-16 00:19:21 - main - INFO - Found content for platform: linkedin
+2025-08-16 00:19:21 - main - INFO - Posting to linkedin
+2025-08-16 00:19:21 - services.social_media_service - WARNING - LinkedIn content truncated from 7014 to 1300 characters for better engagement
+2025-08-16 00:19:21 - services.social_media_service - INFO - Posting to platform: linkedin
+2025-08-16 00:19:21 - services.social_media_service - INFO - Content text length: 1297 characters
+2025-08-16 00:19:21 - services.social_media_service - WARNING - LinkedIn URN 'TDwXou019V' doesn't start with 'urn:li:', assuming it's a person ID
+2025-08-16 00:19:21 - services.social_media_service - INFO - Using LinkedIn author URN: urn:li:person:TDwXou019V
+2025-08-16 00:19:21 - services.social_media_service - INFO - Content length: 1297 characters
+2025-08-16 00:19:21 - services.social_media_service - INFO - LinkedIn payload: {
+  "author": "urn:li:person:TDwXou019V",
+  "lifecycleState": "PUBLISHED",
+  "specificContent": {
+    "com.linkedin.ugc.ShareContent": {
+      "shareCommentary": {
+        "text": "**Quality Assessment Report for \"Unlock Your Potential Through Mentorship in GRC!\"\nOverall Score:** 50.0/100\n**Summary of Results:**\n- **Tests Passed:** 2 out of 4\n- **Recommendations:**\n1. **Character Limit:** The content exceeds the typical character limit for social media posts (usually around 280 characters for platforms like Twitter). Consider creating a more concise version to ensure it fits within social media constraints. Aim for a brief introduction, followed by a call to action.\n2. **Brand Voice Alignment:** The content does not fully match the intended brand voice of GRC Mentor. Make sure to adjust the tone to reflect the professional and supportive spirit that GRC Mentor embodies. This may involve using more formal language while still being engaging.\n**Suggested Revisions:**\n1. **Concise Version Example:**\n- \"\ud83c\udf1f Unlock Your Potential Through Mentorship in GRC! \ud83c\udf0d Mentorship is key in Governance, Risk Management, and Compliance. Have you had a mentor? Share your story below! Looking for tips on finding a GRC mentor? Network, join online groups, and volunteer! Let's build a supportive community! #GRCMentor #Governance\"\n2. **Reinforce Brand Voice:** Incorporate language that reflects professionalism and expertise. For instance, instead of casual phrases like \"let\u2019s bui"
+      },
+      "shareMediaCategory": "NONE"
+    }
+  },
+  "visibility": {
+    "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
+  }
+}
+2025-08-16 00:19:22 - main - WARNING - Content testing failed but posting succeeded: 'ContentCrewManager' object has no attribute 'test_content'
+2025-08-16 00:19:22 - database.mongodb_manager - INFO - Content status updated: 689f764f7f0a19bc49c5b973 -> posted
+2025-08-16 00:19:22 - main - INFO - Content posted successfully: 689f764f7f0a19bc49c5b973
+2025-08-16 00:19:22 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 00:19:22] "POST /post_now HTTP/1.1" 200 -
+2025-08-16 00:21:28 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-16 00:21:28 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 00:21:51 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-16 00:21:52 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-16 00:21:52 - __main__ - INFO - Shutting down Content Generation System...
