@@ -138,8 +138,9 @@ class ContentGeneratorTool(BaseTool):
             else:
                 generated_content = str(response)
             
-            # Post-process the content to ensure it meets requirements
-            return self._post_process_content(generated_content, platform, content_type, max_length)
+            # Post-process the content to ensure it meets requirements and is clean
+            clean_content = self._post_process_content(generated_content, platform, content_type, max_length)
+            return clean_content
             
         except Exception as e:
             logger.exception("Error generating content via Ollama")
@@ -505,41 +506,26 @@ class ContentCrewManager:
         except Exception:
             CrewOutput = None
 
-        parts: List[str] = []
-
-        # If it's CrewOutput, iterate tasks_output and collect raw/summary/description
+        # If it's CrewOutput, get the raw output first
         if CrewOutput and isinstance(crew_result, CrewOutput):
+            # Try to get raw output first
+            raw_output = getattr(crew_result, "raw", None)
+            if isinstance(raw_output, str) and raw_output.strip():
+                return raw_output.strip()
+                
+            # If no raw output, try tasks_output but only take the first meaningful one
             tasks = getattr(crew_result, "tasks_output", None) or []
             for t in tasks:
-                # prefer raw text if available
                 raw = getattr(t, "raw", None)
                 if isinstance(raw, str) and raw.strip():
-                    parts.append(raw.strip())
-                    continue
-                # otherwise fallback to summary or description
-                summary = getattr(t, "summary", None)
-                if isinstance(summary, str) and summary.strip():
-                    parts.append(summary.strip())
-                    continue
-                desc = getattr(t, "description", None)
-                if isinstance(desc, str) and desc.strip():
-                    parts.append(desc.strip())
-            # also include top-level raw if exists
-            top_raw = getattr(crew_result, "raw", None)
-            if isinstance(top_raw, str) and top_raw.strip():
-                parts.insert(0, top_raw.strip())
-        else:
-            # If crew_result is already a string
-            if isinstance(crew_result, str):
-                parts.append(crew_result.strip())
-            else:
-                # last resort: convert to string
-                parts.append(str(crew_result))
-
-        # Join parts into single text block
-        text = "\n\n".join([p for p in parts if p])
-        # Trim to a reasonable length for embeddings (optional)
-        return text.strip()
+                    return raw.strip()
+                    
+        # If crew_result is already a string
+        if isinstance(crew_result, str):
+            return crew_result.strip()
+            
+        # Last resort: convert to string
+        return str(crew_result).strip()
 
     # --- Updated parse to accept normalized text ---
     def _parse_crew_result(self, crew_text: str, content_request: Dict) -> Dict:
@@ -557,42 +543,33 @@ class ContentCrewManager:
                     'metadata': {'generated_at': datetime.utcnow().isoformat()}
                 }
 
-            # Try JSON
-            try:
-                if crew_text.lstrip().startswith('{'):
-                    parsed = json.loads(crew_text)
-                    # ensure 'content' key exists
-                    if isinstance(parsed, dict) and 'content' in parsed:
-                        parsed.setdefault('platform', content_request['target_platform'])
-                        parsed.setdefault('content_type', content_request['content_type'])
-                        parsed.setdefault('topic', content_request['topic'])
-                        parsed.setdefault('metadata', {'generated_at': datetime.utcnow().isoformat()})
-                        return parsed
-            except Exception:
-                # not JSON — continue
-                pass
+            # Clean up the content by removing unwanted sections
+            cleaned_text = self._clean_crew_output(crew_text)
+            
+            # If still empty after cleaning, create fallback content
+            if not cleaned_text.strip():
+                cleaned_text = self._create_fallback_content(
+                    content_request['topic'],
+                    content_request['target_platform'],
+                    content_request['content_type'],
+                    280,  # Default max length
+                    content_request.get('include_media', False)
+                )
 
-            # Fallback: simple extraction (lines & hashtags)
-            lines = crew_text.splitlines()
-            content_lines = []
+            # Extract hashtags from the cleaned content
             hashtags = []
-            for line in lines:
-                line = line.strip()
-                if not line:
-                    continue
-                # collect hashtags
-                if line.startswith('#') or '#' in line:
-                    for token in line.split():
-                        if token.startswith('#'):
-                            hashtags.append(token.strip())
-                # skip agent/task markers if present
-                if line.lower().startswith('task') or line.lower().startswith('agent'):
-                    continue
-                content_lines.append(line)
+            hashtag_pattern = re.compile(r'#\w+')
+            hashtag_matches = hashtag_pattern.findall(cleaned_text)
+            for hashtag in hashtag_matches:
+                if hashtag not in hashtags:  # Avoid duplicates
+                    hashtags.append(hashtag)
 
+            # Ensure content is not duplicated
+            final_content = cleaned_text.strip()
+            
             return {
-                'content': '\n'.join(content_lines).strip(),
-                'hashtags': list(dict.fromkeys(hashtags)),  # de-duplicate preserving order
+                'content': final_content,
+                'hashtags': hashtags,
                 'platform': content_request['target_platform'],
                 'content_type': content_request['content_type'],
                 'topic': content_request['topic'],
@@ -601,8 +578,15 @@ class ContentCrewManager:
 
         except Exception as e:
             logger.exception("Error parsing crew text")
+            fallback_content = self._create_fallback_content(
+                content_request.get('topic', 'content'),
+                content_request.get('target_platform', 'twitter'),
+                content_request.get('content_type', 'post'),
+                280,
+                content_request.get('include_media', False)
+            )
             return {
-                'content': str(crew_text),
+                'content': fallback_content,
                 'hashtags': [],
                 'platform': content_request['target_platform'],
                 'content_type': content_request['content_type'],
@@ -610,39 +594,88 @@ class ContentCrewManager:
                 'metadata': {'generated_at': datetime.utcnow().isoformat()}
             }
 
+    def _clean_crew_output(self, text: str) -> str:
+        """Remove unwanted sections like reports, assessments, and agent markers"""
+        if not text or not isinstance(text, str):
+            return ""
+            
+        # Remove duplicate content by splitting on common separators and taking the first meaningful part
+        parts = text.split('\n\n')
+        
+        # Filter out unwanted sections
+        filtered_parts = []
+        for part in parts:
+            part_lower = part.lower().strip()
+            
+            # Skip sections that are reports, assessments, or metadata
+            if any(marker in part_lower for marker in [
+                'quality assessment', 'assessment results', 'recommendations:',
+                'content strategy', 'trending topics', 'key recommendations',
+                'score:', 'tests passed:', 'character limit:', 'brand voice:',
+                'hashtag usage:', 'measurement:', 'recommended actions:',
+                'task', 'agent:', 'crew:', 'final answer:', 'output:',
+                'linkedin post:', 'twitter post:', 'facebook post:'
+            ]):
+                continue
+                
+            # Skip empty parts or parts that are too short to be content
+            if not part.strip() or len(part.strip()) < 10:
+                continue
+                
+            # Keep the first meaningful content part
+            if part.strip():
+                filtered_parts.append(part.strip())
+        
+        # Join filtered parts and remove any remaining duplicates
+        result = '\n\n'.join(filtered_parts)
+        
+        # Additional cleanup: remove duplicate consecutive lines
+        lines = result.split('\n')
+        cleaned_lines = []
+        prev_line = ""
+        
+        for line in lines:
+            line = line.strip()
+            if line and line != prev_line:
+                cleaned_lines.append(line)
+                prev_line = line
+        
+        return '\n'.join(cleaned_lines)
+
     # --- Main entrypoint (fixed to normalize CrewOutput before embedding/saving) ---
     async def generate_content(self, content_request: Dict) -> Dict:
         """Generate content using the crew of agents"""
         try:
             project = content_request['project']
+            platform = content_request['target_platform']
+            content_type = content_request['content_type']
+            topic = content_request['topic']
 
-            # Build tasks (same as before)
-            strategy_task = Task(
-                description=f"""Develop a content strategy for the topic "{content_request['topic']}" ...""",
-                agent=self.content_strategist,
-                expected_output="Content strategy with trending topics, hashtags, and recommendations"
-            )
+            # Create a focused content creation task that returns clean, formatted content
             creation_task = Task(
-                description=f"""Based on the content strategy, create {content_request['content_type']} ...""",
+                description=f"""Create a {content_type} for {platform} about "{topic}".
+
+REQUIREMENTS:
+- Platform: {platform}
+- Content Type: {content_type}
+- Topic: {topic}
+- Brand Voice: {project.get('brand_voice', 'professional')}
+
+IMPORTANT: Return ONLY the final, ready-to-post content. Do not include:
+- Strategy explanations
+- Assessment reports
+- Optimization notes
+- Quality scores
+
+Format the response as clean, platform-appropriate content that can be posted directly.""",
                 agent=self.content_creator,
-                expected_output="Platform-specific content with hashtags and optimizations"
-            )
-            optimization_task = Task(
-                description=f"""Optimize the created content for {content_request['target_platform']} ...""",
-                agent=self.content_optimizer_agent,
-                expected_output="Optimized content with engagement strategies"
-            )
-            testing_task = Task(
-                description=f"""Test the optimized content for quality, compliance, and brand alignment...""",
-                agent=self.qa_agent,
-                expected_output="Quality assessment report with recommendations"
+                expected_output=f"Clean, ready-to-post {content_type} content for {platform}"
             )
 
             crew = Crew(
-                agents=[self.content_strategist, self.content_creator,
-                        self.content_optimizer_agent, self.qa_agent],
-                tasks=[strategy_task, creation_task, optimization_task, testing_task],
-                verbose=True
+                agents=[self.content_creator],
+                tasks=[creation_task],
+                verbose=False
             )
 
             # kickoff returns a CrewOutput object (structured). Normalize it to text.

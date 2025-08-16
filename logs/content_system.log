@@ -2828,3 +2828,957 @@ LiteLLM completion() model= gpt-4o-mini; provider = openai
 2025-08-16 20:10:07 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:10:07] "POST /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
 2025-08-16 20:11:02 - __main__ - INFO - Received signal 2, shutting down gracefully...
 2025-08-16 20:11:02 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 20:19:14 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 20:19:14 - __main__ - INFO - Configuration validated successfully
+2025-08-16 20:19:14 - __main__ - INFO - Initializing database connections...
+2025-08-16 20:19:14 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 20:19:15 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 20:19:15 - __main__ - INFO - Initializing AI services...
+2025-08-16 20:19:15 - __main__ - INFO - Initializing social media services...
+2025-08-16 20:19:15 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 20:19:15 - __main__ - INFO - Initializing scheduler...
+2025-08-16 20:19:15 - __main__ - INFO - Initializing MCP server...
+2025-08-16 20:19:15 - __main__ - INFO - All services initialized successfully
+2025-08-16 20:19:15 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 20:19:15 - __main__ - INFO - Scheduler service started
+2025-08-16 20:19:15 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 20:19:15 - __main__ - INFO - MCP server started
+2025-08-16 20:19:15 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 20:19:15 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 20:19:15 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 20:19:16 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.158:5000
+2025-08-16 20:19:16 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-16 20:19:16 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 20:19:29 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 20:19:29 - __main__ - INFO - Configuration validated successfully
+2025-08-16 20:19:29 - __main__ - INFO - Initializing database connections...
+2025-08-16 20:19:29 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 20:19:30 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 20:19:30 - __main__ - INFO - Initializing AI services...
+2025-08-16 20:19:30 - __main__ - INFO - Initializing social media services...
+2025-08-16 20:19:30 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 20:19:30 - __main__ - INFO - Initializing scheduler...
+2025-08-16 20:19:30 - __main__ - INFO - Initializing MCP server...
+2025-08-16 20:19:30 - __main__ - INFO - All services initialized successfully
+2025-08-16 20:19:30 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 20:19:30 - __main__ - INFO - Scheduler service started
+2025-08-16 20:19:30 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 20:19:30 - __main__ - INFO - MCP server started
+2025-08-16 20:19:30 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 20:19:30 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 20:19:30 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 20:19:30 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 20:19:30 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 20:19:37 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:19:37] "GET / HTTP/1.1" 200 -
+2025-08-16 20:19:42 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:19:42] "GET /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
+2025-08-16 20:19:49 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:19:52 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:19:52 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:19:52 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:19:53 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:19:53 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:19:54 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:19:55 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:19:55 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:19:55 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:19:57 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:19:57 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:19:57 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:20:00 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:20:00 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:20:00 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:20:02 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:20:02 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:20:02 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:20:04 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:20:04 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:20:04 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:20:06 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:20:06 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:20:07 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-08-16 20:20:08 - httpx - INFO - HTTP Request: PUT https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333/collections/project_689f2d72212c023266538100/points?wait=true "HTTP/1.1 200 OK"
+2025-08-16 20:20:08 - database.qdrant_manager - INFO - Added embedding for project 689f2d72212c023266538100 (hash=db04b4086bd6f2c2535d9412095c8f26)
+2025-08-16 20:20:08 - database.mongodb_manager - INFO - Content saved with ID: 68a09aa00d644ec103c750dc
+2025-08-16 20:20:08 - database.mongodb_manager - INFO - Content saved with ID: 68a09aa00d644ec103c750dd
+2025-08-16 20:20:08 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:20:08] "POST /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
+2025-08-16 20:20:25 - main - INFO - Attempting to post content: 68a09aa00d644ec103c750dd
+2025-08-16 20:20:25 - main - INFO - Found content for platform: twitter
+2025-08-16 20:20:25 - main - INFO - Posting to twitter
+2025-08-16 20:20:25 - services.social_media_service - INFO - Posting to platform: twitter
+2025-08-16 20:20:25 - services.social_media_service - INFO - Content text length: 280 characters
+2025-08-16 20:20:25 - services.social_media_service - ERROR - Twitter posting error (API): 403 Forbidden
+You are not permitted to perform this action.
+2025-08-16 20:20:25 - services.social_media_service - ERROR - Error posting to twitter: 403 Forbidden
+You are not permitted to perform this action.
+2025-08-16 20:20:25 - main - ERROR - Posting failed: {'success': False, 'error': '403 Forbidden\nYou are not permitted to perform this action.', 'platform': 'twitter'}
+2025-08-16 20:20:25 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:20:25] "[31m[1mPOST /post_now HTTP/1.1[0m" 400 -
+2025-08-16 20:21:06 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:21:07 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:21:07 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:21:08 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:21:09 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:21:09 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:21:09 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:21:10 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:21:10 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:21:10 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:21:14 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:21:14 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:21:15 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-08-16 20:21:16 - httpx - INFO - HTTP Request: PUT https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333/collections/project_689f2d72212c023266538100/points?wait=true "HTTP/1.1 200 OK"
+2025-08-16 20:21:16 - database.qdrant_manager - INFO - Added embedding for project 689f2d72212c023266538100 (hash=a719d011294b500f3ed1c9437f1483ee)
+2025-08-16 20:21:16 - database.mongodb_manager - INFO - Content saved with ID: 68a09ae40d644ec103c750de
+2025-08-16 20:21:16 - database.mongodb_manager - INFO - Content saved with ID: 68a09ae40d644ec103c750df
+2025-08-16 20:21:16 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:21:16] "POST /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
+2025-08-16 20:21:24 - main - INFO - Attempting to post content: 68a09ae40d644ec103c750df
+2025-08-16 20:21:24 - main - INFO - Found content for platform: facebook
+2025-08-16 20:21:24 - main - INFO - Posting to facebook
+2025-08-16 20:21:24 - services.social_media_service - INFO - Posting to platform: facebook
+2025-08-16 20:21:24 - services.social_media_service - INFO - Content text length: 981 characters
+2025-08-16 20:21:24 - services.social_media_service - INFO - Facebook Page ID: 711260142078789
+2025-08-16 20:21:24 - services.social_media_service - INFO - Facebook Token exists: True
+2025-08-16 20:21:24 - services.social_media_service - INFO - Content length: 981 characters
+2025-08-16 20:21:24 - services.social_media_service - INFO - Posting to URL: https://graph.facebook.com/v18.0/711260142078789/feed
+2025-08-16 20:21:24 - services.social_media_service - INFO - Payload keys: ['message', 'access_token']
+2025-08-16 20:21:24 - services.social_media_service - ERROR - Facebook API Error 400: {"error":{"message":"Error validating access token: Session has expired on Friday, 15-Aug-25 12:00:00 PDT. The current time is Saturday, 16-Aug-25 07:51:25 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"AGDjFuOKX5qJ_yker7mpxt6"}}
+2025-08-16 20:21:24 - services.social_media_service - ERROR - Facebook Error Code 190: Error validating access token: Session has expired on Friday, 15-Aug-25 12:00:00 PDT. The current time is Saturday, 16-Aug-25 07:51:25 PDT.
+2025-08-16 20:21:24 - services.social_media_service - ERROR - Facebook HTTP error: 400 Bad Request
+2025-08-16 20:21:24 - services.social_media_service - ERROR - Error posting to facebook: 400, message='Bad Request', url='https://graph.facebook.com/v18.0/711260142078789/feed'
+2025-08-16 20:21:24 - main - ERROR - Posting failed: {'success': False, 'error': "400, message='Bad Request', url='https://graph.facebook.com/v18.0/711260142078789/feed'", 'platform': 'facebook'}
+2025-08-16 20:21:24 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:21:24] "[31m[1mPOST /post_now HTTP/1.1[0m" 400 -
+2025-08-16 20:24:21 - werkzeug - INFO -  * Detected change in 'C:\\Users\\arshm\\Documents\\Secureitlab\\content-gen\\agents\\crew_agents.py', reloading
+2025-08-16 20:24:21 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 20:24:30 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 20:24:30 - __main__ - INFO - Scheduler stopped
+2025-08-16 20:24:30 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 20:24:30 - __main__ - INFO - MCP server stopped
+2025-08-16 20:24:30 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-16 20:24:33 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 20:24:48 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 20:24:48 - __main__ - INFO - Configuration validated successfully
+2025-08-16 20:24:48 - __main__ - INFO - Initializing database connections...
+2025-08-16 20:24:48 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 20:24:49 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 20:24:49 - __main__ - INFO - Initializing AI services...
+2025-08-16 20:24:49 - __main__ - INFO - Initializing social media services...
+2025-08-16 20:24:49 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 20:24:49 - __main__ - INFO - Initializing scheduler...
+2025-08-16 20:24:49 - __main__ - INFO - Initializing MCP server...
+2025-08-16 20:24:49 - __main__ - INFO - All services initialized successfully
+2025-08-16 20:24:49 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 20:24:49 - __main__ - INFO - Scheduler service started
+2025-08-16 20:24:49 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 20:24:49 - __main__ - INFO - MCP server started
+2025-08-16 20:24:49 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 20:24:49 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 20:24:49 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 20:24:49 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 20:24:49 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 20:24:50 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:24:52 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:24:53 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:24:53 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:24:58 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:24:58 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:24:58 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:25:00 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:25:00 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:25:01 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:25:03 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:25:03 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:25:03 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:25:07 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:25:07 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:25:07 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:25:09 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:25:09 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:25:10 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:25:15 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:25:15 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:25:15 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:25:20 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:25:20 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:25:20 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:25:23 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:25:23 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:25:23 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:25:26 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:25:26 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:25:26 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:25:28 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:25:28 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:25:29 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:25:31 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:25:31 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:25:31 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:25:33 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:25:33 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:25:34 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:25:37 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:25:37 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:25:38 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:25:40 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:25:40 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:25:40 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:25:43 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:25:43 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:25:43 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:25:46 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:25:46 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:25:46 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:25:48 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:25:48 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:25:49 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:25:51 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:25:51 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:25:51 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:25:54 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:25:54 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:25:54 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:25:57 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:25:57 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:25:58 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:26:00 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:26:00 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:26:01 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:26:03 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:26:03 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:26:04 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:26:06 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:26:06 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:26:06 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:26:09 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:26:09 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:26:09 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:26:12 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:26:12 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:26:12 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:26:14 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:26:14 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:26:14 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:26:19 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:26:19 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:26:19 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:26:22 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:26:22 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:26:22 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:26:24 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:26:24 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:26:25 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:26:27 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:26:27 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:26:27 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:26:30 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:26:30 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:26:30 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:26:33 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:26:33 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:26:34 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:26:37 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:26:37 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:26:37 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-08-16 20:26:38 - httpx - INFO - HTTP Request: PUT https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333/collections/project_689f2d72212c023266538100/points?wait=true "HTTP/1.1 200 OK"
+2025-08-16 20:26:38 - database.qdrant_manager - INFO - Added embedding for project 689f2d72212c023266538100 (hash=3a4578643f687dc2b8ad5e71fa021bfd)
+2025-08-16 20:26:38 - database.mongodb_manager - INFO - Content saved with ID: 68a09c265472a2c4fcb7e829
+2025-08-16 20:26:38 - database.mongodb_manager - INFO - Content saved with ID: 68a09c265472a2c4fcb7e82a
+2025-08-16 20:26:38 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:26:38] "POST /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
+2025-08-16 20:27:05 - werkzeug - INFO -  * Detected change in 'C:\\Users\\arshm\\Documents\\Secureitlab\\content-gen\\agents\\crew_agents.py', reloading
+2025-08-16 20:27:05 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 20:27:19 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 20:27:19 - __main__ - INFO - Scheduler stopped
+2025-08-16 20:27:19 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 20:27:19 - __main__ - INFO - MCP server stopped
+2025-08-16 20:27:19 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-16 20:27:21 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 20:27:37 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 20:27:37 - __main__ - INFO - Configuration validated successfully
+2025-08-16 20:27:37 - __main__ - INFO - Initializing database connections...
+2025-08-16 20:27:37 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 20:27:38 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 20:27:38 - __main__ - INFO - Initializing AI services...
+2025-08-16 20:27:38 - __main__ - INFO - Initializing social media services...
+2025-08-16 20:27:38 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 20:27:38 - __main__ - INFO - Initializing scheduler...
+2025-08-16 20:27:38 - __main__ - INFO - Initializing MCP server...
+2025-08-16 20:27:38 - __main__ - INFO - All services initialized successfully
+2025-08-16 20:27:38 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 20:27:38 - __main__ - INFO - Scheduler service started
+2025-08-16 20:27:38 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 20:27:38 - __main__ - INFO - MCP server started
+2025-08-16 20:27:38 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 20:27:38 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 20:27:38 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 20:27:38 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 20:27:38 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 20:27:38 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:27:40 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:27:40 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:27:40 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:27:42 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:27:42 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:27:42 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:27:44 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:27:44 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:27:44 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:27:46 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:27:46 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:27:46 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:27:50 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:27:50 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:27:50 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:27:52 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:27:52 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:27:52 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:27:53 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:27:53 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:27:55 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-08-16 20:27:56 - httpx - INFO - HTTP Request: PUT https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333/collections/project_689f2d72212c023266538100/points?wait=true "HTTP/1.1 200 OK"
+2025-08-16 20:27:56 - database.qdrant_manager - INFO - Added embedding for project 689f2d72212c023266538100 (hash=4d415e4dd81732727e74b189c2bb7dee)
+2025-08-16 20:27:56 - database.mongodb_manager - INFO - Content saved with ID: 68a09c748be1bc66a3a81cad
+2025-08-16 20:27:56 - database.mongodb_manager - INFO - Content saved with ID: 68a09c748be1bc66a3a81cae
+2025-08-16 20:27:56 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:27:56] "POST /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
+2025-08-16 20:28:13 - main - INFO - Attempting to post content: 68a09c748be1bc66a3a81cae
+2025-08-16 20:28:13 - main - INFO - Found content for platform: twitter
+2025-08-16 20:28:13 - main - INFO - Posting to twitter
+2025-08-16 20:28:13 - services.social_media_service - INFO - Posting to platform: twitter
+2025-08-16 20:28:13 - services.social_media_service - INFO - Content text length: 280 characters
+2025-08-16 20:28:13 - services.social_media_service - ERROR - Twitter posting error (API): 403 Forbidden
+You are not permitted to perform this action.
+2025-08-16 20:28:13 - services.social_media_service - ERROR - Error posting to twitter: 403 Forbidden
+You are not permitted to perform this action.
+2025-08-16 20:28:13 - main - ERROR - Posting failed: {'success': False, 'error': '403 Forbidden\nYou are not permitted to perform this action.', 'platform': 'twitter'}
+2025-08-16 20:28:13 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:28:13] "[31m[1mPOST /post_now HTTP/1.1[0m" 400 -
+2025-08-16 20:29:14 - services.scheduler_service - ERROR - Error scheduling post: MongoDB manager not configured
+2025-08-16 20:29:14 - main - ERROR - Error scheduling content: MongoDB manager not configured
+2025-08-16 20:29:14 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:29:14] "[35m[1mPOST /schedule_content HTTP/1.1[0m" 500 -
+2025-08-16 20:29:25 - main - INFO - Attempting to post content: 68a09c748be1bc66a3a81cae
+2025-08-16 20:29:25 - main - INFO - Found content for platform: twitter
+2025-08-16 20:29:25 - main - INFO - Posting to twitter
+2025-08-16 20:29:25 - services.social_media_service - INFO - Posting to platform: twitter
+2025-08-16 20:29:25 - services.social_media_service - INFO - Content text length: 280 characters
+2025-08-16 20:29:25 - services.social_media_service - ERROR - Twitter posting error (API): 403 Forbidden
+You are not permitted to perform this action.
+2025-08-16 20:29:25 - services.social_media_service - ERROR - Error posting to twitter: 403 Forbidden
+You are not permitted to perform this action.
+2025-08-16 20:29:25 - main - ERROR - Posting failed: {'success': False, 'error': '403 Forbidden\nYou are not permitted to perform this action.', 'platform': 'twitter'}
+2025-08-16 20:29:25 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:29:25] "[31m[1mPOST /post_now HTTP/1.1[0m" 400 -
+2025-08-16 20:30:31 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:30:31] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-08-16 20:30:38 - main - INFO - Attempting to post content: 68a09c748be1bc66a3a81cae
+2025-08-16 20:30:38 - main - INFO - Found content for platform: twitter
+2025-08-16 20:30:38 - main - INFO - Posting to twitter
+2025-08-16 20:30:38 - services.social_media_service - INFO - Posting to platform: twitter
+2025-08-16 20:30:38 - services.social_media_service - INFO - Content text length: 280 characters
+2025-08-16 20:30:38 - services.social_media_service - ERROR - Twitter posting error (API): 403 Forbidden
+You are not permitted to perform this action.
+2025-08-16 20:30:38 - services.social_media_service - ERROR - Error posting to twitter: 403 Forbidden
+You are not permitted to perform this action.
+2025-08-16 20:30:38 - main - ERROR - Posting failed: {'success': False, 'error': '403 Forbidden\nYou are not permitted to perform this action.', 'platform': 'twitter'}
+2025-08-16 20:30:38 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:30:38] "[31m[1mPOST /post_now HTTP/1.1[0m" 400 -
+2025-08-16 20:30:38 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:30:38] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-08-16 20:31:01 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:31:01] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-08-16 20:32:42 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:32:44 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:32:44 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:32:44 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:32:47 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:32:47 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:32:47 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:32:49 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:32:49 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:32:49 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:32:52 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:32:52 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:32:52 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:32:54 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:32:54 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:32:55 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-08-16 20:32:56 - httpx - INFO - HTTP Request: PUT https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333/collections/project_689f2d72212c023266538100/points?wait=true "HTTP/1.1 200 OK"
+2025-08-16 20:32:56 - database.qdrant_manager - INFO - Added embedding for project 689f2d72212c023266538100 (hash=6d1be66d1d8a8eb87e6a270777ebd418)
+2025-08-16 20:32:56 - database.mongodb_manager - INFO - Content saved with ID: 68a09da08be1bc66a3a81caf
+2025-08-16 20:32:56 - database.mongodb_manager - INFO - Content saved with ID: 68a09da08be1bc66a3a81cb0
+2025-08-16 20:32:56 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:32:56] "POST /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
+2025-08-16 20:33:04 - main - INFO - Attempting to post content: 68a09da08be1bc66a3a81cb0
+2025-08-16 20:33:04 - main - INFO - Found content for platform: linkedin
+2025-08-16 20:33:04 - main - INFO - Posting to linkedin
+2025-08-16 20:33:04 - services.social_media_service - INFO - Posting to platform: linkedin
+2025-08-16 20:33:04 - services.social_media_service - INFO - Content text length: 877 characters
+2025-08-16 20:33:04 - services.social_media_service - WARNING - LinkedIn URN 'TDwXou019V' doesn't start with 'urn:li:', assuming it's a person ID
+2025-08-16 20:33:04 - services.social_media_service - INFO - Using LinkedIn author URN: urn:li:person:TDwXou019V
+2025-08-16 20:33:04 - services.social_media_service - INFO - Content length: 877 characters
+2025-08-16 20:33:04 - services.social_media_service - INFO - LinkedIn payload: {
+  "author": "urn:li:person:TDwXou019V",
+  "lifecycleState": "PUBLISHED",
+  "specificContent": {
+    "com.linkedin.ugc.ShareContent": {
+      "shareCommentary": {
+        "text": "\ud83d\udcca **Poll: GRC 101 Mentorship Platform**\nAs we develop the GRC 101 Mentorship Platform, we want to hear from you! Which feature do you think would be most beneficial?\n1\ufe0f\u20e3 One-on-one mentoring sessions\n2\ufe0f\u20e3 Resource sharing\n3\ufe0f\u20e3 Networking opportunities\n4\ufe0f\u20e3 Online workshops\nYour feedback is essential in shaping the future of this platform. Please vote and share your thoughts in the comments!\n#GRC #Mentorship #ProfessionalDevelopment #Poll\n\ud83d\udcca **Poll: GRC 101 Mentorship Platform**\nAs we develop the GRC 101 Mentorship Platform, we want to hear from you! Which feature do you think would be most beneficial?\n1\ufe0f\u20e3 One-on-one mentoring sessions\n2\ufe0f\u20e3 Resource sharing\n3\ufe0f\u20e3 Networking opportunities\n4\ufe0f\u20e3 Online workshops\nYour feedback is essential in shaping the future of this platform. Please vote and share your thoughts in the comments!\n#GRC #Mentorship #ProfessionalDevelopment #Poll"
+      },
+      "shareMediaCategory": "NONE"
+    }
+  },
+  "visibility": {
+    "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
+  }
+}
+2025-08-16 20:33:05 - main - WARNING - Content testing failed but posting succeeded: 'ContentCrewManager' object has no attribute 'test_content'
+2025-08-16 20:33:05 - database.mongodb_manager - INFO - Content status updated: 68a09da08be1bc66a3a81cb0 -> posted
+2025-08-16 20:33:05 - main - INFO - Content posted successfully: 68a09da08be1bc66a3a81cb0
+2025-08-16 20:33:05 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:33:05] "POST /post_now HTTP/1.1" 200 -
+2025-08-16 20:38:06 - werkzeug - INFO -  * Detected change in 'C:\\Users\\arshm\\Documents\\Secureitlab\\content-gen\\agents\\crew_agents.py', reloading
+2025-08-16 20:38:06 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 20:38:08 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 20:38:08 - __main__ - INFO - Scheduler stopped
+2025-08-16 20:38:08 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 20:38:08 - __main__ - INFO - MCP server stopped
+2025-08-16 20:38:08 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-16 20:38:10 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 20:38:32 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 20:38:32 - __main__ - INFO - Configuration validated successfully
+2025-08-16 20:38:32 - __main__ - INFO - Initializing database connections...
+2025-08-16 20:38:32 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 20:38:33 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 20:38:33 - __main__ - INFO - Initializing AI services...
+2025-08-16 20:38:33 - __main__ - INFO - Initializing social media services...
+2025-08-16 20:38:33 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 20:38:33 - __main__ - INFO - Initializing scheduler...
+2025-08-16 20:38:33 - __main__ - INFO - Initializing MCP server...
+2025-08-16 20:38:33 - __main__ - INFO - All services initialized successfully
+2025-08-16 20:38:33 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 20:38:33 - __main__ - INFO - Scheduler service started
+2025-08-16 20:38:33 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 20:38:33 - __main__ - INFO - MCP server started
+2025-08-16 20:38:33 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 20:38:33 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 20:38:33 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 20:38:33 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 20:38:33 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 20:38:33 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:38:35 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:38:35 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:38:35 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:38:37 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:38:37 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:38:37 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:38:40 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:38:40 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:38:40 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:38:42 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:38:42 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:38:42 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:38:44 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:38:44 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:38:44 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:38:47 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:38:47 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:38:47 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:38:49 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:38:49 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:38:49 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:38:51 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:38:51 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:38:51 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:38:53 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:38:53 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:38:53 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:38:56 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:38:56 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:38:57 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-08-16 20:38:58 - httpx - INFO - HTTP Request: PUT https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333/collections/project_689f2d72212c023266538100/points?wait=true "HTTP/1.1 200 OK"
+2025-08-16 20:38:58 - database.qdrant_manager - INFO - Added embedding for project 689f2d72212c023266538100 (hash=1583ad833a7e6fd5b621dcefcef7ecf5)
+2025-08-16 20:38:58 - database.mongodb_manager - INFO - Content saved with ID: 68a09f0ab878234f307da562
+2025-08-16 20:38:58 - database.mongodb_manager - INFO - Content saved with ID: 68a09f0ab878234f307da563
+2025-08-16 20:38:58 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:38:58] "POST /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
+2025-08-16 20:39:14 - main - INFO - Attempting to post content: 68a09f0ab878234f307da563
+2025-08-16 20:39:14 - main - INFO - Found content for platform: twitter
+2025-08-16 20:39:14 - main - INFO - Posting to twitter
+2025-08-16 20:39:14 - services.social_media_service - INFO - Posting to platform: twitter
+2025-08-16 20:39:14 - services.social_media_service - INFO - Content text length: 260 characters
+2025-08-16 20:39:14 - main - WARNING - Content testing failed but posting succeeded: 'ContentCrewManager' object has no attribute 'test_content'
+2025-08-16 20:39:14 - database.mongodb_manager - INFO - Content status updated: 68a09f0ab878234f307da563 -> posted
+2025-08-16 20:39:14 - main - INFO - Content posted successfully: 68a09f0ab878234f307da563
+2025-08-16 20:39:14 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:39:14] "POST /post_now HTTP/1.1" 200 -
+2025-08-16 20:40:21 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:40:23 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:40:23 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:40:23 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:40:25 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:40:25 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:40:25 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:40:27 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:40:27 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:40:27 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:40:28 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:40:28 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:40:30 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-08-16 20:40:31 - httpx - INFO - HTTP Request: PUT https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333/collections/project_689f2d72212c023266538100/points?wait=true "HTTP/1.1 200 OK"
+2025-08-16 20:40:31 - database.qdrant_manager - INFO - Added embedding for project 689f2d72212c023266538100 (hash=bdd82ad99b5204cd4804dee24a8238a9)
+2025-08-16 20:40:31 - database.mongodb_manager - INFO - Content saved with ID: 68a09f67b878234f307da564
+2025-08-16 20:40:31 - database.mongodb_manager - INFO - Content saved with ID: 68a09f67b878234f307da565
+2025-08-16 20:40:31 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:40:31] "POST /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
+2025-08-16 20:40:43 - main - INFO - Attempting to post content: 68a09f67b878234f307da565
+2025-08-16 20:40:43 - main - INFO - Found content for platform: facebook
+2025-08-16 20:40:43 - main - INFO - Posting to facebook
+2025-08-16 20:40:43 - services.social_media_service - INFO - Posting to platform: facebook
+2025-08-16 20:40:43 - services.social_media_service - INFO - Content text length: 254 characters
+2025-08-16 20:40:43 - services.social_media_service - INFO - Facebook Page ID: 711260142078789
+2025-08-16 20:40:43 - services.social_media_service - INFO - Facebook Token exists: True
+2025-08-16 20:40:43 - services.social_media_service - INFO - Content length: 254 characters
+2025-08-16 20:40:43 - services.social_media_service - INFO - Posting to URL: https://graph.facebook.com/v18.0/711260142078789/feed
+2025-08-16 20:40:43 - services.social_media_service - INFO - Payload keys: ['message', 'access_token']
+2025-08-16 20:40:43 - services.social_media_service - ERROR - Facebook API Error 400: {"error":{"message":"Error validating access token: Session has expired on Friday, 15-Aug-25 12:00:00 PDT. The current time is Saturday, 16-Aug-25 08:10:44 PDT.","type":"OAuthException","code":190,"error_subcode":463,"fbtrace_id":"A6qbC-vIORCXIAHUIl2vA-O"}}
+2025-08-16 20:40:43 - services.social_media_service - ERROR - Facebook Error Code 190: Error validating access token: Session has expired on Friday, 15-Aug-25 12:00:00 PDT. The current time is Saturday, 16-Aug-25 08:10:44 PDT.
+2025-08-16 20:40:43 - services.social_media_service - ERROR - Facebook HTTP error: 400 Bad Request
+2025-08-16 20:40:43 - services.social_media_service - ERROR - Error posting to facebook: 400, message='Bad Request', url='https://graph.facebook.com/v18.0/711260142078789/feed'
+2025-08-16 20:40:43 - main - ERROR - Posting failed: {'success': False, 'error': "400, message='Bad Request', url='https://graph.facebook.com/v18.0/711260142078789/feed'", 'platform': 'facebook'}
+2025-08-16 20:40:43 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:40:43] "[31m[1mPOST /post_now HTTP/1.1[0m" 400 -
+2025-08-16 20:43:35 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-16 20:43:35 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 20:43:55 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 20:43:55 - __main__ - INFO - Configuration validated successfully
+2025-08-16 20:43:55 - __main__ - INFO - Initializing database connections...
+2025-08-16 20:43:55 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 20:43:55 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 20:43:56 - __main__ - INFO - Initializing AI services...
+2025-08-16 20:43:56 - __main__ - INFO - Initializing social media services...
+2025-08-16 20:43:56 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 20:43:56 - __main__ - INFO - Initializing scheduler...
+2025-08-16 20:43:56 - __main__ - INFO - Initializing MCP server...
+2025-08-16 20:43:56 - __main__ - INFO - All services initialized successfully
+2025-08-16 20:43:56 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 20:43:56 - __main__ - INFO - Scheduler service started
+2025-08-16 20:43:56 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 20:43:56 - __main__ - INFO - MCP server started
+2025-08-16 20:43:56 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 20:43:56 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 20:43:56 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 20:43:57 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.158:5000
+2025-08-16 20:43:57 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-16 20:43:57 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 20:44:08 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 20:44:08 - __main__ - INFO - Configuration validated successfully
+2025-08-16 20:44:08 - __main__ - INFO - Initializing database connections...
+2025-08-16 20:44:08 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 20:44:09 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 20:44:09 - __main__ - INFO - Initializing AI services...
+2025-08-16 20:44:09 - __main__ - INFO - Initializing social media services...
+2025-08-16 20:44:09 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 20:44:09 - __main__ - INFO - Initializing scheduler...
+2025-08-16 20:44:09 - __main__ - INFO - Initializing MCP server...
+2025-08-16 20:44:09 - __main__ - INFO - All services initialized successfully
+2025-08-16 20:44:09 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 20:44:09 - __main__ - INFO - Scheduler service started
+2025-08-16 20:44:09 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 20:44:09 - __main__ - INFO - MCP server started
+2025-08-16 20:44:09 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 20:44:09 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 20:44:09 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 20:44:09 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 20:44:09 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 20:44:29 - werkzeug - INFO -  * Detected change in 'C:\\Users\\arshm\\Documents\\Secureitlab\\content-gen\\get_linkedin_urn.py', reloading
+2025-08-16 20:44:29 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 20:44:39 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 20:44:39 - __main__ - INFO - Scheduler stopped
+2025-08-16 20:44:39 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 20:44:39 - __main__ - INFO - MCP server stopped
+2025-08-16 20:44:39 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-16 20:44:40 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 20:44:51 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 20:44:51 - __main__ - INFO - Configuration validated successfully
+2025-08-16 20:44:51 - __main__ - INFO - Initializing database connections...
+2025-08-16 20:44:51 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 20:44:51 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 20:44:51 - __main__ - INFO - Initializing AI services...
+2025-08-16 20:44:51 - __main__ - INFO - Initializing social media services...
+2025-08-16 20:44:51 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 20:44:51 - __main__ - INFO - Initializing scheduler...
+2025-08-16 20:44:51 - __main__ - INFO - Initializing MCP server...
+2025-08-16 20:44:51 - __main__ - INFO - All services initialized successfully
+2025-08-16 20:44:51 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 20:44:51 - __main__ - INFO - Scheduler service started
+2025-08-16 20:44:51 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 20:44:51 - __main__ - INFO - MCP server started
+2025-08-16 20:44:51 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 20:44:51 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 20:44:51 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 20:44:51 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 20:44:51 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 20:47:45 - werkzeug - INFO -  * Detected change in 'C:\\Users\\arshm\\Documents\\Secureitlab\\content-gen\\get_linkedin_urn.py', reloading
+2025-08-16 20:47:45 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 20:47:51 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 20:47:51 - __main__ - INFO - Scheduler stopped
+2025-08-16 20:47:51 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 20:47:51 - __main__ - INFO - MCP server stopped
+2025-08-16 20:47:51 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-16 20:47:53 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 20:47:57 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-16 20:47:57 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 20:48:26 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-16 20:50:34 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 20:50:34 - __main__ - INFO - Configuration validated successfully
+2025-08-16 20:50:34 - __main__ - INFO - Initializing database connections...
+2025-08-16 20:50:34 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 20:50:35 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 20:50:35 - __main__ - INFO - Initializing AI services...
+2025-08-16 20:50:35 - __main__ - INFO - Initializing social media services...
+2025-08-16 20:50:35 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 20:50:35 - __main__ - INFO - Initializing scheduler...
+2025-08-16 20:50:35 - __main__ - INFO - Initializing MCP server...
+2025-08-16 20:50:35 - __main__ - INFO - All services initialized successfully
+2025-08-16 20:50:35 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 20:50:35 - __main__ - INFO - Scheduler service started
+2025-08-16 20:50:35 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 20:50:35 - __main__ - INFO - MCP server started
+2025-08-16 20:50:35 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 20:50:35 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 20:50:35 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 20:50:36 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.158:5000
+2025-08-16 20:50:36 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-16 20:50:36 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 20:50:46 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 20:50:46 - __main__ - INFO - Configuration validated successfully
+2025-08-16 20:50:46 - __main__ - INFO - Initializing database connections...
+2025-08-16 20:50:46 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 20:50:47 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 20:50:47 - __main__ - INFO - Initializing AI services...
+2025-08-16 20:50:47 - __main__ - INFO - Initializing social media services...
+2025-08-16 20:50:47 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 20:50:47 - __main__ - INFO - Initializing scheduler...
+2025-08-16 20:50:47 - __main__ - INFO - Initializing MCP server...
+2025-08-16 20:50:47 - __main__ - INFO - All services initialized successfully
+2025-08-16 20:50:47 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 20:50:47 - __main__ - INFO - Scheduler service started
+2025-08-16 20:50:47 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 20:50:47 - __main__ - INFO - MCP server started
+2025-08-16 20:50:47 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 20:50:47 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 20:50:47 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 20:50:47 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 20:50:47 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 20:50:47 - main - INFO - Attempting to post content: 68a09f67b878234f307da565
+2025-08-16 20:50:47 - main - INFO - Found content for platform: facebook
+2025-08-16 20:50:47 - main - INFO - Posting to facebook
+2025-08-16 20:50:47 - services.social_media_service - INFO - Posting to platform: facebook
+2025-08-16 20:50:47 - services.social_media_service - INFO - Content text length: 254 characters
+2025-08-16 20:50:47 - services.social_media_service - INFO - Facebook Page ID: 711260142078789
+2025-08-16 20:50:47 - services.social_media_service - INFO - Facebook Token exists: True
+2025-08-16 20:50:47 - services.social_media_service - INFO - Content length: 254 characters
+2025-08-16 20:50:47 - services.social_media_service - INFO - Posting to URL: https://graph.facebook.com/v18.0/711260142078789/feed
+2025-08-16 20:50:47 - services.social_media_service - INFO - Payload keys: ['message', 'access_token']
+2025-08-16 20:50:48 - services.social_media_service - ERROR - Facebook API Error 403: {"error":{"message":"(#200) If posting to a group, requires app being installed in the group, and \\\n          either publish_to_groups permission with user token, or both pages_read_engagement \\\n          and pages_manage_posts permission with page token; If posting to a page, \\\n          requires both pages_read_engagement and pages_manage_posts as an admin with \\\n          sufficient administrative permission","type":"OAuthException","code":200,"fbtrace_id":"AN7pd2g1DZ_LY2UfGOnx9Ex"}}
+2025-08-16 20:50:48 - services.social_media_service - ERROR - Facebook Error Code 200: (#200) If posting to a group, requires app being installed in the group, and \
+          either publish_to_groups permission with user token, or both pages_read_engagement \
+          and pages_manage_posts permission with page token; If posting to a page, \
+          requires both pages_read_engagement and pages_manage_posts as an admin with \
+          sufficient administrative permission
+2025-08-16 20:50:48 - services.social_media_service - ERROR - Facebook HTTP error: 403 Forbidden
+2025-08-16 20:50:48 - services.social_media_service - ERROR - Error posting to facebook: 403, message='Forbidden', url='https://graph.facebook.com/v18.0/711260142078789/feed'
+2025-08-16 20:50:48 - main - ERROR - Posting failed: {'success': False, 'error': "403, message='Forbidden', url='https://graph.facebook.com/v18.0/711260142078789/feed'", 'platform': 'facebook'}
+2025-08-16 20:50:48 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:50:48] "[31m[1mPOST /post_now HTTP/1.1[0m" 400 -
+2025-08-16 20:52:23 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-16 20:52:23 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 20:52:39 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 20:52:39 - __main__ - INFO - Configuration validated successfully
+2025-08-16 20:52:39 - __main__ - INFO - Initializing database connections...
+2025-08-16 20:52:39 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 20:52:40 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 20:52:40 - __main__ - INFO - Initializing AI services...
+2025-08-16 20:52:40 - __main__ - INFO - Initializing social media services...
+2025-08-16 20:52:40 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 20:52:40 - __main__ - INFO - Initializing scheduler...
+2025-08-16 20:52:40 - __main__ - INFO - Initializing MCP server...
+2025-08-16 20:52:40 - __main__ - INFO - All services initialized successfully
+2025-08-16 20:52:40 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 20:52:40 - __main__ - INFO - Scheduler service started
+2025-08-16 20:52:40 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 20:52:40 - __main__ - INFO - MCP server started
+2025-08-16 20:52:40 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 20:52:40 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 20:52:40 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 20:52:41 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.158:5000
+2025-08-16 20:52:41 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-16 20:52:41 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 20:52:52 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 20:52:52 - __main__ - INFO - Configuration validated successfully
+2025-08-16 20:52:52 - __main__ - INFO - Initializing database connections...
+2025-08-16 20:52:52 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 20:52:52 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 20:52:54 - __main__ - INFO - Initializing AI services...
+2025-08-16 20:52:54 - __main__ - INFO - Initializing social media services...
+2025-08-16 20:52:54 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 20:52:54 - __main__ - INFO - Initializing scheduler...
+2025-08-16 20:52:54 - __main__ - INFO - Initializing MCP server...
+2025-08-16 20:52:54 - __main__ - INFO - All services initialized successfully
+2025-08-16 20:52:54 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 20:52:54 - __main__ - INFO - Scheduler service started
+2025-08-16 20:52:54 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 20:52:54 - __main__ - INFO - MCP server started
+2025-08-16 20:52:54 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 20:52:54 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 20:52:54 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 20:52:54 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 20:52:54 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 20:52:54 - main - INFO - Attempting to post content: 68a09f67b878234f307da565
+2025-08-16 20:52:54 - main - INFO - Found content for platform: facebook
+2025-08-16 20:52:54 - main - INFO - Posting to facebook
+2025-08-16 20:52:54 - services.social_media_service - INFO - Posting to platform: facebook
+2025-08-16 20:52:54 - services.social_media_service - INFO - Content text length: 254 characters
+2025-08-16 20:52:54 - services.social_media_service - INFO - Facebook Page ID: 711260142078789
+2025-08-16 20:52:54 - services.social_media_service - INFO - Facebook Token exists: True
+2025-08-16 20:52:54 - services.social_media_service - INFO - Content length: 254 characters
+2025-08-16 20:52:54 - services.social_media_service - INFO - Posting to URL: https://graph.facebook.com/v18.0/711260142078789/feed
+2025-08-16 20:52:54 - services.social_media_service - INFO - Payload keys: ['message', 'access_token']
+2025-08-16 20:52:54 - services.social_media_service - ERROR - Facebook API Error 403: {"error":{"message":"(#200) If posting to a group, requires app being installed in the group, and \\\n          either publish_to_groups permission with user token, or both pages_read_engagement \\\n          and pages_manage_posts permission with page token; If posting to a page, \\\n          requires both pages_read_engagement and pages_manage_posts as an admin with \\\n          sufficient administrative permission","type":"OAuthException","code":200,"fbtrace_id":"AialcKp8f1JC__zL5KNDCPB"}}
+2025-08-16 20:52:54 - services.social_media_service - ERROR - Facebook Error Code 200: (#200) If posting to a group, requires app being installed in the group, and \
+          either publish_to_groups permission with user token, or both pages_read_engagement \
+          and pages_manage_posts permission with page token; If posting to a page, \
+          requires both pages_read_engagement and pages_manage_posts as an admin with \
+          sufficient administrative permission
+2025-08-16 20:52:54 - services.social_media_service - ERROR - Facebook HTTP error: 403 Forbidden
+2025-08-16 20:52:54 - services.social_media_service - ERROR - Error posting to facebook: 403, message='Forbidden', url='https://graph.facebook.com/v18.0/711260142078789/feed'
+2025-08-16 20:52:54 - main - ERROR - Posting failed: {'success': False, 'error': "403, message='Forbidden', url='https://graph.facebook.com/v18.0/711260142078789/feed'", 'platform': 'facebook'}
+2025-08-16 20:52:54 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:52:54] "[31m[1mPOST /post_now HTTP/1.1[0m" 400 -
+2025-08-16 20:58:35 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-16 20:58:35 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 20:58:50 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 20:58:50 - __main__ - INFO - Configuration validated successfully
+2025-08-16 20:58:50 - __main__ - INFO - Initializing database connections...
+2025-08-16 20:58:50 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 20:58:51 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 20:58:51 - __main__ - INFO - Initializing AI services...
+2025-08-16 20:58:51 - __main__ - INFO - Initializing social media services...
+2025-08-16 20:58:51 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 20:58:51 - __main__ - INFO - Initializing scheduler...
+2025-08-16 20:58:51 - __main__ - INFO - Initializing MCP server...
+2025-08-16 20:58:51 - __main__ - INFO - All services initialized successfully
+2025-08-16 20:58:51 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 20:58:51 - __main__ - INFO - Scheduler service started
+2025-08-16 20:58:51 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 20:58:51 - __main__ - INFO - MCP server started
+2025-08-16 20:58:51 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 20:58:51 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 20:58:51 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 20:58:52 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.158:5000
+2025-08-16 20:58:52 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-16 20:58:52 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 20:59:01 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 20:59:01 - __main__ - INFO - Configuration validated successfully
+2025-08-16 20:59:01 - __main__ - INFO - Initializing database connections...
+2025-08-16 20:59:01 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 20:59:02 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 20:59:02 - __main__ - INFO - Initializing AI services...
+2025-08-16 20:59:02 - __main__ - INFO - Initializing social media services...
+2025-08-16 20:59:02 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 20:59:02 - __main__ - INFO - Initializing scheduler...
+2025-08-16 20:59:02 - __main__ - INFO - Initializing MCP server...
+2025-08-16 20:59:02 - __main__ - INFO - All services initialized successfully
+2025-08-16 20:59:02 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 20:59:02 - __main__ - INFO - Scheduler service started
+2025-08-16 20:59:02 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 20:59:02 - __main__ - INFO - MCP server started
+2025-08-16 20:59:02 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 20:59:02 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 20:59:02 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 20:59:02 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 20:59:02 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 20:59:02 - main - INFO - Attempting to post content: 68a09f67b878234f307da565
+2025-08-16 20:59:02 - main - INFO - Found content for platform: facebook
+2025-08-16 20:59:02 - main - INFO - Posting to facebook
+2025-08-16 20:59:02 - services.social_media_service - INFO - Posting to platform: facebook
+2025-08-16 20:59:02 - services.social_media_service - INFO - Content text length: 254 characters
+2025-08-16 20:59:02 - services.social_media_service - INFO - Facebook Page ID: 711260142078789
+2025-08-16 20:59:02 - services.social_media_service - INFO - Facebook Token exists: True
+2025-08-16 20:59:02 - services.social_media_service - INFO - Content length: 254 characters
+2025-08-16 20:59:02 - services.social_media_service - INFO - Posting to URL: https://graph.facebook.com/v18.0/711260142078789/feed
+2025-08-16 20:59:02 - services.social_media_service - INFO - Payload keys: ['message', 'access_token']
+2025-08-16 20:59:05 - main - WARNING - Content testing failed but posting succeeded: 'ContentCrewManager' object has no attribute 'test_content'
+2025-08-16 20:59:05 - database.mongodb_manager - INFO - Content status updated: 68a09f67b878234f307da565 -> posted
+2025-08-16 20:59:05 - main - INFO - Content posted successfully: 68a09f67b878234f307da565
+2025-08-16 20:59:05 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:59:05] "POST /post_now HTTP/1.1" 200 -
+2025-08-16 21:00:46 - werkzeug - INFO -  * Detected change in 'C:\\Users\\arshm\\Documents\\Secureitlab\\content-gen\\get_linkedin_urn.py', reloading
+2025-08-16 21:00:46 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 21:01:02 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 21:01:02 - __main__ - INFO - Scheduler stopped
+2025-08-16 21:01:02 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 21:01:02 - __main__ - INFO - MCP server stopped
+2025-08-16 21:01:02 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-16 21:01:03 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 21:01:13 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-16 21:01:13 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 21:01:21 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-16 21:01:28 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 21:01:28 - __main__ - INFO - Configuration validated successfully
+2025-08-16 21:01:28 - __main__ - INFO - Initializing database connections...
+2025-08-16 21:01:28 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 21:01:29 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 21:01:29 - __main__ - INFO - Initializing AI services...
+2025-08-16 21:01:29 - __main__ - INFO - Initializing social media services...
+2025-08-16 21:01:29 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 21:01:29 - __main__ - INFO - Initializing scheduler...
+2025-08-16 21:01:29 - __main__ - INFO - Initializing MCP server...
+2025-08-16 21:01:29 - __main__ - INFO - All services initialized successfully
+2025-08-16 21:01:29 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 21:01:29 - __main__ - INFO - Scheduler service started
+2025-08-16 21:01:29 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 21:01:29 - __main__ - INFO - MCP server started
+2025-08-16 21:01:29 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 21:01:29 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 21:01:29 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 21:01:30 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.158:5000
+2025-08-16 21:01:30 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-16 21:01:30 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 21:01:40 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 21:01:40 - __main__ - INFO - Configuration validated successfully
+2025-08-16 21:01:40 - __main__ - INFO - Initializing database connections...
+2025-08-16 21:01:40 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 21:01:41 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 21:01:41 - __main__ - INFO - Initializing AI services...
+2025-08-16 21:01:41 - __main__ - INFO - Initializing social media services...
+2025-08-16 21:01:41 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 21:01:41 - __main__ - INFO - Initializing scheduler...
+2025-08-16 21:01:41 - __main__ - INFO - Initializing MCP server...
+2025-08-16 21:01:41 - __main__ - INFO - All services initialized successfully
+2025-08-16 21:01:41 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 21:01:41 - __main__ - INFO - Scheduler service started
+2025-08-16 21:01:41 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 21:01:41 - __main__ - INFO - MCP server started
+2025-08-16 21:01:41 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 21:01:41 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 21:01:41 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 21:01:41 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 21:01:41 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 21:01:41 - main - INFO - Attempting to post content: 68a09f67b878234f307da565
+2025-08-16 21:01:41 - main - INFO - Found content for platform: facebook
+2025-08-16 21:01:41 - main - INFO - Posting to facebook
+2025-08-16 21:01:41 - services.social_media_service - INFO - Posting to platform: facebook
+2025-08-16 21:01:41 - services.social_media_service - INFO - Content text length: 254 characters
+2025-08-16 21:01:41 - services.social_media_service - INFO - Facebook Page ID: 711260142078789
+2025-08-16 21:01:41 - services.social_media_service - INFO - Facebook Token exists: True
+2025-08-16 21:01:41 - services.social_media_service - INFO - Content length: 254 characters
+2025-08-16 21:01:41 - services.social_media_service - INFO - Posting to URL: https://graph.facebook.com/v18.0/711260142078789/feed
+2025-08-16 21:01:41 - services.social_media_service - INFO - Payload keys: ['message', 'access_token']
+2025-08-16 21:01:43 - main - WARNING - Content testing failed but posting succeeded: 'ContentCrewManager' object has no attribute 'test_content'
+2025-08-16 21:01:43 - database.mongodb_manager - INFO - Content status updated: 68a09f67b878234f307da565 -> posted
+2025-08-16 21:01:43 - main - INFO - Content posted successfully: 68a09f67b878234f307da565
+2025-08-16 21:01:43 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 21:01:43] "POST /post_now HTTP/1.1" 200 -
+2025-08-16 21:02:21 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 21:02:23 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 21:02:23 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 21:02:23 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 21:02:25 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 21:02:25 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 21:02:25 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 21:02:27 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 21:02:27 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 21:02:27 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 21:02:29 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 21:02:29 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 21:02:29 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 21:02:31 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 21:02:31 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 21:02:31 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 21:02:33 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 21:02:33 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 21:02:33 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-08-16 21:02:35 - httpx - INFO - HTTP Request: PUT https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333/collections/project_689f2d72212c023266538100/points?wait=true "HTTP/1.1 200 OK"
+2025-08-16 21:02:35 - database.qdrant_manager - INFO - Added embedding for project 689f2d72212c023266538100 (hash=ab4f8c7d39bb634ae5be0f16daaffe77)
+2025-08-16 21:02:35 - database.mongodb_manager - INFO - Content saved with ID: 68a0a493e421478dd774e843
+2025-08-16 21:02:35 - database.mongodb_manager - INFO - Content saved with ID: 68a0a493e421478dd774e844
+2025-08-16 21:02:35 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 21:02:35] "POST /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
+2025-08-16 22:08:31 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-16 22:08:31 - __main__ - INFO - Shutting down Content Generation System...
