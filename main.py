@@ -34,7 +34,7 @@ app.config['ASYNC_MODE'] = True
 mongodb_manager = MongoDBManager()
 qdrant_manager = QdrantManager()
 social_media_service = SocialMediaService()
-scheduler_service = SchedulerService()
+scheduler_service = SchedulerService(mongodb_manager=mongodb_manager, social_media_service=social_media_service)
 mcp_server = MCPServer()
 
 # Initialize CrewAI agents

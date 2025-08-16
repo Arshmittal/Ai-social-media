@@ -3782,3 +3782,83 @@ LiteLLM completion() model= gpt-4o-mini; provider = openai
 2025-08-16 21:02:35 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 21:02:35] "POST /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
 2025-08-16 22:08:31 - __main__ - INFO - Received signal 2, shutting down gracefully...
 2025-08-16 22:08:31 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 22:10:05 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 22:10:05 - __main__ - INFO - Configuration validated successfully
+2025-08-16 22:10:05 - __main__ - INFO - Initializing database connections...
+2025-08-16 22:10:05 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 22:10:06 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 22:10:06 - __main__ - INFO - Initializing AI services...
+2025-08-16 22:10:06 - __main__ - INFO - Initializing social media services...
+2025-08-16 22:10:06 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 22:10:06 - __main__ - INFO - Initializing scheduler...
+2025-08-16 22:10:06 - __main__ - INFO - Initializing MCP server...
+2025-08-16 22:10:06 - __main__ - INFO - All services initialized successfully
+2025-08-16 22:10:06 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 22:10:06 - __main__ - INFO - Scheduler service started
+2025-08-16 22:10:06 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 22:10:06 - __main__ - INFO - MCP server started
+2025-08-16 22:10:06 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 22:10:06 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 22:10:06 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 22:10:07 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.158:5000
+2025-08-16 22:10:07 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-16 22:10:07 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 22:10:26 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 22:10:26 - __main__ - INFO - Configuration validated successfully
+2025-08-16 22:10:26 - __main__ - INFO - Initializing database connections...
+2025-08-16 22:10:26 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 22:10:27 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 22:10:27 - __main__ - INFO - Initializing AI services...
+2025-08-16 22:10:27 - __main__ - INFO - Initializing social media services...
+2025-08-16 22:10:27 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 22:10:27 - __main__ - INFO - Initializing scheduler...
+2025-08-16 22:10:27 - __main__ - INFO - Initializing MCP server...
+2025-08-16 22:10:27 - __main__ - INFO - All services initialized successfully
+2025-08-16 22:10:27 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 22:10:27 - __main__ - INFO - Scheduler service started
+2025-08-16 22:10:27 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 22:10:27 - __main__ - INFO - MCP server started
+2025-08-16 22:10:27 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 22:10:27 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 22:10:27 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 22:10:27 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 22:10:27 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 22:10:27 - services.scheduler_service - ERROR - Error scheduling post: MongoDB manager not configured
+2025-08-16 22:10:27 - main - ERROR - Error scheduling content: MongoDB manager not configured
+2025-08-16 22:10:27 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:10:27] "[35m[1mPOST /schedule_content HTTP/1.1[0m" 500 -
+2025-08-16 22:12:26 - werkzeug - INFO -  * Detected change in 'C:\\Users\\arshm\\Documents\\Secureitlab\\content-gen\\main.py', reloading
+2025-08-16 22:12:26 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 22:12:27 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 22:12:27 - __main__ - INFO - Scheduler stopped
+2025-08-16 22:12:27 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 22:12:27 - __main__ - INFO - MCP server stopped
+2025-08-16 22:12:27 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-16 22:12:28 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 22:12:52 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 22:12:52 - __main__ - INFO - Configuration validated successfully
+2025-08-16 22:12:52 - __main__ - INFO - Initializing database connections...
+2025-08-16 22:12:52 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 22:12:53 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 22:12:53 - __main__ - INFO - Initializing AI services...
+2025-08-16 22:12:53 - __main__ - INFO - Initializing social media services...
+2025-08-16 22:12:53 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 22:12:53 - __main__ - INFO - Initializing scheduler...
+2025-08-16 22:12:53 - __main__ - INFO - Initializing MCP server...
+2025-08-16 22:12:53 - __main__ - INFO - All services initialized successfully
+2025-08-16 22:12:53 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 22:12:53 - __main__ - INFO - Scheduler service started
+2025-08-16 22:12:53 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 22:12:53 - __main__ - INFO - MCP server started
+2025-08-16 22:12:53 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 22:12:53 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 22:12:53 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 22:12:53 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 22:12:53 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 22:12:53 - services.scheduler_service - INFO - Content scheduled: 68a0a493e421478dd774e844 for 2025-08-16 22:15:00
+2025-08-16 22:12:53 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:12:53] "POST /schedule_content HTTP/1.1" 200 -
+2025-08-16 22:16:52 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:16:52] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-08-16 22:20:27 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-16 22:20:27 - __main__ - INFO - Shutting down Content Generation System...
