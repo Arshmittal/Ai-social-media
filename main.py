@@ -183,6 +183,14 @@ CONTENT_GENERATION_HTML = """
         </div>
         
         <div class="form-group">
+            <div class="checkbox-group">
+                <input type="checkbox" name="include_qa_report" id="include_qa_report" value="true">
+                <label for="include_qa_report" style="display: inline; margin: 0;">Include Quality Assessment Report</label>
+            </div>
+            <small class="char-counter">Adds detailed quality analysis and recommendations (unchecked for clean content only)</small>
+        </div>
+        
+        <div class="form-group">
             <label>Additional Context:</label>
             <textarea name="context" placeholder="Any specific requirements or context..."></textarea>
         </div>
@@ -343,6 +351,7 @@ async def generate_content(project_id):
             'target_platform': request.form['target_platform'],
             'context': request.form.get('context', ''),
             'include_media': request.form.get('include_media') == 'true',
+            'include_qa_report': request.form.get('include_qa_report') == 'true',
             'project': project
         }
         
