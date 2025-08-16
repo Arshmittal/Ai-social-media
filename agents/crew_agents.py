@@ -545,6 +545,7 @@ class ContentCrewManager:
     def _parse_crew_result(self, crew_text: str, content_request: Dict) -> Dict:
         """
         crew_text is guaranteed to be a string (normalized by _normalize_crew_output).
+        Extract clean content without quality assessment reports.
         """
         try:
             if not crew_text:
@@ -557,7 +558,7 @@ class ContentCrewManager:
                     'metadata': {'generated_at': datetime.utcnow().isoformat()}
                 }
 
-            # Try JSON
+            # Try JSON first
             try:
                 if crew_text.lstrip().startswith('{'):
                     parsed = json.loads(crew_text)
@@ -572,27 +573,13 @@ class ContentCrewManager:
                 # not JSON — continue
                 pass
 
-            # Fallback: simple extraction (lines & hashtags)
-            lines = crew_text.splitlines()
-            content_lines = []
-            hashtags = []
-            for line in lines:
-                line = line.strip()
-                if not line:
-                    continue
-                # collect hashtags
-                if line.startswith('#') or '#' in line:
-                    for token in line.split():
-                        if token.startswith('#'):
-                            hashtags.append(token.strip())
-                # skip agent/task markers if present
-                if line.lower().startswith('task') or line.lower().startswith('agent'):
-                    continue
-                content_lines.append(line)
-
+            # Extract clean content by filtering out analysis and reports
+            content_text = self._extract_clean_content(crew_text)
+            hashtags = self._extract_hashtags(content_text)
+            
             return {
-                'content': '\n'.join(content_lines).strip(),
-                'hashtags': list(dict.fromkeys(hashtags)),  # de-duplicate preserving order
+                'content': content_text.strip(),
+                'hashtags': hashtags,
                 'platform': content_request['target_platform'],
                 'content_type': content_request['content_type'],
                 'topic': content_request['topic'],
@@ -601,47 +588,230 @@ class ContentCrewManager:
 
         except Exception as e:
             logger.exception("Error parsing crew text")
-            return {
-                'content': str(crew_text),
-                'hashtags': [],
-                'platform': content_request['target_platform'],
-                'content_type': content_request['content_type'],
-                'topic': content_request['topic'],
-                'metadata': {'generated_at': datetime.utcnow().isoformat()}
-            }
+            # Fallback: try to extract clean content even from error
+            try:
+                clean_content = self._extract_clean_content(str(crew_text))
+                return {
+                    'content': clean_content,
+                    'hashtags': self._extract_hashtags(clean_content),
+                    'platform': content_request['target_platform'],
+                    'content_type': content_request['content_type'],
+                    'topic': content_request['topic'],
+                    'metadata': {'generated_at': datetime.utcnow().isoformat()}
+                }
+            except:
+                return {
+                    'content': str(crew_text)[:500],  # Truncate as last resort
+                    'hashtags': [],
+                    'platform': content_request['target_platform'],
+                    'content_type': content_request['content_type'],
+                    'topic': content_request['topic'],
+                    'metadata': {'generated_at': datetime.utcnow().isoformat()}
+                }
+
+    def _extract_clean_content(self, text: str) -> str:
+        """Extract the actual social media content from crew output, filtering out analysis"""
+        if not text:
+            return ""
+            
+        # Split into lines for processing
+        lines = text.splitlines()
+        content_lines = []
+        
+        # Patterns to skip (analysis, reports, meta content)
+        skip_patterns = [
+            r'^(agent|task|crew|final|result|output|analysis|report|assessment|recommendation|strategy)',
+            r'^\*\*',  # Bold headers
+            r'^#{1,3}\s',  # Markdown headers
+            r'^-\s*(score|tests?|total|key|recommendations?)',
+            r'quality assessment',
+            r'content strategy',
+            r'trending topics',
+            r'character (count|limit)',
+            r'tests passed',
+            r'following these recommendations',
+            r'key recommendations',
+            r'brand voice',
+            r'hashtag usage',
+            r'by following',
+            r'^\d+\.\s*\*\*',  # Numbered lists with bold
+        ]
+        
+        # Sections to definitely skip entirely
+        skip_sections = [
+            'quality assessment report',
+            'assessment results',
+            'key recommendations',
+            'content strategy',
+            'trending topics',
+            'recommended hashtags',
+            'content ideas',
+            'recommended actions',
+            'measurement',
+        ]
+        
+        skip_current_section = False
+        found_content = False
+        
+        for line in lines:
+            line_lower = line.lower().strip()
+            line_clean = line.strip()
+            
+            # Check if we're entering a section to skip
+            for section in skip_sections:
+                if section in line_lower:
+                    skip_current_section = True
+                    break
+            
+            # Skip empty lines
+            if not line_clean:
+                if skip_current_section:
+                    skip_current_section = False  # Reset on empty line
+                continue
+                
+            # Skip if we're in a section to skip
+            if skip_current_section:
+                continue
+                
+            # Skip lines matching skip patterns
+            should_skip = False
+            for pattern in skip_patterns:
+                if re.search(pattern, line_lower, re.IGNORECASE):
+                    should_skip = True
+                    break
+                    
+            if should_skip:
+                continue
+            
+            # Skip obvious meta content
+            if any(word in line_lower for word in ['agent:', 'task:', 'final answer:', 'output:', 'result:']):
+                continue
+                
+            # This looks like actual content
+            if line_clean and not line_clean.startswith('*') and not line_clean.startswith('#'):
+                content_lines.append(line_clean)
+                found_content = True
+        
+        # If we didn't find structured content, try to find the best content block
+        if not found_content or not content_lines:
+            # Look for content that has social media characteristics
+            for line in lines:
+                line_clean = line.strip()
+                if (line_clean and 
+                    len(line_clean) > 20 and  # Reasonable length
+                    ('#' in line_clean or '@' in line_clean or 
+                     any(emoji in line_clean for emoji in ['🚀', '💡', '🌟', '✨', '🎯', '💪', '🔥']) or
+                     any(word in line_clean.lower() for word in ['unlock', 'discover', 'learn', 'join', 'connect']))):
+                    content_lines = [line_clean]
+                    break
+        
+        # Join and clean up the result
+        result = '\n'.join(content_lines).strip()
+        
+        # Remove any remaining markdown formatting but preserve hashtags
+        result = re.sub(r'\*\*(.*?)\*\*', r'\1', result)  # Remove bold
+        result = re.sub(r'\*(.*?)\*', r'\1', result)      # Remove italic
+        result = re.sub(r'^#{1,6}\s+', '', result, flags=re.MULTILINE)  # Remove markdown headers only at line start
+        
+        # Restore hashtags that might have been stripped (common hashtag words)
+        common_hashtags = ['GRC101', 'MentorshipMatters', 'LeadershipDevelopment', 'Compliance', 'RiskManagement', 'GRCCommunity', 'CareerGrowth']
+        for hashtag in common_hashtags:
+            # Replace standalone hashtag words with proper hashtags (avoid double #)
+            result = re.sub(r'\b(?<!\#)' + hashtag + r'\b', f'#{hashtag}', result)
+        
+        return result
+
+    def _extract_hashtags(self, text: str) -> List[str]:
+        """Extract hashtags from text"""
+        if not text:
+            return []
+            
+        # Find all hashtags (with # symbol)
+        hashtags = re.findall(r'#\w+', text)
+        
+        # Also look for hashtag words without # (in case they were stripped)
+        # Common hashtag patterns in our content
+        hashtag_words = re.findall(r'\b(GRC101|MentorshipMatters|LeadershipDevelopment|Compliance|RiskManagement|GRCCommunity|CareerGrowth)\b', text)
+        
+        # Add # prefix to hashtag words if they don't already have it
+        for word in hashtag_words:
+            hashtag = f"#{word}"
+            if hashtag not in hashtags:
+                hashtags.append(hashtag)
+        
+        # Remove duplicates while preserving order
+        seen = set()
+        unique_hashtags = []
+        for tag in hashtags:
+            if tag.lower() not in seen:
+                unique_hashtags.append(tag)
+                seen.add(tag.lower())
+                
+        return unique_hashtags
 
     # --- Main entrypoint (fixed to normalize CrewOutput before embedding/saving) ---
     async def generate_content(self, content_request: Dict) -> Dict:
         """Generate content using the crew of agents"""
         try:
             project = content_request['project']
+            
+            # Check if quality assessment is requested (default: False for cleaner output)
+            include_qa_report = content_request.get('include_qa_report', False)
 
             # Build tasks (same as before)
             strategy_task = Task(
-                description=f"""Develop a content strategy for the topic "{content_request['topic']}" ...""",
+                description=f"""Develop a content strategy for the topic "{content_request['topic']}" 
+                targeting {content_request['target_platform']} audience in the {project.get('industry', 'general')} industry.
+                Focus on trending topics, relevant hashtags, and engagement strategies.
+                Keep it concise and actionable.""",
                 agent=self.content_strategist,
-                expected_output="Content strategy with trending topics, hashtags, and recommendations"
+                expected_output="Brief content strategy with trending topics and hashtags"
             )
+            
             creation_task = Task(
-                description=f"""Based on the content strategy, create {content_request['content_type']} ...""",
+                description=f"""Based on the content strategy, create {content_request['content_type']} 
+                content for {content_request['target_platform']} about "{content_request['topic']}".
+                
+                Requirements:
+                - Brand voice: {project.get('brand_voice', 'professional')}
+                - Target audience: {project.get('target_audience', 'general audience')}
+                - Content type: {content_request['content_type']}
+                - Platform: {content_request['target_platform']}
+                
+                Return ONLY the clean, ready-to-post content with appropriate hashtags.
+                No analysis, no explanations - just the content.""",
                 agent=self.content_creator,
-                expected_output="Platform-specific content with hashtags and optimizations"
+                expected_output="Clean, platform-ready content with hashtags"
             )
+            
             optimization_task = Task(
-                description=f"""Optimize the created content for {content_request['target_platform']} ...""",
+                description=f"""Optimize the created content for {content_request['target_platform']} 
+                maximum engagement. Apply platform-specific best practices and ensure it follows 
+                character limits and format requirements.
+                
+                Return the final optimized content ready for posting.""",
                 agent=self.content_optimizer_agent,
-                expected_output="Optimized content with engagement strategies"
-            )
-            testing_task = Task(
-                description=f"""Test the optimized content for quality, compliance, and brand alignment...""",
-                agent=self.qa_agent,
-                expected_output="Quality assessment report with recommendations"
+                expected_output="Final optimized content ready for posting"
             )
 
+            # Create base crew with essential tasks
+            tasks = [strategy_task, creation_task, optimization_task]
+            agents = [self.content_strategist, self.content_creator, self.content_optimizer_agent]
+            
+            # Only add QA testing if explicitly requested
+            if include_qa_report:
+                testing_task = Task(
+                    description=f"""Test the optimized content for quality, compliance, and brand alignment.
+                    Provide detailed analysis and recommendations for improvement.""",
+                    agent=self.qa_agent,
+                    expected_output="Quality assessment report with recommendations"
+                )
+                tasks.append(testing_task)
+                agents.append(self.qa_agent)
+
             crew = Crew(
-                agents=[self.content_strategist, self.content_creator,
-                        self.content_optimizer_agent, self.qa_agent],
-                tasks=[strategy_task, creation_task, optimization_task, testing_task],
+                agents=agents,
+                tasks=tasks,
                 verbose=True
             )
 
