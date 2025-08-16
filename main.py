@@ -157,9 +157,17 @@ CONTENT_GENERATION_HTML = """
         <div class="form-group">
             <label>Target Platform:</label>
             <select name="target_platform" id="target_platform" onchange="updateContentTypes()">
-                {% for platform in project.platforms %}
-                <option value="{{ platform }}">{{ platform.title() }}</option>
-                {% endfor %}
+                {% if project.platforms and project.platforms|length > 0 %}
+                    {% for platform in project.platforms %}
+                    <option value="{{ platform }}">{{ platform.title() }}</option>
+                    {% endfor %}
+                {% else %}
+                    <!-- Fallback: show all platforms if none were selected in project -->
+                    <option value="twitter">Twitter</option>
+                    <option value="linkedin">LinkedIn</option>
+                    <option value="facebook">Facebook</option>
+                    <option value="instagram">Instagram</option>
+                {% endif %}
             </select>
         </div>
         
@@ -245,13 +253,27 @@ CONTENT_GENERATION_HTML = """
         function updateContentTypes() {
             const platformSelect = document.getElementById('target_platform');
             const contentTypeSelect = document.getElementById('content_type');
+            
+            // Debug: Check if elements exist
+            if (!platformSelect) {
+                console.error('Error: target_platform element not found');
+                return;
+            }
+            
+            if (!contentTypeSelect) {
+                console.error('Error: content_type element not found');
+                return;
+            }
+            
             const selectedPlatform = platformSelect.value;
+            console.log('Selected platform:', selectedPlatform);
             
             // Clear existing options
             contentTypeSelect.innerHTML = '';
             
             // Get content types for selected platform
             const contentTypes = platformContentTypes[selectedPlatform] || platformContentTypes['twitter'];
+            console.log('Content types for platform:', contentTypes);
             
             // Add new options
             contentTypes.forEach(type => {
@@ -261,6 +283,8 @@ CONTENT_GENERATION_HTML = """
                 contentTypeSelect.appendChild(option);
             });
             
+            console.log('Added', contentTypes.length, 'content type options');
+            
             // Update platform info
             updatePlatformInfo();
         }
@@ -269,6 +293,12 @@ CONTENT_GENERATION_HTML = """
             const platformSelect = document.getElementById('target_platform');
             const contentTypeSelect = document.getElementById('content_type');
             const platformInfoDiv = document.getElementById('platform-info');
+            
+            // Check if elements exist
+            if (!platformSelect || !contentTypeSelect || !platformInfoDiv) {
+                console.error('Error: Required elements not found for updatePlatformInfo');
+                return;
+            }
             
             const selectedPlatform = platformSelect.value;
             const selectedContentType = contentTypeSelect.value;
@@ -282,11 +312,35 @@ CONTENT_GENERATION_HTML = """
                     📝 ${contentTypeInfo.description}<br>
                     📊 Character Limit: ${contentTypeInfo.maxLength} characters
                 `;
+            } else {
+                console.error('Content type info not found for:', selectedPlatform, selectedContentType);
+                platformInfoDiv.innerHTML = `<strong>Platform: ${selectedPlatform}</strong><br>Content type: ${selectedContentType}`;
             }
         }
 
         // Initialize content types on page load
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM Content Loaded - initializing content types');
+            console.log('Platform content types object:', platformContentTypes);
+            console.log('Available platforms:', Object.keys(platformContentTypes));
+            
+            // Check if required elements exist
+            const platformSelect = document.getElementById('target_platform');
+            const contentTypeSelect = document.getElementById('content_type');
+            
+            if (platformSelect) {
+                console.log('Platform select found, current value:', platformSelect.value);
+                console.log('Platform select options count:', platformSelect.options.length);
+            } else {
+                console.error('Platform select element not found!');
+            }
+            
+            if (contentTypeSelect) {
+                console.log('Content type select found');
+            } else {
+                console.error('Content type select element not found!');
+            }
+            
             updateContentTypes();
         });
     </script>
@@ -329,6 +383,14 @@ async def create_project():
 def generate_content_form(project_id):
     """Show content generation form"""
     project = mongodb_manager.get_project(project_id)
+    
+    if not project:
+        return jsonify({'error': 'Project not found'}), 404
+    
+    # Ensure project has platforms array (fallback to empty list)
+    if 'platforms' not in project:
+        project['platforms'] = []
+        
     return render_template_string(CONTENT_GENERATION_HTML, project=project)
 
 @app.route('/generate_content/<project_id>', methods=['POST'])
