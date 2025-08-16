@@ -7,6 +7,7 @@ import json
 import logging
 from typing import Dict, List, Optional
 import uuid
+import pytz
 
 # Load environment variables
 load_dotenv()
@@ -585,12 +586,31 @@ def schedule_content():
     """Schedule content for posting"""
     try:
         content_id = request.form['content_id']
-        schedule_time = datetime.fromisoformat(request.form['schedule_time'])
+        schedule_time_str = request.form['schedule_time']
+        
+        # Parse the datetime from the form (this is in user's local time - IST)
+        schedule_time_naive = datetime.fromisoformat(schedule_time_str)
+        
+        # Assume the input is in IST (Indian Standard Time)
+        ist = pytz.timezone('Asia/Kolkata')
+        schedule_time_ist = ist.localize(schedule_time_naive)
+        
+        # Convert to UTC for storage
+        schedule_time_utc = schedule_time_ist.astimezone(pytz.UTC)
+        
+        logger.info(f"Scheduling content {content_id}")
+        logger.info(f"Original time: {schedule_time_str}")
+        logger.info(f"IST time: {schedule_time_ist}")
+        logger.info(f"UTC time for storage: {schedule_time_utc}")
         
         # Add to scheduler
-        scheduler_service.schedule_post(content_id, schedule_time)
+        scheduler_service.schedule_post(content_id, schedule_time_utc)
         
-        return jsonify({'success': True, 'message': 'Content scheduled successfully'})
+        return jsonify({
+            'success': True, 
+            'message': f'Content scheduled for {schedule_time_ist.strftime("%Y-%m-%d %H:%M:%S IST")}'
+        })
+        
     except Exception as e:
         logger.error(f"Error scheduling content: {e}")
         return jsonify({'error': str(e)}), 500

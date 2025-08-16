@@ -5,6 +5,7 @@ from datetime import datetime
 from bson import ObjectId
 from typing import Dict, List, Optional
 import logging
+import pytz
 
 logger = logging.getLogger(__name__)
 
@@ -163,14 +164,28 @@ class MongoDBManager:
     def get_pending_schedules(self) -> List[Dict]:
         """Get all pending scheduled posts"""
         try:
+            current_utc = datetime.utcnow()
+            ist = pytz.timezone('Asia/Kolkata')
+            current_ist = current_utc.replace(tzinfo=pytz.UTC).astimezone(ist)
+            
+            logger.info(f"Querying for schedules <= {current_utc} UTC ({current_ist.strftime('%Y-%m-%d %H:%M:%S IST')})")
+            
             schedules = list(self.schedules.find({
                 "status": "pending",
-                "schedule_time": {"$lte": datetime.utcnow()}
+                "schedule_time": {"$lte": current_utc}
             }))
+            
+            logger.info(f"Found {len(schedules)} pending schedules ready for execution")
             
             for schedule in schedules:
                 schedule['_id'] = str(schedule['_id'])
                 schedule['content_id'] = str(schedule['content_id'])
+                
+                # Log each schedule's time for debugging
+                schedule_utc = schedule['schedule_time']
+                if hasattr(schedule_utc, 'replace'):
+                    schedule_ist = schedule_utc.replace(tzinfo=pytz.UTC).astimezone(ist)
+                    logger.debug(f"Schedule {schedule['_id']}: {schedule_utc} UTC ({schedule_ist.strftime('%Y-%m-%d %H:%M:%S IST')})")
             
             return schedules
         except Exception as e:

@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 from typing import Dict, List
 import logging
 import asyncio
+import pytz
 
 logger = logging.getLogger(__name__)
 
@@ -48,12 +49,24 @@ class SchedulerService:
                 logger.warning("MongoDB manager not available")
                 return
                 
+            current_utc = datetime.utcnow()
+            ist = pytz.timezone('Asia/Kolkata')
+            current_ist = current_utc.replace(tzinfo=pytz.UTC).astimezone(ist)
+            
+            logger.info(f"Checking scheduled posts at {current_utc} UTC ({current_ist.strftime('%Y-%m-%d %H:%M:%S IST')})")
+                
             # Get all pending scheduled posts
             pending_schedules = self.mongodb_manager.get_pending_schedules()
             logger.info(f"Found {len(pending_schedules)} pending schedules to check")
             
             for schedule_item in pending_schedules:
-                logger.info(f"Processing schedule: {schedule_item['_id']} for content: {schedule_item['content_id']}")
+                # Convert schedule time to IST for logging
+                schedule_utc = schedule_item['schedule_time']
+                if hasattr(schedule_utc, 'replace'):
+                    schedule_ist = schedule_utc.replace(tzinfo=pytz.UTC).astimezone(ist)
+                    logger.info(f"Processing schedule: {schedule_item['_id']} for content: {schedule_item['content_id']}")
+                    logger.info(f"Scheduled for: {schedule_utc} UTC ({schedule_ist.strftime('%Y-%m-%d %H:%M:%S IST')})")
+                
                 try:
                     # Create a new event loop for this thread
                     loop = asyncio.new_event_loop()
