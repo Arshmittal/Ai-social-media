@@ -3862,3 +3862,396 @@ LiteLLM completion() model= gpt-4o-mini; provider = openai
 2025-08-16 22:16:52 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:16:52] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
 2025-08-16 22:20:27 - __main__ - INFO - Received signal 2, shutting down gracefully...
 2025-08-16 22:20:27 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 22:34:41 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 22:34:41 - __main__ - INFO - Configuration validated successfully
+2025-08-16 22:34:41 - __main__ - INFO - Initializing database connections...
+2025-08-16 22:34:41 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 22:34:41 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 22:34:41 - __main__ - INFO - Initializing AI services...
+2025-08-16 22:34:42 - __main__ - INFO - Initializing social media services...
+2025-08-16 22:34:42 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 22:34:42 - __main__ - INFO - Initializing scheduler...
+2025-08-16 22:34:42 - __main__ - INFO - Initializing MCP server...
+2025-08-16 22:34:42 - __main__ - INFO - All services initialized successfully
+2025-08-16 22:34:42 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 22:34:42 - __main__ - INFO - Scheduler service started
+2025-08-16 22:34:42 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 22:34:42 - __main__ - INFO - MCP server started
+2025-08-16 22:34:42 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 22:34:42 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 22:34:42 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 22:34:43 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.158:5000
+2025-08-16 22:34:43 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-16 22:34:43 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 22:34:56 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 22:34:56 - __main__ - INFO - Configuration validated successfully
+2025-08-16 22:34:56 - __main__ - INFO - Initializing database connections...
+2025-08-16 22:34:56 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 22:34:57 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 22:34:57 - __main__ - INFO - Initializing AI services...
+2025-08-16 22:34:57 - __main__ - INFO - Initializing social media services...
+2025-08-16 22:34:57 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 22:34:57 - __main__ - INFO - Initializing scheduler...
+2025-08-16 22:34:57 - __main__ - INFO - Initializing MCP server...
+2025-08-16 22:34:57 - __main__ - INFO - All services initialized successfully
+2025-08-16 22:34:57 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 22:34:57 - __main__ - INFO - Scheduler service started
+2025-08-16 22:34:57 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 22:34:57 - __main__ - INFO - MCP server started
+2025-08-16 22:34:57 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 22:34:57 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 22:34:57 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 22:34:57 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 22:34:57 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 22:35:05 - services.scheduler_service - INFO - Content scheduled: 68a0a493e421478dd774e844 for 2025-08-16 22:36:00
+2025-08-16 22:35:05 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:35:05] "POST /schedule_content HTTP/1.1" 200 -
+2025-08-16 22:35:42 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:35:57 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:36:42 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:36:57 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:37:27 - werkzeug - INFO -  * Detected change in 'C:\\Users\\arshm\\Documents\\Secureitlab\\content-gen\\services\\scheduler_service.py', reloading
+2025-08-16 22:37:27 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 22:37:27 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 22:37:27 - __main__ - INFO - Scheduler stopped
+2025-08-16 22:37:27 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 22:37:27 - __main__ - INFO - MCP server stopped
+2025-08-16 22:37:27 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-16 22:37:28 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 22:37:39 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-16 22:37:39 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 22:37:42 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 22:37:42 - __main__ - INFO - Scheduler stopped
+2025-08-16 22:37:42 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 22:37:42 - __main__ - INFO - MCP server stopped
+2025-08-16 22:37:42 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-16 22:37:55 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 22:37:55 - __main__ - INFO - Configuration validated successfully
+2025-08-16 22:37:55 - __main__ - INFO - Initializing database connections...
+2025-08-16 22:37:55 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 22:37:56 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 22:37:56 - __main__ - INFO - Initializing AI services...
+2025-08-16 22:37:56 - __main__ - INFO - Initializing social media services...
+2025-08-16 22:37:56 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 22:37:56 - __main__ - INFO - Initializing scheduler...
+2025-08-16 22:37:56 - __main__ - INFO - Initializing MCP server...
+2025-08-16 22:37:56 - __main__ - INFO - All services initialized successfully
+2025-08-16 22:37:56 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 22:37:56 - __main__ - INFO - Scheduler service started
+2025-08-16 22:37:56 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 22:37:56 - __main__ - INFO - MCP server started
+2025-08-16 22:37:56 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 22:37:56 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 22:37:56 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 22:37:57 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.158:5000
+2025-08-16 22:37:57 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-16 22:37:57 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 22:38:16 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 22:38:16 - __main__ - INFO - Configuration validated successfully
+2025-08-16 22:38:16 - __main__ - INFO - Initializing database connections...
+2025-08-16 22:38:16 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 22:38:16 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 22:38:16 - __main__ - INFO - Initializing AI services...
+2025-08-16 22:38:17 - __main__ - INFO - Initializing social media services...
+2025-08-16 22:38:17 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 22:38:17 - __main__ - INFO - Initializing scheduler...
+2025-08-16 22:38:17 - __main__ - INFO - Initializing MCP server...
+2025-08-16 22:38:17 - __main__ - INFO - All services initialized successfully
+2025-08-16 22:38:17 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 22:38:17 - __main__ - INFO - Scheduler service started
+2025-08-16 22:38:17 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 22:38:17 - __main__ - INFO - MCP server started
+2025-08-16 22:38:17 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 22:38:17 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 22:38:17 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 22:38:17 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 22:38:17 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 22:38:17 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:38:17] "GET / HTTP/1.1" 200 -
+2025-08-16 22:38:17 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:38:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-08-16 22:38:23 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:38:23] "GET /edit_project/6899dc5b287d829a72600b47 HTTP/1.1" 200 -
+2025-08-16 22:38:30 - main - INFO - Project updated: 6899dc5b287d829a72600b47
+2025-08-16 22:38:30 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:38:30] "[32mPOST /edit_project/6899dc5b287d829a72600b47 HTTP/1.1[0m" 302 -
+2025-08-16 22:38:30 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:38:30] "GET / HTTP/1.1" 200 -
+2025-08-16 22:38:33 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:38:33] "GET /generate_content/6899dc5b287d829a72600b47 HTTP/1.1" 200 -
+2025-08-16 22:38:56 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:39:17 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:39:24 - werkzeug - INFO -  * Detected change in 'C:\\Users\\arshm\\Documents\\Secureitlab\\content-gen\\main.py', reloading
+2025-08-16 22:39:24 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 22:39:27 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 22:39:27 - __main__ - INFO - Scheduler stopped
+2025-08-16 22:39:27 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 22:39:27 - __main__ - INFO - MCP server stopped
+2025-08-16 22:39:27 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-16 22:39:28 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 22:39:41 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 22:39:41 - __main__ - INFO - Configuration validated successfully
+2025-08-16 22:39:41 - __main__ - INFO - Initializing database connections...
+2025-08-16 22:39:41 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 22:39:42 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 22:39:42 - __main__ - INFO - Initializing AI services...
+2025-08-16 22:39:42 - __main__ - INFO - Initializing social media services...
+2025-08-16 22:39:42 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 22:39:42 - __main__ - INFO - Initializing scheduler...
+2025-08-16 22:39:42 - __main__ - INFO - Initializing MCP server...
+2025-08-16 22:39:42 - __main__ - INFO - All services initialized successfully
+2025-08-16 22:39:42 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 22:39:42 - __main__ - INFO - Scheduler service started
+2025-08-16 22:39:42 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 22:39:42 - __main__ - INFO - MCP server started
+2025-08-16 22:39:42 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 22:39:42 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 22:39:42 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 22:39:42 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 22:39:42 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 22:39:42 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:39:42] "GET /generate_content/6899dc5b287d829a72600b47 HTTP/1.1" 200 -
+2025-08-16 22:39:56 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:40:01 - services.image_service - INFO - Uploaded image saved: static/images\Blue Modern Technology LinkedIn Banner(1).png
+2025-08-16 22:40:01 - main - INFO - Media uploaded: static/images\Blue Modern Technology LinkedIn Banner(1).png
+2025-08-16 22:40:02 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 22:40:05 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 22:40:05 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 22:40:05 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 22:40:07 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 22:40:07 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 22:40:07 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 22:40:08 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 22:40:08 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 22:40:09 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 22:40:10 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 22:40:10 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 22:40:12 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-08-16 22:40:12 - httpx - INFO - HTTP Request: PUT https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333/collections/project_6899dc5b287d829a72600b47/points?wait=true "HTTP/1.1 200 OK"
+2025-08-16 22:40:12 - database.qdrant_manager - INFO - Added embedding for project 6899dc5b287d829a72600b47 (hash=ba77d2a58aef70ff1cb05dfc2dc4bac8)
+2025-08-16 22:40:13 - database.mongodb_manager - INFO - Content saved with ID: 68a0bb744de4e30c23bc649a
+2025-08-16 22:40:13 - database.mongodb_manager - INFO - Content saved with ID: 68a0bb754de4e30c23bc649b
+2025-08-16 22:40:13 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:40:13] "POST /generate_content/6899dc5b287d829a72600b47 HTTP/1.1" 200 -
+2025-08-16 22:40:13 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:40:13] "GET /static/images/Blue%20Modern%20Technology%20LinkedIn%20Banner(1).png HTTP/1.1" 200 -
+2025-08-16 22:40:37 - services.scheduler_service - INFO - Content scheduled: 68a0bb754de4e30c23bc649b for 2025-08-16 22:43:00
+2025-08-16 22:40:37 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:40:37] "POST /schedule_content HTTP/1.1" 200 -
+2025-08-16 22:40:42 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:40:56 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:41:42 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:41:56 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:42:42 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:42:56 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:43:42 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:43:56 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:44:42 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:44:56 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:45:42 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:45:56 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:46:42 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:46:56 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:47:42 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:47:56 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:48:42 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:48:56 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:49:41 - werkzeug - INFO -  * Detected change in 'C:\\Users\\arshm\\Documents\\Secureitlab\\content-gen\\database\\mongodb_manager.py', reloading
+2025-08-16 22:49:41 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 22:49:42 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 22:49:42 - __main__ - INFO - Scheduler stopped
+2025-08-16 22:49:42 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 22:49:42 - __main__ - INFO - MCP server stopped
+2025-08-16 22:49:42 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-16 22:49:44 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 22:49:44 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 22:49:46 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 22:49:46 - __main__ - INFO - Scheduler stopped
+2025-08-16 22:49:46 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 22:49:46 - __main__ - INFO - MCP server stopped
+2025-08-16 22:49:46 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-16 22:51:22 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 22:51:22 - __main__ - INFO - Configuration validated successfully
+2025-08-16 22:51:22 - __main__ - INFO - Initializing database connections...
+2025-08-16 22:51:22 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 22:51:22 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 22:51:22 - __main__ - INFO - Initializing AI services...
+2025-08-16 22:51:22 - __main__ - INFO - Initializing social media services...
+2025-08-16 22:51:22 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 22:51:22 - __main__ - INFO - Initializing scheduler...
+2025-08-16 22:51:22 - __main__ - INFO - Initializing MCP server...
+2025-08-16 22:51:22 - __main__ - INFO - All services initialized successfully
+2025-08-16 22:51:22 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 22:51:22 - __main__ - INFO - Scheduler service started
+2025-08-16 22:51:22 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 22:51:22 - __main__ - INFO - MCP server started
+2025-08-16 22:51:22 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 22:51:22 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 22:51:22 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 22:51:23 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.158:5000
+2025-08-16 22:51:23 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-16 22:51:23 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 22:51:32 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 22:51:32 - __main__ - INFO - Configuration validated successfully
+2025-08-16 22:51:32 - __main__ - INFO - Initializing database connections...
+2025-08-16 22:51:32 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 22:51:33 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 22:51:33 - __main__ - INFO - Initializing AI services...
+2025-08-16 22:51:33 - __main__ - INFO - Initializing social media services...
+2025-08-16 22:51:33 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 22:51:33 - __main__ - INFO - Initializing scheduler...
+2025-08-16 22:51:33 - __main__ - INFO - Initializing MCP server...
+2025-08-16 22:51:33 - __main__ - INFO - All services initialized successfully
+2025-08-16 22:51:33 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 22:51:33 - __main__ - INFO - Scheduler service started
+2025-08-16 22:51:33 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 22:51:33 - __main__ - INFO - MCP server started
+2025-08-16 22:51:33 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 22:51:33 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 22:51:33 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 22:51:33 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 22:51:33 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 22:51:33 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:51:33] "GET /generate_content/6899dc5b287d829a72600b47 HTTP/1.1" 200 -
+2025-08-16 22:52:07 - werkzeug - INFO -  * Detected change in 'C:\\Users\\arshm\\Documents\\Secureitlab\\content-gen\\main.py', reloading
+2025-08-16 22:52:07 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 22:52:22 - services.scheduler_service - INFO - Checking scheduled posts at 2025-08-16 17:22:22.704901 UTC (2025-08-16 22:52:22 IST)
+2025-08-16 22:52:22 - database.mongodb_manager - INFO - Querying for schedules <= 2025-08-16 17:22:22.862630 UTC (2025-08-16 22:52:22 IST)
+2025-08-16 22:52:22 - database.mongodb_manager - INFO - Found 0 pending schedules ready for execution
+2025-08-16 22:52:22 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:52:23 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:52:23] "GET /generate_content/6899dc5b287d829a72600b47 HTTP/1.1" 200 -
+2025-08-16 22:52:33 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 22:52:33 - __main__ - INFO - Scheduler stopped
+2025-08-16 22:52:33 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 22:52:33 - __main__ - INFO - MCP server stopped
+2025-08-16 22:52:33 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-16 22:52:34 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 22:52:45 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 22:52:45 - __main__ - INFO - Configuration validated successfully
+2025-08-16 22:52:45 - __main__ - INFO - Initializing database connections...
+2025-08-16 22:52:45 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 22:52:45 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 22:52:45 - __main__ - INFO - Initializing AI services...
+2025-08-16 22:52:45 - __main__ - INFO - Initializing social media services...
+2025-08-16 22:52:45 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 22:52:45 - __main__ - INFO - Initializing scheduler...
+2025-08-16 22:52:45 - __main__ - INFO - Initializing MCP server...
+2025-08-16 22:52:45 - __main__ - INFO - All services initialized successfully
+2025-08-16 22:52:45 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 22:52:45 - __main__ - INFO - Scheduler service started
+2025-08-16 22:52:45 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 22:52:45 - __main__ - INFO - MCP server started
+2025-08-16 22:52:45 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 22:52:45 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 22:52:45 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 22:52:46 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 22:52:46 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 22:52:46 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:52:46] "GET /generate_content/6899dc5b287d829a72600b47 HTTP/1.1" 200 -
+2025-08-16 22:53:03 - services.image_service - INFO - Uploaded image saved: static/images\Blue Modern Technology LinkedIn Banner(1).png
+2025-08-16 22:53:03 - main - INFO - Media uploaded: static/images\Blue Modern Technology LinkedIn Banner(1).png
+2025-08-16 22:53:03 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 22:53:05 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 22:53:05 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 22:53:05 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 22:53:06 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 22:53:06 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 22:53:06 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 22:53:08 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 22:53:08 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 22:53:08 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 22:53:09 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 22:53:09 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 22:53:09 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 22:53:11 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 22:53:11 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 22:53:12 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-08-16 22:53:13 - httpx - INFO - HTTP Request: PUT https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333/collections/project_6899dc5b287d829a72600b47/points?wait=true "HTTP/1.1 200 OK"
+2025-08-16 22:53:13 - database.qdrant_manager - INFO - Added embedding for project 6899dc5b287d829a72600b47 (hash=c8042935a4de643e14d185349c63c0ec)
+2025-08-16 22:53:13 - database.mongodb_manager - INFO - Content saved with ID: 68a0be813f0fdf76230f5795
+2025-08-16 22:53:13 - database.mongodb_manager - INFO - Content saved with ID: 68a0be813f0fdf76230f5796
+2025-08-16 22:53:13 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:53:13] "POST /generate_content/6899dc5b287d829a72600b47 HTTP/1.1" 200 -
+2025-08-16 22:53:13 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:53:13] "GET /static/images/Blue%20Modern%20Technology%20LinkedIn%20Banner(1).png HTTP/1.1" 200 -
+2025-08-16 22:53:22 - services.scheduler_service - INFO - Checking scheduled posts at 2025-08-16 17:23:22.867846 UTC (2025-08-16 22:53:22 IST)
+2025-08-16 22:53:22 - database.mongodb_manager - INFO - Querying for schedules <= 2025-08-16 17:23:22.868892 UTC (2025-08-16 22:53:22 IST)
+2025-08-16 22:53:22 - database.mongodb_manager - INFO - Found 0 pending schedules ready for execution
+2025-08-16 22:53:22 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:53:23 - main - INFO - Scheduling content 68a0be813f0fdf76230f5796
+2025-08-16 22:53:23 - main - INFO - Original time: 2025-08-16T22:55
+2025-08-16 22:53:23 - main - INFO - IST time: 2025-08-16 22:55:00+05:30
+2025-08-16 22:53:23 - main - INFO - UTC time for storage: 2025-08-16 17:25:00+00:00
+2025-08-16 22:53:23 - services.scheduler_service - INFO - Content scheduled: 68a0be813f0fdf76230f5796 for 2025-08-16 17:25:00+00:00
+2025-08-16 22:53:23 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:53:23] "POST /schedule_content HTTP/1.1" 200 -
+2025-08-16 22:53:45 - services.scheduler_service - INFO - Checking scheduled posts at 2025-08-16 17:23:45.996742 UTC (2025-08-16 22:53:45 IST)
+2025-08-16 22:53:45 - database.mongodb_manager - INFO - Querying for schedules <= 2025-08-16 17:23:45.997634 UTC (2025-08-16 22:53:45 IST)
+2025-08-16 22:53:45 - database.mongodb_manager - INFO - Found 0 pending schedules ready for execution
+2025-08-16 22:53:46 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:54:22 - services.scheduler_service - INFO - Checking scheduled posts at 2025-08-16 17:24:22.873357 UTC (2025-08-16 22:54:22 IST)
+2025-08-16 22:54:22 - database.mongodb_manager - INFO - Querying for schedules <= 2025-08-16 17:24:22.875380 UTC (2025-08-16 22:54:22 IST)
+2025-08-16 22:54:22 - database.mongodb_manager - INFO - Found 0 pending schedules ready for execution
+2025-08-16 22:54:22 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:54:46 - services.scheduler_service - INFO - Checking scheduled posts at 2025-08-16 17:24:46.002977 UTC (2025-08-16 22:54:46 IST)
+2025-08-16 22:54:46 - database.mongodb_manager - INFO - Querying for schedules <= 2025-08-16 17:24:46.002977 UTC (2025-08-16 22:54:46 IST)
+2025-08-16 22:54:46 - database.mongodb_manager - INFO - Found 0 pending schedules ready for execution
+2025-08-16 22:54:46 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:55:22 - services.scheduler_service - INFO - Checking scheduled posts at 2025-08-16 17:25:22.884291 UTC (2025-08-16 22:55:22 IST)
+2025-08-16 22:55:22 - database.mongodb_manager - INFO - Querying for schedules <= 2025-08-16 17:25:22.885170 UTC (2025-08-16 22:55:22 IST)
+2025-08-16 22:55:22 - database.mongodb_manager - INFO - Found 1 pending schedules ready for execution
+2025-08-16 22:55:22 - services.scheduler_service - INFO - Found 1 pending schedules to check
+2025-08-16 22:55:22 - services.scheduler_service - INFO - Processing schedule: 68a0be8b3f0fdf76230f5797 for content: 68a0be813f0fdf76230f5796
+2025-08-16 22:55:22 - services.scheduler_service - INFO - Scheduled for: 2025-08-16 17:25:00 UTC (2025-08-16 22:55:00 IST)
+2025-08-16 22:55:22 - services.scheduler_service - INFO - Executing scheduled post for content: 68a0be813f0fdf76230f5796
+2025-08-16 22:55:22 - services.scheduler_service - INFO - Posting to twitter platform
+2025-08-16 22:55:22 - services.social_media_service - INFO - Posting to platform: twitter
+2025-08-16 22:55:22 - services.social_media_service - INFO - Content text length: 249 characters
+2025-08-16 22:55:23 - services.scheduler_service - INFO - Post result: {'success': True, 'platform': 'twitter', 'post_id': '1956769272308318226', 'url': 'https://twitter.com/i/web/status/1956769272308318226', 'posted_at': '2025-08-16T17:25:23.559144'}
+2025-08-16 22:55:23 - database.mongodb_manager - INFO - Content status updated: 68a0be813f0fdf76230f5796 -> posted
+2025-08-16 22:55:23 - services.scheduler_service - INFO - Successfully posted scheduled content: 68a0be813f0fdf76230f5796
+2025-08-16 22:55:46 - services.scheduler_service - INFO - Checking scheduled posts at 2025-08-16 17:25:46.007010 UTC (2025-08-16 22:55:46 IST)
+2025-08-16 22:55:46 - database.mongodb_manager - INFO - Querying for schedules <= 2025-08-16 17:25:46.007010 UTC (2025-08-16 22:55:46 IST)
+2025-08-16 22:55:46 - database.mongodb_manager - INFO - Found 0 pending schedules ready for execution
+2025-08-16 22:55:46 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:56:22 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:56:22] "GET /generate_content/6899dc5b287d829a72600b47 HTTP/1.1" 200 -
+2025-08-16 22:56:23 - services.scheduler_service - INFO - Checking scheduled posts at 2025-08-16 17:26:23.572608 UTC (2025-08-16 22:56:23 IST)
+2025-08-16 22:56:23 - database.mongodb_manager - INFO - Querying for schedules <= 2025-08-16 17:26:23.573605 UTC (2025-08-16 22:56:23 IST)
+2025-08-16 22:56:23 - database.mongodb_manager - INFO - Found 0 pending schedules ready for execution
+2025-08-16 22:56:23 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:56:25 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:56:25] "GET / HTTP/1.1" 200 -
+2025-08-16 22:56:25 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:56:25] "GET / HTTP/1.1" 200 -
+2025-08-16 22:56:26 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:56:26] "GET / HTTP/1.1" 200 -
+2025-08-16 22:56:26 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 22:56:26] "GET / HTTP/1.1" 200 -
+2025-08-16 22:56:46 - services.scheduler_service - INFO - Checking scheduled posts at 2025-08-16 17:26:46.011296 UTC (2025-08-16 22:56:46 IST)
+2025-08-16 22:56:46 - database.mongodb_manager - INFO - Querying for schedules <= 2025-08-16 17:26:46.012293 UTC (2025-08-16 22:56:46 IST)
+2025-08-16 22:56:46 - database.mongodb_manager - INFO - Found 0 pending schedules ready for execution
+2025-08-16 22:56:46 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:57:23 - services.scheduler_service - INFO - Checking scheduled posts at 2025-08-16 17:27:23.579812 UTC (2025-08-16 22:57:23 IST)
+2025-08-16 22:57:23 - database.mongodb_manager - INFO - Querying for schedules <= 2025-08-16 17:27:23.579812 UTC (2025-08-16 22:57:23 IST)
+2025-08-16 22:57:23 - database.mongodb_manager - INFO - Found 0 pending schedules ready for execution
+2025-08-16 22:57:23 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:57:46 - services.scheduler_service - INFO - Checking scheduled posts at 2025-08-16 17:27:46.017217 UTC (2025-08-16 22:57:46 IST)
+2025-08-16 22:57:46 - database.mongodb_manager - INFO - Querying for schedules <= 2025-08-16 17:27:46.018210 UTC (2025-08-16 22:57:46 IST)
+2025-08-16 22:57:46 - database.mongodb_manager - INFO - Found 0 pending schedules ready for execution
+2025-08-16 22:57:46 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:58:23 - services.scheduler_service - INFO - Checking scheduled posts at 2025-08-16 17:28:23.584148 UTC (2025-08-16 22:58:23 IST)
+2025-08-16 22:58:23 - database.mongodb_manager - INFO - Querying for schedules <= 2025-08-16 17:28:23.585099 UTC (2025-08-16 22:58:23 IST)
+2025-08-16 22:58:23 - database.mongodb_manager - INFO - Found 0 pending schedules ready for execution
+2025-08-16 22:58:23 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:58:46 - services.scheduler_service - INFO - Checking scheduled posts at 2025-08-16 17:28:46.022497 UTC (2025-08-16 22:58:46 IST)
+2025-08-16 22:58:46 - database.mongodb_manager - INFO - Querying for schedules <= 2025-08-16 17:28:46.022497 UTC (2025-08-16 22:58:46 IST)
+2025-08-16 22:58:46 - database.mongodb_manager - INFO - Found 0 pending schedules ready for execution
+2025-08-16 22:58:46 - services.scheduler_service - INFO - Found 0 pending schedules to check
+2025-08-16 22:58:47 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-16 22:58:47 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 22:59:16 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-16 22:59:17 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-16 22:59:17 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 22:59:23 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 22:59:23 - __main__ - INFO - Scheduler stopped
+2025-08-16 22:59:23 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 22:59:23 - __main__ - INFO - MCP server stopped
+2025-08-16 22:59:23 - __main__ - INFO - Content Generation System shutdown complete

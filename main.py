@@ -1,12 +1,13 @@
 
 import os
 from dotenv import load_dotenv
-from flask import Flask, request, jsonify, render_template_string
+from flask import Flask, request, jsonify, render_template_string, redirect, send_from_directory
 from datetime import datetime, timedelta
 import json
 import logging
 from typing import Dict, List, Optional
 import uuid
+import pytz
 
 # Load environment variables
 load_dotenv()
@@ -17,6 +18,7 @@ from database.qdrant_manager import QdrantManager
 from agents.crew_agents import ContentCrewManager
 from services.social_media_service import SocialMediaService
 from services.scheduler_service import SchedulerService
+from services.image_service import ImageService
 from mcp.mcp_server import MCPServer
 
 # Configure logging
@@ -35,6 +37,7 @@ mongodb_manager = MongoDBManager()
 qdrant_manager = QdrantManager()
 social_media_service = SocialMediaService()
 scheduler_service = SchedulerService(mongodb_manager=mongodb_manager, social_media_service=social_media_service)
+image_service = ImageService("static/images")
 mcp_server = MCPServer()
 
 # Initialize CrewAI agents
@@ -121,7 +124,11 @@ PROJECT_FORM_HTML = """
         <h3>{{ project.name }}</h3>
         <p>{{ project.description }}</p>
         <p><strong>Platforms:</strong> {{ ', '.join(project.platforms) }}</p>
-        <a href="/generate_content/{{ project._id }}">Generate Content</a>
+        <div style="margin-top: 15px;">
+            <a href="/generate_content/{{ project._id }}" style="background: #007bff; color: white; padding: 8px 16px; text-decoration: none; margin-right: 10px;">Generate Content</a>
+            <a href="/edit_project/{{ project._id }}" style="background: #28a745; color: white; padding: 8px 16px; text-decoration: none; margin-right: 10px;">Edit</a>
+            <a href="/delete_project/{{ project._id }}" onclick="return confirm('Are you sure you want to delete this project?')" style="background: #dc3545; color: white; padding: 8px 16px; text-decoration: none;">Delete</a>
+        </div>
     </div>
     {% endfor %}
 </body>
@@ -148,7 +155,7 @@ CONTENT_GENERATION_HTML = """
 <body>
     <h1>Generate Content for {{ project.name }}</h1>
     
-    <form method="POST" action="/generate_content/{{ project._id }}">
+    <form method="POST" action="/generate_content/{{ project._id }}" enctype="multipart/form-data">
         <div class="form-group">
             <label>Content Topic:</label>
             <input type="text" name="topic" required>
@@ -183,6 +190,12 @@ CONTENT_GENERATION_HTML = """
         </div>
         
         <div class="form-group">
+            <label>Upload Image (Optional):</label>
+            <input type="file" name="media_file" accept="image/*,video/*" id="media_file">
+            <small class="char-counter">Upload an image or video to include with your content</small>
+        </div>
+        
+        <div class="form-group">
             <label>Additional Context:</label>
             <textarea name="context" placeholder="Any specific requirements or context..."></textarea>
         </div>
@@ -201,6 +214,13 @@ CONTENT_GENERATION_HTML = """
         <p><strong>Hashtags:</strong> {{ generated_content.hashtags | join(', ') }}</p>
         {% endif %}
         
+        {% if generated_content.media_path %}
+        <div style="margin: 15px 0;">
+            <p><strong>Uploaded Media:</strong></p>
+            <img src="/{{ generated_content.media_path }}" alt="Uploaded media" style="max-width: 300px; max-height: 200px; border: 1px solid #ddd;">
+        </div>
+        {% endif %}
+        
         <form method="POST" action="/schedule_content">
             <input type="hidden" name="content_id" value="{{ generated_content._id }}">
             <div class="form-group">
@@ -213,6 +233,19 @@ CONTENT_GENERATION_HTML = """
         <form method="POST" action="/post_now" style="display: inline;">
             <input type="hidden" name="content_id" value="{{ generated_content._id }}">
             <button type="submit">Post Now</button>
+        </form>
+        
+        <form method="POST" action="/regenerate_content" style="display: inline;">
+            <input type="hidden" name="project_id" value="{{ project._id }}">
+            <input type="hidden" name="topic" value="{{ request.form.get('topic', '') }}">
+            <input type="hidden" name="content_type" value="{{ request.form.get('content_type', '') }}">
+            <input type="hidden" name="target_platform" value="{{ request.form.get('target_platform', '') }}">
+            <input type="hidden" name="context" value="{{ request.form.get('context', '') }}">
+            <input type="hidden" name="include_media" value="{{ request.form.get('include_media', '') }}">
+            {% if generated_content.media_path %}
+            <input type="hidden" name="media_path" value="{{ generated_content.media_path }}">
+            {% endif %}
+            <button type="submit" style="background: #ffc107; color: #212529;">Regenerate Content</button>
         </form>
     </div>
     {% endif %}
@@ -294,6 +327,79 @@ CONTENT_GENERATION_HTML = """
 </html>
 """
 
+EDIT_PROJECT_HTML = """
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Project</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .form-group { margin: 20px 0; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, textarea, select { width: 100%; padding: 8px; margin-bottom: 10px; }
+        button { background: #007bff; color: white; padding: 10px 20px; border: none; cursor: pointer; margin-right: 10px; }
+        .cancel-btn { background: #6c757d; }
+        .platform-checkbox { display: inline-block; margin: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Edit Project</h1>
+    
+    <form method="POST" action="/edit_project/{{ project._id }}">
+        <div class="form-group">
+            <label>Project Name:</label>
+            <input type="text" name="name" value="{{ project.name }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label>Description:</label>
+            <textarea name="description" required>{{ project.description }}</textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Brand Voice:</label>
+            <select name="brand_voice">
+                <option value="professional" {% if project.brand_voice == 'professional' %}selected{% endif %}>Professional</option>
+                <option value="casual" {% if project.brand_voice == 'casual' %}selected{% endif %}>Casual</option>
+                <option value="friendly" {% if project.brand_voice == 'friendly' %}selected{% endif %}>Friendly</option>
+                <option value="authoritative" {% if project.brand_voice == 'authoritative' %}selected{% endif %}>Authoritative</option>
+                <option value="playful" {% if project.brand_voice == 'playful' %}selected{% endif %}>Playful</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label>Target Platforms:</label>
+            <div class="platform-checkbox">
+                <input type="checkbox" name="platforms" value="twitter" {% if 'twitter' in project.platforms %}checked{% endif %}> Twitter
+            </div>
+            <div class="platform-checkbox">
+                <input type="checkbox" name="platforms" value="linkedin" {% if 'linkedin' in project.platforms %}checked{% endif %}> LinkedIn
+            </div>
+            <div class="platform-checkbox">
+                <input type="checkbox" name="platforms" value="facebook" {% if 'facebook' in project.platforms %}checked{% endif %}> Facebook
+            </div>
+            <div class="platform-checkbox">
+                <input type="checkbox" name="platforms" value="instagram" {% if 'instagram' in project.platforms %}checked{% endif %}> Instagram
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Industry:</label>
+            <input type="text" name="industry" value="{{ project.industry }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label>Target Audience:</label>
+            <textarea name="target_audience" required>{{ project.target_audience }}</textarea>
+        </div>
+        
+        <button type="submit">Update Project</button>
+        <a href="/" class="cancel-btn" style="color: white; text-decoration: none; padding: 10px 20px; display: inline-block;">Cancel</a>
+    </form>
+</body>
+</html>
+"""
+
 @app.route('/')
 def index():
     """Main dashboard showing all projects"""
@@ -325,6 +431,60 @@ async def create_project():
         logger.error(f"Error creating project: {e}")
         return jsonify({'error': str(e)}), 500
 
+@app.route('/edit_project/<project_id>', methods=['GET', 'POST'])
+def edit_project(project_id):
+    """Edit project route"""
+    if request.method == 'GET':
+        project = mongodb_manager.get_project(project_id)
+        if not project:
+            return "Project not found", 404
+        return render_template_string(EDIT_PROJECT_HTML, project=project)
+    
+    elif request.method == 'POST':
+        try:
+            platforms = request.form.getlist('platforms')
+            if not platforms:
+                return "At least one platform must be selected", 400
+            
+            updates = {
+                'name': request.form['name'],
+                'description': request.form['description'],
+                'brand_voice': request.form['brand_voice'],
+                'platforms': platforms,
+                'industry': request.form['industry'],
+                'target_audience': request.form['target_audience']
+            }
+            
+            # Update project
+            success = mongodb_manager.update_project(project_id, updates)
+            
+            if success:
+                logger.info(f"Project updated: {project_id}")
+                return redirect('/')
+            else:
+                return "Failed to update project", 500
+                
+        except Exception as e:
+            logger.error(f"Error updating project: {e}")
+            return f"Error: {str(e)}", 500
+
+@app.route('/delete_project/<project_id>', methods=['GET'])
+def delete_project(project_id):
+    """Delete project route"""
+    try:
+        # Update project status to inactive instead of deleting
+        success = mongodb_manager.update_project(project_id, {'status': 'deleted'})
+        
+        if success:
+            logger.info(f"Project deleted: {project_id}")
+            return redirect('/')
+        else:
+            return "Failed to delete project", 500
+            
+    except Exception as e:
+        logger.error(f"Error deleting project: {e}")
+        return f"Error: {str(e)}", 500
+
 @app.route('/generate_content/<project_id>')
 def generate_content_form(project_id):
     """Show content generation form"""
@@ -337,17 +497,36 @@ async def generate_content(project_id):
     try:
         project = mongodb_manager.get_project(project_id)
         
+        # Handle file upload
+        media_path = None
+        if 'media_file' in request.files and request.files['media_file'].filename:
+            media_file = request.files['media_file']
+            if media_file.filename:
+                try:
+                    media_path = image_service.save_uploaded_image(
+                        media_file.read(), 
+                        media_file.filename
+                    )
+                    logger.info(f"Media uploaded: {media_path}")
+                except Exception as e:
+                    logger.error(f"Error uploading media: {e}")
+        
         content_request = {
             'topic': request.form['topic'],
             'content_type': request.form['content_type'],
             'target_platform': request.form['target_platform'],
             'context': request.form.get('context', ''),
             'include_media': request.form.get('include_media') == 'true',
+            'media_path': media_path,
             'project': project
         }
         
         # Generate content using CrewAI
         generated_content = await crew_manager.generate_content(content_request)
+        
+        # Add media path to content data
+        if media_path:
+            generated_content['media_path'] = media_path
         
         # Save generated content
         content_id = mongodb_manager.save_content(project_id, generated_content)
@@ -363,17 +542,75 @@ async def generate_content(project_id):
         logger.error(f"Error generating content: {e}")
         return jsonify({'error': str(e)}), 500
 
+@app.route('/regenerate_content', methods=['POST'])
+async def regenerate_content():
+    """Regenerate content with the same parameters"""
+    try:
+        project_id = request.form['project_id']
+        project = mongodb_manager.get_project(project_id)
+        
+        # Use the same parameters as the original request
+        content_request = {
+            'topic': request.form.get('topic', ''),
+            'content_type': request.form.get('content_type', ''),
+            'target_platform': request.form.get('target_platform', ''),
+            'context': request.form.get('context', ''),
+            'include_media': request.form.get('include_media', '') == 'true',
+            'media_path': request.form.get('media_path', ''),
+            'project': project
+        }
+        
+        # Generate new content
+        content_data = await crew_manager.generate_content(content_request)
+        
+        # Add media path to content data if it exists
+        if content_request.get('media_path'):
+            content_data['media_path'] = content_request['media_path']
+        
+        # Save the new content
+        content_id = mongodb_manager.save_content(project_id, content_data)
+        content_data['_id'] = content_id
+        
+        # Render the form again with new content
+        return render_template_string(CONTENT_GENERATION_HTML, 
+                                    project=project, 
+                                    generated_content=content_data,
+                                    request=request)
+        
+    except Exception as e:
+        logger.error(f"Error regenerating content: {e}")
+        return f"Error regenerating content: {str(e)}", 500
+
 @app.route('/schedule_content', methods=['POST'])
 def schedule_content():
     """Schedule content for posting"""
     try:
         content_id = request.form['content_id']
-        schedule_time = datetime.fromisoformat(request.form['schedule_time'])
+        schedule_time_str = request.form['schedule_time']
+        
+        # Parse the datetime from the form (this is in user's local time - IST)
+        schedule_time_naive = datetime.fromisoformat(schedule_time_str)
+        
+        # Assume the input is in IST (Indian Standard Time)
+        ist = pytz.timezone('Asia/Kolkata')
+        schedule_time_ist = ist.localize(schedule_time_naive)
+        
+        # Convert to UTC for storage
+        schedule_time_utc = schedule_time_ist.astimezone(pytz.UTC)
+        
+        logger.info(f"Scheduling content {content_id}")
+        logger.info(f"Original time: {schedule_time_str}")
+        logger.info(f"IST time: {schedule_time_ist}")
+        logger.info(f"UTC time for storage: {schedule_time_utc}")
         
         # Add to scheduler
-        scheduler_service.schedule_post(content_id, schedule_time)
+        scheduler_service.schedule_post(content_id, schedule_time_utc)
         
-        return jsonify({'success': True, 'message': 'Content scheduled successfully'})
+        return jsonify({
+            'success': True, 
+            'message': f'Content scheduled for {schedule_time_ist.strftime("%Y-%m-%d %H:%M:%S IST")}'
+        })
+        
     except Exception as e:
         logger.error(f"Error scheduling content: {e}")
         return jsonify({'error': str(e)}), 500
@@ -451,6 +688,11 @@ def api_get_projects():
         'platforms': p['platforms'],
         'status': p['status']
     } for p in projects])
+
+@app.route('/static/images/<filename>')
+def serve_image(filename):
+    """Serve uploaded images"""
+    return send_from_directory('static/images', filename)
 
 @app.route('/api/content/<project_id>', methods=['GET'])
 def api_get_content(project_id):
