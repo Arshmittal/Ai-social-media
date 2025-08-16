@@ -112,7 +112,7 @@ class SocialMediaService:
             
             for i, part in enumerate(thread_parts):
                 # Apply twitter formatting for each part
-                part_formatted = self._format_for_twitter(part.strip(), is_thread=True, index=i1, total=len(thread_parts))
+                part_formatted = self._format_for_twitter(part.strip(), is_thread=True, index=i, total=len(thread_parts))
                 if len(part_formatted) > 280:
                     # Split long parts conservatively with numbering
                     chunks = self._split_tweet_content(part_formatted, 280)

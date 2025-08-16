@@ -2129,3 +2129,702 @@ LiteLLM completion() model= gpt-4o-mini; provider = openai
 2025-08-16 00:21:51 - __main__ - INFO - Received signal 2, shutting down gracefully...
 2025-08-16 00:21:52 - __main__ - INFO - Received signal 2, shutting down gracefully...
 2025-08-16 00:21:52 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 19:35:57 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 19:35:57 - __main__ - INFO - Configuration validated successfully
+2025-08-16 19:35:57 - __main__ - INFO - Initializing database connections...
+2025-08-16 19:35:57 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 19:35:58 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 19:35:58 - __main__ - INFO - Initializing AI services...
+2025-08-16 19:35:58 - __main__ - INFO - Initializing social media services...
+2025-08-16 19:35:58 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 19:35:58 - __main__ - INFO - Initializing scheduler...
+2025-08-16 19:35:58 - __main__ - INFO - Initializing MCP server...
+2025-08-16 19:35:58 - __main__ - INFO - All services initialized successfully
+2025-08-16 19:35:58 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 19:35:58 - __main__ - INFO - Scheduler service started
+2025-08-16 19:35:58 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 19:35:58 - __main__ - INFO - MCP server started
+2025-08-16 19:35:58 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 19:35:58 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 19:35:58 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 19:35:59 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.158:5000
+2025-08-16 19:35:59 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-16 19:35:59 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 19:36:09 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 19:36:09 - __main__ - INFO - Configuration validated successfully
+2025-08-16 19:36:09 - __main__ - INFO - Initializing database connections...
+2025-08-16 19:36:09 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 19:36:10 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 19:36:10 - __main__ - INFO - Initializing AI services...
+2025-08-16 19:36:10 - __main__ - INFO - Initializing social media services...
+2025-08-16 19:36:10 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 19:36:10 - __main__ - INFO - Initializing scheduler...
+2025-08-16 19:36:10 - __main__ - INFO - Initializing MCP server...
+2025-08-16 19:36:10 - __main__ - INFO - All services initialized successfully
+2025-08-16 19:36:10 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 19:36:10 - __main__ - INFO - Scheduler service started
+2025-08-16 19:36:10 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 19:36:10 - __main__ - INFO - MCP server started
+2025-08-16 19:36:10 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 19:36:10 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 19:36:10 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 19:36:10 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 19:36:10 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 19:36:10 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 19:36:10] "GET / HTTP/1.1" 200 -
+2025-08-16 19:36:10 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 19:36:10] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-08-16 19:36:21 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 19:36:21] "GET /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
+2025-08-16 19:36:36 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:36:39 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:36:39 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:36:39 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:36:50 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:36:50 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:36:50 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:36:55 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:36:55 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:36:55 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:37:00 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:37:00 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:37:00 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:37:02 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:37:02 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:37:02 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:37:09 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:37:09 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:37:09 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:37:14 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:37:14 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:37:14 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:37:20 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:37:20 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:37:20 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:37:24 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:37:24 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:37:24 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:37:28 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:37:28 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:37:28 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:37:31 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:37:31 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:37:31 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:37:34 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:37:34 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:37:34 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:37:37 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:37:37 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:37:37 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:37:39 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:37:39 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:37:39 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:37:42 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:37:42 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:37:42 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:37:45 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:37:45 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:37:45 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:37:48 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:37:48 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:37:49 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:37:52 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:37:52 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:37:52 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:37:55 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:37:55 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:37:55 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:37:57 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:37:57 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:37:57 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:38:00 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:38:00 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:38:00 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:38:02 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:38:02 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:38:02 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:38:05 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:38:05 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:38:05 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:38:09 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:38:09 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:38:09 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:38:13 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:38:13 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:38:14 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-08-16 19:38:15 - httpx - INFO - HTTP Request: PUT https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333/collections/project_689f2d72212c023266538100/points?wait=true "HTTP/1.1 200 OK"
+2025-08-16 19:38:15 - database.qdrant_manager - INFO - Added embedding for project 689f2d72212c023266538100 (hash=479cc45ecc44685d0726908a1cc36d9a)
+2025-08-16 19:38:15 - database.mongodb_manager - INFO - Content saved with ID: 68a090cfc92037a7360b3e29
+2025-08-16 19:38:15 - database.mongodb_manager - INFO - Content saved with ID: 68a090cfc92037a7360b3e2a
+2025-08-16 19:38:15 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 19:38:15] "POST /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
+2025-08-16 19:43:56 - werkzeug - INFO -  * Detected change in 'C:\\Users\\arshm\\Documents\\Secureitlab\\content-gen\\agents\\crew_agents.py', reloading
+2025-08-16 19:43:56 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 19:44:10 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 19:44:10 - __main__ - INFO - Scheduler stopped
+2025-08-16 19:44:10 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 19:44:10 - __main__ - INFO - MCP server stopped
+2025-08-16 19:44:10 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-16 19:44:12 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 19:44:25 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 19:44:25 - __main__ - INFO - Configuration validated successfully
+2025-08-16 19:44:25 - __main__ - INFO - Initializing database connections...
+2025-08-16 19:44:25 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 19:44:26 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 19:44:26 - __main__ - INFO - Initializing AI services...
+2025-08-16 19:44:26 - __main__ - INFO - Initializing social media services...
+2025-08-16 19:44:26 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 19:44:26 - __main__ - INFO - Initializing scheduler...
+2025-08-16 19:44:26 - __main__ - INFO - Initializing MCP server...
+2025-08-16 19:44:26 - __main__ - INFO - All services initialized successfully
+2025-08-16 19:44:26 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 19:44:26 - __main__ - INFO - Scheduler service started
+2025-08-16 19:44:26 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 19:44:26 - __main__ - INFO - MCP server started
+2025-08-16 19:44:26 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 19:44:26 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 19:44:26 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 19:44:26 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 19:44:26 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 19:44:26 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 19:44:26] "GET /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
+2025-08-16 19:44:27 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:44:29 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:44:29 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:44:29 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:44:36 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:44:36 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:44:36 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:44:37 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:44:37 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:44:37 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:44:38 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:44:38 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:44:38 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:44:40 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:44:40 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:44:40 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:44:41 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:44:41 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:44:42 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:44:43 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:44:43 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:44:43 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:45:04 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 19:45:04 - __main__ - INFO - Configuration validated successfully
+2025-08-16 19:45:04 - __main__ - INFO - Initializing database connections...
+2025-08-16 19:45:04 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 19:45:05 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 19:45:05 - __main__ - INFO - Initializing AI services...
+2025-08-16 19:45:05 - __main__ - INFO - Initializing social media services...
+2025-08-16 19:45:05 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 19:45:05 - __main__ - INFO - Initializing scheduler...
+2025-08-16 19:45:05 - __main__ - INFO - Initializing MCP server...
+2025-08-16 19:45:05 - __main__ - INFO - All services initialized successfully
+2025-08-16 19:45:05 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 19:45:05 - __main__ - INFO - Scheduler service started
+2025-08-16 19:45:05 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 19:45:05 - __main__ - INFO - MCP server started
+2025-08-16 19:45:05 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 19:45:05 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 19:45:05 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 19:45:06 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.158:5000
+2025-08-16 19:45:06 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-16 19:45:06 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 19:45:15 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 19:45:15 - __main__ - INFO - Configuration validated successfully
+2025-08-16 19:45:15 - __main__ - INFO - Initializing database connections...
+2025-08-16 19:45:15 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 19:45:16 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 19:45:16 - __main__ - INFO - Initializing AI services...
+2025-08-16 19:45:16 - __main__ - INFO - Initializing social media services...
+2025-08-16 19:45:16 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 19:45:16 - __main__ - INFO - Initializing scheduler...
+2025-08-16 19:45:16 - __main__ - INFO - Initializing MCP server...
+2025-08-16 19:45:16 - __main__ - INFO - All services initialized successfully
+2025-08-16 19:45:16 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 19:45:16 - __main__ - INFO - Scheduler service started
+2025-08-16 19:45:16 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 19:45:16 - __main__ - INFO - MCP server started
+2025-08-16 19:45:16 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 19:45:16 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 19:45:16 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 19:45:16 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 19:45:16 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 19:45:56 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 19:45:56] "GET / HTTP/1.1" 200 -
+2025-08-16 19:45:57 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 19:45:57] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-08-16 19:46:02 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 19:46:02] "GET /generate_content/6899dc5b287d829a72600b47 HTTP/1.1" 200 -
+2025-08-16 19:46:16 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:18 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:18 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:18 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:25 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:25 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:25 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:26 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:26 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:26 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:27 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:27 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:27 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:29 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:29 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:29 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:30 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:30 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:30 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:31 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:31 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:31 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:33 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:33 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:33 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:34 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:34 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:34 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:36 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:36 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:36 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:37 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:37 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:37 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:39 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:39 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:39 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:41 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:41 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:41 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:43 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:43 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:43 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:44 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:44 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:44 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:45 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:45 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:45 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:47 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:47 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:47 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:49 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:49 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:49 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:50 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:50 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:50 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:52 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:52 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:52 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:54 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:54 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:54 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:56 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:56 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:57 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:46:59 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:46:59 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:46:59 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:47:02 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:47:02 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:47:02 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:47:05 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:47:05 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:47:05 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 19:47:10 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 19:47:10 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 19:47:10 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-08-16 19:47:12 - httpx - INFO - HTTP Request: PUT https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333/collections/project_6899dc5b287d829a72600b47/points?wait=true "HTTP/1.1 200 OK"
+2025-08-16 19:47:12 - database.qdrant_manager - INFO - Added embedding for project 6899dc5b287d829a72600b47 (hash=8b6bedebce98199da6edcd6cd0fc1997)
+2025-08-16 19:47:12 - database.mongodb_manager - INFO - Content saved with ID: 68a092e8d7ca5593a27dc66a
+2025-08-16 19:47:12 - database.mongodb_manager - INFO - Content saved with ID: 68a092e8d7ca5593a27dc66b
+2025-08-16 19:47:12 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 19:47:12] "POST /generate_content/6899dc5b287d829a72600b47 HTTP/1.1" 200 -
+2025-08-16 19:54:29 - werkzeug - INFO -  * Detected change in 'C:\\Users\\arshm\\Documents\\Secureitlab\\content-gen\\mcp\\mcp_server.py', reloading
+2025-08-16 19:54:29 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 19:54:46 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 19:54:46 - __main__ - INFO - Scheduler stopped
+2025-08-16 19:54:46 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 19:54:46 - __main__ - INFO - MCP server stopped
+2025-08-16 19:54:46 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-16 19:54:48 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 19:55:01 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 19:55:05 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 19:55:05 - __main__ - INFO - Scheduler stopped
+2025-08-16 19:55:05 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 19:55:05 - __main__ - INFO - MCP server stopped
+2025-08-16 19:55:05 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-16 19:55:31 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 19:55:31 - __main__ - INFO - Configuration validated successfully
+2025-08-16 19:55:31 - __main__ - INFO - Initializing database connections...
+2025-08-16 19:55:31 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 19:55:32 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 19:55:32 - __main__ - INFO - Initializing AI services...
+2025-08-16 19:55:32 - __main__ - INFO - Initializing social media services...
+2025-08-16 19:55:32 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 19:55:32 - __main__ - INFO - Initializing scheduler...
+2025-08-16 19:55:32 - __main__ - INFO - Initializing MCP server...
+2025-08-16 19:55:32 - __main__ - INFO - All services initialized successfully
+2025-08-16 19:55:32 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 19:55:32 - __main__ - INFO - Scheduler service started
+2025-08-16 19:55:32 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 19:55:32 - __main__ - INFO - MCP server started
+2025-08-16 19:55:32 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 19:55:32 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 19:55:32 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 19:55:32 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.158:5000
+2025-08-16 19:55:32 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-16 19:55:32 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 19:55:43 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 19:55:43 - __main__ - INFO - Configuration validated successfully
+2025-08-16 19:55:43 - __main__ - INFO - Initializing database connections...
+2025-08-16 19:55:43 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 19:55:44 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 19:55:44 - __main__ - INFO - Initializing AI services...
+2025-08-16 19:55:44 - __main__ - INFO - Initializing social media services...
+2025-08-16 19:55:44 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 19:55:44 - __main__ - INFO - Initializing scheduler...
+2025-08-16 19:55:44 - __main__ - INFO - Initializing MCP server...
+2025-08-16 19:55:44 - __main__ - INFO - All services initialized successfully
+2025-08-16 19:55:44 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 19:55:44 - __main__ - INFO - Scheduler service started
+2025-08-16 19:55:44 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 19:55:44 - __main__ - INFO - MCP server started
+2025-08-16 19:55:44 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 19:55:44 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 19:55:44 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 19:55:44 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 19:55:44 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 19:55:44 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 19:55:44] "GET / HTTP/1.1" 200 -
+2025-08-16 19:55:44 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 19:55:44] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-08-16 19:55:58 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 19:55:58] "GET /generate_content/6899dc5b287d829a72600b47 HTTP/1.1" 200 -
+2025-08-16 19:56:50 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 19:56:50] "GET /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
+2025-08-16 19:58:17 - database.mongodb_manager - INFO - Project created with ID: 68a095812f89772eb1b82d39
+2025-08-16 19:58:17 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+2025-08-16 19:58:18 - httpx - INFO - HTTP Request: PUT https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333/collections/project_68a095812f89772eb1b82d39 "HTTP/1.1 200 OK"
+2025-08-16 19:58:18 - database.qdrant_manager - INFO - Created Qdrant collection: project_68a095812f89772eb1b82d39
+2025-08-16 19:58:18 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 19:58:18] "POST /create_project HTTP/1.1" 200 -
+2025-08-16 19:58:24 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 19:58:24] "GET / HTTP/1.1" 200 -
+2025-08-16 19:58:27 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 19:58:27] "GET /generate_content/68a095812f89772eb1b82d39 HTTP/1.1" 200 -
+2025-08-16 19:58:33 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 19:58:33] "GET /generate_content/6899dc5b287d829a72600b47 HTTP/1.1" 200 -
+2025-08-16 19:59:06 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 19:59:06] "GET /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
+2025-08-16 20:01:17 - werkzeug - INFO -  * Detected change in 'C:\\Users\\arshm\\Documents\\Secureitlab\\content-gen\\mcp\\mcp_server.py', reloading
+2025-08-16 20:01:17 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 20:01:44 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 20:01:44 - __main__ - INFO - Scheduler stopped
+2025-08-16 20:01:44 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 20:01:44 - __main__ - INFO - MCP server stopped
+2025-08-16 20:01:44 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-16 20:01:45 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 20:02:04 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 20:02:04 - __main__ - INFO - Configuration validated successfully
+2025-08-16 20:02:04 - __main__ - INFO - Initializing database connections...
+2025-08-16 20:02:04 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 20:02:04 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 20:02:04 - __main__ - INFO - Initializing AI services...
+2025-08-16 20:02:05 - __main__ - INFO - Initializing social media services...
+2025-08-16 20:02:05 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 20:02:05 - __main__ - INFO - Initializing scheduler...
+2025-08-16 20:02:05 - __main__ - INFO - Initializing MCP server...
+2025-08-16 20:02:05 - __main__ - INFO - All services initialized successfully
+2025-08-16 20:02:05 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 20:02:05 - __main__ - INFO - Scheduler service started
+2025-08-16 20:02:05 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 20:02:05 - __main__ - INFO - MCP server started
+2025-08-16 20:02:05 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 20:02:05 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 20:02:05 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 20:02:05 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 20:02:05 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 20:02:11 - werkzeug - INFO -  * Detected change in 'C:\\Users\\arshm\\Documents\\Secureitlab\\content-gen\\services\\social_media_service.py', reloading
+2025-08-16 20:02:11 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 20:02:35 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 20:02:35 - __main__ - INFO - Scheduler stopped
+2025-08-16 20:02:35 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 20:02:35 - __main__ - INFO - MCP server stopped
+2025-08-16 20:02:35 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-16 20:02:36 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 20:02:56 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 20:02:56 - __main__ - INFO - Configuration validated successfully
+2025-08-16 20:02:56 - __main__ - INFO - Initializing database connections...
+2025-08-16 20:02:57 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 20:02:57 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 20:02:57 - __main__ - INFO - Initializing AI services...
+2025-08-16 20:02:58 - __main__ - INFO - Initializing social media services...
+2025-08-16 20:02:58 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 20:02:58 - __main__ - INFO - Initializing scheduler...
+2025-08-16 20:02:58 - __main__ - INFO - Initializing MCP server...
+2025-08-16 20:02:58 - __main__ - INFO - All services initialized successfully
+2025-08-16 20:02:58 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 20:02:58 - __main__ - INFO - Scheduler service started
+2025-08-16 20:02:58 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 20:02:58 - __main__ - INFO - MCP server started
+2025-08-16 20:02:58 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 20:02:58 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 20:02:58 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 20:02:58 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 20:02:58 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 20:02:58 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:02:58] "GET /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
+2025-08-16 20:05:33 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:05:33] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-08-16 20:05:43 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:05:43] "GET /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
+2025-08-16 20:05:43 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:05:43] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-08-16 20:05:43 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:05:43] "GET /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
+2025-08-16 20:05:43 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:05:43] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-08-16 20:06:51 - werkzeug - INFO -  * Detected change in 'C:\\Users\\arshm\\Documents\\Secureitlab\\content-gen\\main.py', reloading
+2025-08-16 20:06:51 - __main__ - INFO - Shutting down Content Generation System...
+2025-08-16 20:06:58 - services.scheduler_service - INFO - Scheduler service stopped
+2025-08-16 20:06:58 - __main__ - INFO - Scheduler stopped
+2025-08-16 20:06:58 - mcp.mcp_server - INFO - MCP Server stopped
+2025-08-16 20:06:58 - __main__ - INFO - MCP server stopped
+2025-08-16 20:06:58 - __main__ - INFO - Content Generation System shutdown complete
+2025-08-16 20:06:59 - werkzeug - INFO -  * Restarting with stat
+2025-08-16 20:07:17 - __main__ - INFO - Starting Content Generation System...
+2025-08-16 20:07:17 - __main__ - INFO - Configuration validated successfully
+2025-08-16 20:07:17 - __main__ - INFO - Initializing database connections...
+2025-08-16 20:07:17 - database.mongodb_manager - INFO - Database indexes created successfully
+2025-08-16 20:07:18 - httpx - INFO - HTTP Request: GET https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+2025-08-16 20:07:18 - __main__ - INFO - Initializing AI services...
+2025-08-16 20:07:18 - __main__ - INFO - Initializing social media services...
+2025-08-16 20:07:18 - services.social_media_service - INFO - Twitter API client initialized
+2025-08-16 20:07:18 - __main__ - INFO - Initializing scheduler...
+2025-08-16 20:07:18 - __main__ - INFO - Initializing MCP server...
+2025-08-16 20:07:18 - __main__ - INFO - All services initialized successfully
+2025-08-16 20:07:18 - services.scheduler_service - INFO - Scheduler service started
+2025-08-16 20:07:18 - __main__ - INFO - Scheduler service started
+2025-08-16 20:07:18 - mcp.mcp_server - INFO - MCP Server started on localhost:8001
+2025-08-16 20:07:18 - __main__ - INFO - MCP server started
+2025-08-16 20:07:18 - __main__ - INFO - Content Generation System started successfully
+2025-08-16 20:07:18 - __main__ - INFO - Web interface available at http://0.0.0.0:5000
+2025-08-16 20:07:18 - __main__ - INFO - MCP server running on localhost:8001
+2025-08-16 20:07:18 - werkzeug - WARNING -  * Debugger is active!
+2025-08-16 20:07:18 - werkzeug - INFO -  * Debugger PIN: 138-824-513
+2025-08-16 20:07:18 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:07:18] "GET /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
+2025-08-16 20:07:32 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:07:34 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:07:34 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:07:34 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:07:41 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:07:41 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:07:41 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:07:43 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:07:43 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:07:43 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:07:46 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:07:46 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:07:46 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:07:48 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:07:48 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:07:48 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:07:52 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:07:52 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:07:52 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:07:55 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:07:55 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:07:55 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:07:59 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:07:59 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:07:59 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:08:03 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:08:03 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:08:03 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:08:06 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:08:06 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:08:07 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:08:10 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:08:10 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:08:10 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:08:14 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:08:14 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:08:14 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:08:17 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:08:17 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:08:17 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:08:20 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:08:20 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:08:21 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:08:24 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:08:24 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:08:24 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:08:27 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:08:27 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:08:27 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:08:31 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:08:31 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:08:31 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:08:34 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:08:34 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:08:35 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:08:38 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:08:38 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:08:38 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:08:41 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:08:41 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:08:41 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:08:45 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:08:45 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:08:45 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:08:49 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:08:49 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:08:49 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:08:53 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:08:53 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:08:53 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:08:56 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:08:56 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:08:57 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:09:01 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:09:01 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:09:01 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:09:04 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:09:04 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:09:05 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:09:08 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:09:08 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:09:08 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:09:11 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:09:11 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:09:11 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:09:14 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:09:14 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:09:15 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:09:18 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:09:18 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:09:18 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:09:21 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:09:21 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:09:21 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:09:26 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:09:26 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:09:27 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:09:30 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:09:30 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:09:30 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:09:32 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:09:32 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:09:33 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:09:35 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:09:35 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:09:36 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:09:41 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:09:41 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:09:42 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:09:46 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:09:46 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:09:47 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:09:53 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:09:53 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:09:53 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:09:58 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:09:58 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:09:58 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-08-16 20:10:05 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-16 20:10:05 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-08-16 20:10:06 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-08-16 20:10:07 - httpx - INFO - HTTP Request: PUT https://ef34154c-4341-4208-9171-cd7197a5e529.europe-west3-0.gcp.cloud.qdrant.io:6333/collections/project_689f2d72212c023266538100/points?wait=true "HTTP/1.1 200 OK"
+2025-08-16 20:10:07 - database.qdrant_manager - INFO - Added embedding for project 689f2d72212c023266538100 (hash=07a4882219d47ddf518b8d5342e2100e)
+2025-08-16 20:10:07 - database.mongodb_manager - INFO - Content saved with ID: 68a0984719ab16bc2d9b1646
+2025-08-16 20:10:07 - database.mongodb_manager - INFO - Content saved with ID: 68a0984719ab16bc2d9b1647
+2025-08-16 20:10:07 - werkzeug - INFO - 127.0.0.1 - - [16/Aug/2025 20:10:07] "POST /generate_content/689f2d72212c023266538100 HTTP/1.1" 200 -
+2025-08-16 20:11:02 - __main__ - INFO - Received signal 2, shutting down gracefully...
+2025-08-16 20:11:02 - __main__ - INFO - Shutting down Content Generation System...
