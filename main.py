@@ -140,6 +140,9 @@ CONTENT_GENERATION_HTML = """
         input, textarea, select { width: 100%; padding: 8px; margin-bottom: 10px; }
         button { background: #007bff; color: white; padding: 10px 20px; border: none; cursor: pointer; }
         .content-preview { border: 1px solid #ddd; padding: 15px; margin: 10px 0; }
+        .platform-info { background: #e9ecef; padding: 10px; margin: 10px 0; border-radius: 5px; font-size: 0.9em; }
+        .checkbox-group { display: flex; align-items: center; gap: 10px; }
+        .char-counter { font-size: 0.8em; color: #666; }
     </style>
 </head>
 <body>
@@ -154,17 +157,37 @@ CONTENT_GENERATION_HTML = """
         <div class="form-group">
             <label>Target Platform:</label>
             <select name="target_platform" id="target_platform" onchange="updateContentTypes()">
-                {% for platform in project.platforms %}
-                <option value="{{ platform }}">{{ platform.title() }}</option>
-                {% endfor %}
+                {% if project.platforms and project.platforms|length > 0 %}
+                    {% for platform in project.platforms %}
+                    <option value="{{ platform }}">{{ platform.title() }}</option>
+                    {% endfor %}
+                {% else %}
+                    <!-- Fallback: show all platforms if none were selected in project -->
+                    <option value="twitter">Twitter</option>
+                    <option value="linkedin">LinkedIn</option>
+                    <option value="facebook">Facebook</option>
+                    <option value="instagram">Instagram</option>
+                {% endif %}
             </select>
         </div>
         
         <div class="form-group">
             <label>Content Type:</label>
-            <select name="content_type" id="content_type">
+            <select name="content_type" id="content_type" onchange="updatePlatformInfo()">
                 <!-- Options will be populated by JavaScript -->
             </select>
+        </div>
+        
+        <div id="platform-info" class="platform-info">
+            <!-- Platform-specific info will be shown here -->
+        </div>
+        
+        <div class="form-group">
+            <div class="checkbox-group">
+                <input type="checkbox" name="include_media" id="include_media" value="true">
+                <label for="include_media" style="display: inline; margin: 0;">Include Media Suggestion</label>
+            </div>
+            <small class="char-counter">Adds image/video suggestions to your content</small>
         </div>
         
         <div class="form-group">
@@ -178,11 +201,9 @@ CONTENT_GENERATION_HTML = """
     {% if generated_content %}
     <h2>Generated Content</h2>
     <div class="content-preview">
-        <h3>{{ generated_content.platform.title() }} Content</h3>
-        <p><strong>Type:</strong> {{ generated_content.content_type }}</p>
-        <div style="background: #f8f9fa; padding: 15px; margin: 10px 0;">
-            {{ generated_content.content | safe }}
-        </div>
+        <h3>{{ generated_content.platform.title() }} {{ generated_content.content_type.title() }}</h3>
+        <p><strong>Character Count:</strong> <span id="content-length">{{ generated_content.content|length }}</span></p>
+        <div style="background: #f8f9fa; padding: 15px; margin: 10px 0; white-space: pre-wrap;">{{ generated_content.content }}</div>
         
         {% if generated_content.hashtags %}
         <p><strong>Hashtags:</strong> {{ generated_content.hashtags | join(', ') }}</p>
@@ -205,43 +226,54 @@ CONTENT_GENERATION_HTML = """
     {% endif %}
 
     <script>
-        // Platform-specific content types mapping
+        // Enhanced platform-specific content types mapping with character limits
         const platformContentTypes = {
             'twitter': [
-                { value: 'post', text: 'Tweet' },
-                { value: 'thread', text: 'Twitter Thread' },
-                { value: 'poll', text: 'Twitter Poll' }
+                { value: 'post', text: 'Tweet', maxLength: 280, description: 'Single tweet with concise message' },
+                { value: 'thread', text: 'Twitter Thread', maxLength: 280, description: '3-5 connected tweets, each under 280 chars' },
+                { value: 'poll', text: 'Twitter Poll', maxLength: 220, description: 'Poll question with 2-4 options' }
             ],
             'linkedin': [
-                { value: 'post', text: 'Professional Post' },
-                { value: 'article', text: 'LinkedIn Article' },
-                { value: 'carousel', text: 'Carousel Post' },
-                { value: 'poll', text: 'LinkedIn Poll' }
+                { value: 'post', text: 'Professional Post', maxLength: 3000, description: 'Professional update or insight' },
+                { value: 'article', text: 'LinkedIn Article', maxLength: 8000, description: 'Long-form article content' },
+                { value: 'poll', text: 'LinkedIn Poll', maxLength: 2800, description: 'Professional poll with context' }
             ],
             'facebook': [
-                { value: 'post', text: 'Facebook Post' },
-                { value: 'story', text: 'Facebook Story' },
-                { value: 'poll', text: 'Facebook Poll' },
-                { value: 'event', text: 'Event Post' }
+                { value: 'post', text: 'Facebook Post', maxLength: 2000, description: 'Engaging personal/brand story' },
+                { value: 'story', text: 'Facebook Story', maxLength: 500, description: 'Short, visual-focused content' },
+                { value: 'poll', text: 'Facebook Poll', maxLength: 1800, description: 'Interactive poll with reactions' }
             ],
             'instagram': [
-                { value: 'post', text: 'Instagram Post' },
-                { value: 'story', text: 'Instagram Story' },
-                { value: 'reel', text: 'Instagram Reel' },
-                { value: 'carousel', text: 'Carousel Post' }
+                { value: 'post', text: 'Instagram Post', maxLength: 2200, description: 'Visual-first caption' },
+                { value: 'story', text: 'Instagram Story', maxLength: 200, description: 'Brief, engaging story text' },
+                { value: 'reel', text: 'Instagram Reel', maxLength: 1000, description: 'Short video description' }
             ]
         };
 
         function updateContentTypes() {
             const platformSelect = document.getElementById('target_platform');
             const contentTypeSelect = document.getElementById('content_type');
+            
+            // Debug: Check if elements exist
+            if (!platformSelect) {
+                console.error('Error: target_platform element not found');
+                return;
+            }
+            
+            if (!contentTypeSelect) {
+                console.error('Error: content_type element not found');
+                return;
+            }
+            
             const selectedPlatform = platformSelect.value;
+            console.log('Selected platform:', selectedPlatform);
             
             // Clear existing options
             contentTypeSelect.innerHTML = '';
             
             // Get content types for selected platform
             const contentTypes = platformContentTypes[selectedPlatform] || platformContentTypes['twitter'];
+            console.log('Content types for platform:', contentTypes);
             
             // Add new options
             contentTypes.forEach(type => {
@@ -250,10 +282,65 @@ CONTENT_GENERATION_HTML = """
                 option.textContent = type.text;
                 contentTypeSelect.appendChild(option);
             });
+            
+            console.log('Added', contentTypes.length, 'content type options');
+            
+            // Update platform info
+            updatePlatformInfo();
+        }
+        
+        function updatePlatformInfo() {
+            const platformSelect = document.getElementById('target_platform');
+            const contentTypeSelect = document.getElementById('content_type');
+            const platformInfoDiv = document.getElementById('platform-info');
+            
+            // Check if elements exist
+            if (!platformSelect || !contentTypeSelect || !platformInfoDiv) {
+                console.error('Error: Required elements not found for updatePlatformInfo');
+                return;
+            }
+            
+            const selectedPlatform = platformSelect.value;
+            const selectedContentType = contentTypeSelect.value;
+            
+            const contentTypes = platformContentTypes[selectedPlatform] || platformContentTypes['twitter'];
+            const contentTypeInfo = contentTypes.find(type => type.value === selectedContentType);
+            
+            if (contentTypeInfo) {
+                platformInfoDiv.innerHTML = `
+                    <strong>${selectedPlatform.charAt(0).toUpperCase() + selectedPlatform.slice(1)} ${contentTypeInfo.text}</strong><br>
+                    📝 ${contentTypeInfo.description}<br>
+                    📊 Character Limit: ${contentTypeInfo.maxLength} characters
+                `;
+            } else {
+                console.error('Content type info not found for:', selectedPlatform, selectedContentType);
+                platformInfoDiv.innerHTML = `<strong>Platform: ${selectedPlatform}</strong><br>Content type: ${selectedContentType}`;
+            }
         }
 
         // Initialize content types on page load
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM Content Loaded - initializing content types');
+            console.log('Platform content types object:', platformContentTypes);
+            console.log('Available platforms:', Object.keys(platformContentTypes));
+            
+            // Check if required elements exist
+            const platformSelect = document.getElementById('target_platform');
+            const contentTypeSelect = document.getElementById('content_type');
+            
+            if (platformSelect) {
+                console.log('Platform select found, current value:', platformSelect.value);
+                console.log('Platform select options count:', platformSelect.options.length);
+            } else {
+                console.error('Platform select element not found!');
+            }
+            
+            if (contentTypeSelect) {
+                console.log('Content type select found');
+            } else {
+                console.error('Content type select element not found!');
+            }
+            
             updateContentTypes();
         });
     </script>
@@ -296,6 +383,14 @@ async def create_project():
 def generate_content_form(project_id):
     """Show content generation form"""
     project = mongodb_manager.get_project(project_id)
+    
+    if not project:
+        return jsonify({'error': 'Project not found'}), 404
+    
+    # Ensure project has platforms array (fallback to empty list)
+    if 'platforms' not in project:
+        project['platforms'] = []
+        
     return render_template_string(CONTENT_GENERATION_HTML, project=project)
 
 @app.route('/generate_content/<project_id>', methods=['POST'])
@@ -309,6 +404,7 @@ async def generate_content(project_id):
             'content_type': request.form['content_type'],
             'target_platform': request.form['target_platform'],
             'context': request.form.get('context', ''),
+            'include_media': request.form.get('include_media') == 'true',
             'project': project
         }
         
