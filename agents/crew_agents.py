@@ -8,6 +8,7 @@ from typing import Dict, List, Optional, Any
 import logging
 import json
 from datetime import datetime
+import re # Added for regex in _post_process_content
 
 # --- Logging / encoding fix for Windows consoles (prevents UnicodeEncodeError) ---
 if hasattr(sys.stdout, "reconfigure"):
@@ -56,57 +57,291 @@ class ContentGeneratorTool(BaseTool):
         topic = content_request['topic']
         brand_voice = content_request['project']['brand_voice']
         content_type = content_request['content_type']
+        include_media = content_request.get('include_media', False)
 
+        # Enhanced platform specifications with content type support
         platform_specs = {
-            'twitter': {'max_length': 280, 'hashtags': 3, 'format': 'concise'},
-            'linkedin': {'max_length': 3000, 'hashtags': 5, 'format': 'professional'},
-            'facebook': {'max_length': 2000, 'hashtags': 3, 'format': 'engaging'},
-            'instagram': {'max_length': 2200, 'hashtags': 15, 'format': 'visual-focused'}
+            'twitter': {
+                'max_length': 280, 
+                'hashtags': 3, 
+                'format': 'concise',
+                'content_types': {
+                    'post': {'max_length': 280, 'template': 'single_tweet'},
+                    'thread': {'max_length': 280, 'template': 'twitter_thread'},
+                    'poll': {'max_length': 220, 'template': 'twitter_poll'}  # Less space for poll options
+                }
+            },
+            'linkedin': {
+                'max_length': 3000, 
+                'hashtags': 5, 
+                'format': 'professional',
+                'content_types': {
+                    'post': {'max_length': 3000, 'template': 'linkedin_post'},
+                    'article': {'max_length': 8000, 'template': 'linkedin_article'},
+                    'poll': {'max_length': 2800, 'template': 'linkedin_poll'}
+                }
+            },
+            'facebook': {
+                'max_length': 2000, 
+                'hashtags': 3, 
+                'format': 'engaging',
+                'content_types': {
+                    'post': {'max_length': 2000, 'template': 'facebook_post'},
+                    'story': {'max_length': 500, 'template': 'facebook_story'},
+                    'poll': {'max_length': 1800, 'template': 'facebook_poll'}
+                }
+            },
+            'instagram': {
+                'max_length': 2200, 
+                'hashtags': 15, 
+                'format': 'visual-focused',
+                'content_types': {
+                    'post': {'max_length': 2200, 'template': 'instagram_post'},
+                    'story': {'max_length': 200, 'template': 'instagram_story'},
+                    'reel': {'max_length': 1000, 'template': 'instagram_reel'}
+                }
+            }
         }
 
-        spec = platform_specs.get(platform, platform_specs['twitter'])
+        platform_config = platform_specs.get(platform, platform_specs['twitter'])
+        content_config = platform_config['content_types'].get(content_type, 
+                                                            {'max_length': platform_config['max_length'], 'template': 'basic'})
 
-        prompt = f"""
-        Create a {content_type} for {platform} about "{topic}".
-
-        Brand Voice: {brand_voice}
-        Max Length: {spec['max_length']} characters
-        Hashtag Count: {spec['hashtags']}
-        Format Style: {spec['format']}
-
-        Requirements:
-        - Match the brand voice perfectly
-        - Include relevant hashtags
-        - Optimize for platform engagement
-        - Keep within character limits
-
-        Return as JSON with fields: content, hashtags, platform_optimizations
-        """
+        # Get content template and format specifications
+        template_type = content_config['template']
+        max_length = content_config['max_length']
+        
+        # Create specific prompts based on content type and platform
+        prompt = self._create_content_prompt(
+            platform, content_type, topic, brand_voice, 
+            max_length, platform_config['hashtags'], 
+            platform_config['format'], template_type, include_media
+        )
 
         try:
             # Use Ollama (Mistral) for content generation
             response = self.ollama_client.chat(
-                model='mistral',  # your local ollama model name
+                model='mistral',
                 messages=[
                     {'role': 'user', 'content': prompt}
                 ]
             )
-            # Ollama returns a dict-like response; extract message content safely
-            # Accept multiple shapes for robustness
+            
+            # Extract response content
             if isinstance(response, dict):
-                # new ollama python clients often return {'message': {'content': '...'}}
                 msg = response.get('message') or {}
                 if isinstance(msg, dict) and 'content' in msg:
-                    return msg['content']
-            # fallback: string representation
-            return str(response)
+                    generated_content = msg['content']
+                else:
+                    generated_content = str(response)
+            else:
+                generated_content = str(response)
+            
+            # Post-process the content to ensure it meets requirements
+            return self._post_process_content(generated_content, platform, content_type, max_length)
+            
         except Exception as e:
             logger.exception("Error generating content via Ollama")
-            return json.dumps({
-                "content": f"Generated content about {topic} for {platform}",
-                "hashtags": ["#content", "#marketing"],
-                "platform_optimizations": "Basic optimization applied"
-            })
+            return self._create_fallback_content(topic, platform, content_type, max_length, include_media)
+
+    def _create_content_prompt(self, platform: str, content_type: str, topic: str, 
+                             brand_voice: str, max_length: int, hashtag_count: int, 
+                             format_style: str, template_type: str, include_media: bool) -> str:
+        """Create platform and content-type specific prompts"""
+        
+        base_requirements = f"""
+        CRITICAL REQUIREMENTS:
+        - Maximum {max_length} characters total (including hashtags and emojis)
+        - Brand voice: {brand_voice}
+        - Include exactly {hashtag_count} relevant hashtags
+        - Style: {format_style}
+        - Topic: {topic}
+        """
+        
+        if include_media:
+            base_requirements += "\n- Include media suggestion (image/video description in brackets like [Image: description])"
+        
+        # Platform and content type specific templates
+        if platform == 'twitter':
+            if content_type == 'post':
+                return f"""{base_requirements}
+                
+                Create a single engaging tweet about {topic}. 
+                Format: [Hook sentence] [Main message] [Call to action] [Hashtags]
+                Keep it under {max_length} characters total.
+                
+                Return ONLY the tweet text, nothing else."""
+                
+            elif content_type == 'thread':
+                return f"""{base_requirements}
+                
+                Create a Twitter thread about {topic} with 3-5 tweets.
+                Each tweet must be under 280 characters.
+                Format each tweet as: "Tweet X/Y: [content]"
+                Separate tweets with "---"
+                
+                Thread structure:
+                Tweet 1: Hook/Introduction
+                Tweet 2-4: Key points/details
+                Final tweet: Conclusion/Call to action
+                
+                Return the complete thread with separators."""
+                
+            elif content_type == 'poll':
+                return f"""{base_requirements}
+                
+                Create a Twitter poll about {topic}.
+                Format:
+                [Poll question - max 200 chars]
+                
+                Poll options:
+                • Option 1
+                • Option 2  
+                • Option 3
+                • Option 4
+                
+                [Additional context if needed]
+                [Hashtags]
+                
+                Total under {max_length} characters."""
+        
+        elif platform == 'linkedin':
+            if content_type == 'post':
+                return f"""{base_requirements}
+                
+                Create a professional LinkedIn post about {topic}.
+                Structure:
+                [Compelling opening line]
+                
+                [Main content with insights/value]
+                
+                [Call to action/question for engagement]
+                
+                [Hashtags]
+                
+                Keep under {max_length} characters. Use professional tone."""
+                
+            elif content_type == 'poll':
+                return f"""{base_requirements}
+                
+                Create a LinkedIn poll about {topic}.
+                Format:
+                [Context/introduction]
+                
+                [Poll question]
+                
+                • Option 1
+                • Option 2
+                • Option 3
+                • Option 4
+                
+                [Why this matters/call for discussion]
+                [Hashtags]"""
+        
+        elif platform == 'facebook':
+            if content_type == 'post':
+                return f"""{base_requirements}
+                
+                Create an engaging Facebook post about {topic}.
+                Structure:
+                [Attention-grabbing opening]
+                
+                [Story/details that connect emotionally]
+                
+                [Value/takeaway]
+                
+                [Call to action for comments/shares]
+                [Hashtags]
+                
+                Keep under {max_length} characters."""
+                
+            elif content_type == 'poll':
+                return f"""{base_requirements}
+                
+                Create a Facebook poll about {topic}.
+                Format:
+                [Engaging introduction]
+                
+                [Poll question]
+                
+                React with:
+                👍 for Option 1
+                ❤️ for Option 2  
+                😆 for Option 3
+                😮 for Option 4
+                
+                [Additional context]
+                [Hashtags]"""
+        
+        # Fallback generic prompt
+        return f"""{base_requirements}
+        
+        Create {content_type} content for {platform} about {topic}.
+        Keep it under {max_length} characters total.
+        Return only the content, nothing else."""
+
+    def _post_process_content(self, content: str, platform: str, content_type: str, max_length: int) -> str:
+        """Post-process generated content to ensure it meets requirements"""
+        try:
+            # Remove any JSON formatting if present
+            if content.strip().startswith('{') and content.strip().endswith('}'):
+                try:
+                    parsed = json.loads(content)
+                    if isinstance(parsed, dict) and 'content' in parsed:
+                        content = parsed['content']
+                        if 'hashtags' in parsed:
+                            hashtags = ' '.join(parsed['hashtags']) if isinstance(parsed['hashtags'], list) else str(parsed['hashtags'])
+                            content = f"{content} {hashtags}"
+                except:
+                    pass
+            
+            # Remove any markdown formatting
+            content = content.replace('**', '').replace('*', '')
+            
+            # Ensure content fits within character limit
+            if len(content) > max_length:
+                # Smart truncation - try to preserve hashtags
+                hashtag_match = re.findall(r'#\w+', content)
+                hashtags = ' '.join(hashtag_match[-3:])  # Keep last 3 hashtags
+                
+                main_content_limit = max_length - len(hashtags) - 5  # 5 chars buffer
+                if main_content_limit > 50:  # Ensure we have reasonable space for content
+                    main_content = content[:main_content_limit].rsplit(' ', 1)[0]  # Split at word boundary
+                    content = f"{main_content} {hashtags}".strip()
+                else:
+                    content = content[:max_length]
+            
+            return content
+            
+        except Exception as e:
+            logger.error(f"Error post-processing content: {e}")
+            # Emergency fallback - just truncate
+            return content[:max_length] if len(content) > max_length else content
+
+    def _create_fallback_content(self, topic: str, platform: str, content_type: str, max_length: int, include_media: bool) -> str:
+        """Create fallback content when AI generation fails"""
+        media_text = " [Image: relevant visual]" if include_media else ""
+        
+        if platform == 'twitter' and content_type == 'thread':
+            return f"""Tweet 1/3: Exploring {topic} - why it matters today 🧵{media_text}
+---
+Tweet 2/3: Key insights about {topic} that everyone should know
+---
+Tweet 3/3: What's your experience with {topic}? Share your thoughts! #content #discussion"""
+        
+        elif content_type == 'poll':
+            return f"""What's your take on {topic}?{media_text}
+
+• Very important
+• Somewhat important  
+• Not important
+• Need more info
+
+Share your thoughts below! #poll #discussion"""
+        
+        else:
+            base_content = f"Exploring {topic} - insights and thoughts{media_text} #content #discussion"
+            return base_content[:max_length] if len(base_content) > max_length else base_content
 
 
 class ContentOptimizerTool(BaseTool):

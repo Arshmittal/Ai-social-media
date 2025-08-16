@@ -44,7 +44,8 @@ class MCPServer:
                         "project_id": {"type": "string"},
                         "topic": {"type": "string"},
                         "platform": {"type": "string"},
-                        "content_type": {"type": "string"}
+                        "content_type": {"type": "string"},
+                        "include_media": {"type": "boolean"}
                     },
                     "required": ["project_id", "topic", "platform"]
                 }
@@ -306,13 +307,40 @@ class MCPServer:
             topic = args.get("topic")
             platform = args.get("platform")
             content_type = args.get("content_type", "post")
+            include_media = args.get("include_media", False)
             
-            # This would integrate with your CrewAI system
+            # Platform-specific character limits
+            platform_limits = {
+                'twitter': {'post': 280, 'thread': 280, 'poll': 220},
+                'linkedin': {'post': 3000, 'article': 8000, 'poll': 2800},
+                'facebook': {'post': 2000, 'story': 500, 'poll': 1800},
+                'instagram': {'post': 2200, 'story': 200, 'reel': 1000}
+            }
+            
+            char_limit = platform_limits.get(platform, {}).get(content_type, 280)
+            media_suggestion = " [Include relevant visual]" if include_media else ""
+            
+            # Generate content based on platform and type
+            if platform == 'twitter' and content_type == 'thread':
+                content = f"1/3 🧵 {topic} - exploring key insights{media_suggestion}\n\n2/3 Important points about {topic} everyone should know\n\n3/3 What's your experience with {topic}? Share below! #discussion"
+            elif content_type == 'poll':
+                content = f"What's your take on {topic}?{media_suggestion}\n\n• Very important\n• Somewhat important\n• Not important\n• Need more info\n\nShare your thoughts! #poll"
+            else:
+                content = f"Exploring {topic} - key insights and takeaways{media_suggestion} #content #discussion"
+            
+            # Ensure content respects character limits
+            if len(content) > char_limit:
+                content = content[:char_limit-3] + "..."
+            
             return {
                 "project_id": project_id,
                 "topic": topic,
                 "platform": platform,
-                "generated_content": f"Generated {content_type} content about {topic} for {platform}",
+                "content_type": content_type,
+                "generated_content": content,
+                "character_count": len(content),
+                "character_limit": char_limit,
+                "include_media": include_media,
                 "status": "success",
                 "content_id": f"content_{datetime.utcnow().timestamp()}"
             }
