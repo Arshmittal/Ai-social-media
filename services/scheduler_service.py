@@ -45,13 +45,24 @@ class SchedulerService:
         """Check for posts that need to be published"""
         try:
             if not self.mongodb_manager:
+                logger.warning("MongoDB manager not available")
                 return
                 
             # Get all pending scheduled posts
             pending_schedules = self.mongodb_manager.get_pending_schedules()
+            logger.info(f"Found {len(pending_schedules)} pending schedules to check")
             
             for schedule_item in pending_schedules:
-                asyncio.run(self._execute_scheduled_post(schedule_item))
+                logger.info(f"Processing schedule: {schedule_item['_id']} for content: {schedule_item['content_id']}")
+                try:
+                    # Create a new event loop for this thread
+                    loop = asyncio.new_event_loop()
+                    asyncio.set_event_loop(loop)
+                    loop.run_until_complete(self._execute_scheduled_post(schedule_item))
+                    loop.close()
+                except Exception as e:
+                    logger.error(f"Error executing scheduled post {schedule_item['_id']}: {e}")
+                    self.mongodb_manager.update_schedule_status(schedule_item['_id'], 'failed')
                 
         except Exception as e:
             logger.error(f"Error checking scheduled posts: {e}")
@@ -59,6 +70,8 @@ class SchedulerService:
     async def _execute_scheduled_post(self, schedule_item: Dict):
         """Execute a scheduled post"""
         try:
+            logger.info(f"Executing scheduled post for content: {schedule_item['content_id']}")
+            
             # Get the content to post
             content = self.mongodb_manager.get_content(schedule_item['content_id'])
             
@@ -67,11 +80,16 @@ class SchedulerService:
                 self.mongodb_manager.update_schedule_status(schedule_item['_id'], 'failed')
                 return
             
+            logger.info(f"Found content: {content.get('content', '')[:100]}...")
+            
             # Post to social media
             if self.social_media_service:
+                logger.info(f"Posting to {schedule_item.get('platform', 'unknown')} platform")
                 result = await self.social_media_service.post_content(content)
                 
-                if result['success']:
+                logger.info(f"Post result: {result}")
+                
+                if result.get('success', False):
                     # Update content status
                     self.mongodb_manager.update_content_status(
                         schedule_item['content_id'], 
@@ -87,6 +105,9 @@ class SchedulerService:
                     # Mark schedule as failed
                     self.mongodb_manager.update_schedule_status(schedule_item['_id'], 'failed')
                     logger.error(f"Failed to post scheduled content: {result}")
+            else:
+                logger.error("Social media service not available")
+                self.mongodb_manager.update_schedule_status(schedule_item['_id'], 'failed')
             
         except Exception as e:
             logger.error(f"Error executing scheduled post: {e}")
